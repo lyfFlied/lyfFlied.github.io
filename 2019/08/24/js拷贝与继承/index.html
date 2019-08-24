@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>js拷贝与继承 | LYF&#39;s blog</title>
+  <meta name="keywords" content=" JavaScript ">
+  <meta name="description" content="js拷贝与继承 | LYF&#39;s blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="[toc] 深拷贝和浅拷贝浅拷贝和赋值对于对象，赋值是直接复制的指针，浅拷贝则是不能拷贝他下一层的对象（属性中的对象）  var obj1 = {     &amp;apos;name&amp;apos; : &amp;apos;zhangsan&amp;apos;,     &amp;apos;age&amp;apos; :  &amp;apos;18&amp;apos;,     &amp;apos;language&amp;apos; : [1,[2,3],[4,5]]">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js拷贝与继承">
+<meta property="og:url" content="https://lyfflied.github.io/2019/08/24/js拷贝与继承/index.html">
+<meta property="og:site_name" content="LYF&#39;s blog">
+<meta property="og:description" content="[toc] 深拷贝和浅拷贝浅拷贝和赋值对于对象，赋值是直接复制的指针，浅拷贝则是不能拷贝他下一层的对象（属性中的对象）  var obj1 = {     &amp;apos;name&amp;apos; : &amp;apos;zhangsan&amp;apos;,     &amp;apos;age&amp;apos; :  &amp;apos;18&amp;apos;,     &amp;apos;language&amp;apos; : [1,[2,3],[4,5]]">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-24T02:59:28.238Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js拷贝与继承">
+<meta name="twitter:description" content="[toc] 深拷贝和浅拷贝浅拷贝和赋值对于对象，赋值是直接复制的指针，浅拷贝则是不能拷贝他下一层的对象（属性中的对象）  var obj1 = {     &amp;apos;name&amp;apos; : &amp;apos;zhangsan&amp;apos;,     &amp;apos;age&amp;apos; :  &amp;apos;18&amp;apos;,     &amp;apos;language&amp;apos; : [1,[2,3],[4,5]]">
+
+
+<link rel="icon" href="/img/1.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/1.jpg" />
+</a>
+<div class="author">
+    <span>lyf</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/lyfFlied" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:f798735475@163.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=798735475&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(3)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Hexo">Hexo<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="JavaScript">JavaScript<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="3">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="以 in: 开头进行全文搜索" autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">Hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">JavaScript</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a  class="Hexo "
+           href="/2019/08/24/blog/"
+           data-tag="Hexo"
+           data-author="" >
+            <span class="post-title" title="hello blog">hello blog</span>
+            <span class="post-date" title="2019-08-24 10:34:14">2019/08/24</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/08/24/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-08-24 09:26:01">2019/08/24</span>
+        </a>
+        
+        <a  class="JavaScript "
+           href="/2019/08/24/js拷贝与继承/"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="js拷贝与继承">js拷贝与继承</span>
+            <span class="post-date" title="2019-08-24 10:57:50">2019/08/24</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-js拷贝与继承" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">js拷贝与继承</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="JavaScript">JavaScript</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color1">JavaScript</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-08-24 10:59:28'>2019-08-24 10:57</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#深拷贝和浅拷贝"><span class="toc-text">深拷贝和浅拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#浅拷贝和赋值"><span class="toc-text">浅拷贝和赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深拷贝"><span class="toc-text">深拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-递归实现"><span class="toc-text">1. 递归实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-通过JSON对象实现深拷贝"><span class="toc-text">2. 通过JSON对象实现深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-通过jQuery的extend方法实现深拷贝"><span class="toc-text">3. 通过jQuery的extend方法实现深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Object-assign-拷贝"><span class="toc-text">4. Object.assign()拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-lodash函数库实现深拷贝"><span class="toc-text">5. lodash函数库实现深拷贝</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#继承"><span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-类式继承"><span class="toc-text">1. 类式继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#描述："><span class="toc-text">描述：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点（2个）"><span class="toc-text">缺点（2个）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-构造函数式继承"><span class="toc-text">2. 构造函数式继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介："><span class="toc-text">简介：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-组合式继承"><span class="toc-text">3. 组合式继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介：-1"><span class="toc-text">简介：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点-1"><span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-原型式继承"><span class="toc-text">4.原型式继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介：-2"><span class="toc-text">简介：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点-2"><span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-寄生式继承"><span class="toc-text">5. 寄生式继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点-3"><span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-寄生组合式继承"><span class="toc-text">5. 寄生组合式继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介：-3"><span class="toc-text">简介：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-混入方式继承多个方式"><span class="toc-text">6.混入方式继承多个方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介：-4"><span class="toc-text">简介：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-ES6类extends"><span class="toc-text">7.ES6类extends</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介：-5"><span class="toc-text">简介：</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h1><h2 id="浅拷贝和赋值"><a href="#浅拷贝和赋值" class="headerlink" title="浅拷贝和赋值"></a>浅拷贝和赋值</h2><p>对于对象，赋值是直接复制的指针，浅拷贝则是不能拷贝他下一层的对象（属性中的对象）</p>
+<pre><code> var obj1 = {
+    &apos;name&apos; : &apos;zhangsan&apos;,
+    &apos;age&apos; :  &apos;18&apos;,
+    &apos;language&apos; : [1,[2,3],[4,5]],
+};
+
+var obj2 = obj1;
+
+
+var obj3 = shallowCopy(obj1);
+function shallowCopy(src) {
+    var dst = {};
+    for (var prop in src) {
+        if (src.hasOwnProperty(prop)) {
+            dst[prop] = src[prop];
+        }
+    }
+    return dst;
+}
+
+obj2.name = &quot;lisi&quot;;
+obj3.age = &quot;20&quot;;
+
+obj2.language[1] = [&quot;二&quot;,&quot;三&quot;];
+obj3.language[2] = [&quot;四&quot;,&quot;五&quot;];
+
+console.log(obj1);  
+//obj1 = {
+//    &apos;name&apos; : &apos;lisi&apos;,
+//    &apos;age&apos; :  &apos;18&apos;,
+//    &apos;language&apos; : [1,[&quot;二&quot;,&quot;三&quot;],[&quot;四&quot;,&quot;五&quot;]],
+//};
+
+console.log(obj2);
+//obj2 = {
+//    &apos;name&apos; : &apos;lisi&apos;,
+//    &apos;age&apos; :  &apos;18&apos;,
+//    &apos;language&apos; : [1,[&quot;二&quot;,&quot;三&quot;],[&quot;四&quot;,&quot;五&quot;]],
+//};
+
+console.log(obj3);
+//obj3 = {
+//    &apos;name&apos; : &apos;zhangsan&apos;,
+//    &apos;age&apos; :  &apos;20&apos;,
+//    &apos;language&apos; : [1,[&quot;二&quot;,&quot;三&quot;],[&quot;四&quot;,&quot;五&quot;]],
+//};</code></pre><p>赋值得到的对象 obj2 只是将指针改变，其引用的仍然是同一个对象，而浅拷贝得到的的 obj3 则是重新创建了新对象。</p>
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><h3 id="1-递归实现"><a href="#1-递归实现" class="headerlink" title="1. 递归实现"></a>1. 递归实现</h3><pre><code>//使用递归的方式实现数组、对象的深拷贝
+function deepClone1(obj) {
+  //判断拷贝的要进行深拷贝的是数组还是对象，是数组的话进行数组拷贝，对象的话进行对象拷贝
+  var objClone = Array.isArray(obj) ? [] : {};
+  //进行深拷贝的不能为空，并且是对象或者是
+  if (obj &amp;&amp; typeof obj === &quot;object&quot;) {
+    for (key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (obj[key] &amp;&amp; typeof obj[key] === &quot;object&quot;) {
+          objClone[key] = deepClone1(obj[key]);
+        } else {
+          objClone[key] = obj[key];
+        }
+      }
+    }
+  }
+  return objClone;
+}</code></pre><h3 id="2-通过JSON对象实现深拷贝"><a href="#2-通过JSON对象实现深拷贝" class="headerlink" title="2. 通过JSON对象实现深拷贝"></a>2. 通过JSON对象实现深拷贝</h3><pre><code>//通过js的内置对象JSON来进行数组对象的深拷贝
+function deepClone2(obj) {
+  var _obj = JSON.stringify(obj),//将JavaScript值转换为JSON字符串
+    objClone = JSON.parse(_obj);//将JSON字符串转为一个对象。
+  return objClone;
+}</code></pre><p>JSON对象实现深拷贝的一些问题<br>无法实现对对象中方法的深拷贝</p>
+<h3 id="3-通过jQuery的extend方法实现深拷贝"><a href="#3-通过jQuery的extend方法实现深拷贝" class="headerlink" title="3. 通过jQuery的extend方法实现深拷贝"></a>3. 通过jQuery的extend方法实现深拷贝</h3><pre><code>var array = [1,2,3,4];
+var newArray = $.extend(true,[],array);</code></pre><p>jQuery.extend源码  </p>
+<pre><code>jQuery.extend = jQuery.fn.extend = function() {
+    var src, copyIsArray, copy, name, options, clone,
+        target = arguments[0] || {},
+        i = 1,
+        length = arguments.length,
+        deep = false;
+
+    // Handle a deep copy situation
+    if ( typeof target === &quot;boolean&quot; ) {
+        deep = target;
+
+        // skip the boolean and the target
+        target = arguments[ i ] || {};
+        i++;
+    }
+
+    // Handle case when target is a string or something (possible in deep copy)
+    if ( typeof target !== &quot;object&quot; &amp;&amp; !jQuery.isFunction(target) ) {
+        target = {};
+    }
+
+    // extend jQuery itself if only one argument is passed
+    if ( i === length ) {
+        target = this;
+        i--;
+    }
+
+    for ( ; i &lt; length; i++ ) {
+        // Only deal with non-null/undefined values
+        if ( (options = arguments[ i ]) != null ) {
+            // Extend the base object
+            for ( name in options ) {
+                src = target[ name ];
+                copy = options[ name ];
+
+                // Prevent never-ending loop
+                if ( target === copy ) {
+                    continue;
+                }
+
+                // Recurse if we&apos;re merging plain objects or arrays
+                if ( deep &amp;&amp; copy &amp;&amp; ( jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)) ) ) {
+                    if ( copyIsArray ) {
+                        copyIsArray = false;
+                        clone = src &amp;&amp; jQuery.isArray(src) ? src : [];
+
+                    } else {
+                        clone = src &amp;&amp; jQuery.isPlainObject(src) ? src : {};
+                    }
+
+                    // Never move original objects, clone them
+                    target[ name ] = jQuery.extend( deep, clone, copy );
+
+                // Don&apos;t bring in undefined values
+                } else if ( copy !== undefined ) {
+                    target[ name ] = copy;
+                }
+            }
+        }
+    }
+
+    // Return the modified object
+    return target;
+};</code></pre><h3 id="4-Object-assign-拷贝"><a href="#4-Object-assign-拷贝" class="headerlink" title="4. Object.assign()拷贝"></a>4. Object.assign()拷贝</h3><pre><code>当对象中只有一级属性，没有二级属性的时候，此方法为深拷贝，但是对象中有对象的时候，此方法，在二级属性以后就是浅拷贝。</code></pre><h3 id="5-lodash函数库实现深拷贝"><a href="#5-lodash函数库实现深拷贝" class="headerlink" title="5. lodash函数库实现深拷贝"></a>5. lodash函数库实现深拷贝</h3><pre><code>lodash很热门的函数库，提供了 lodash.cloneDeep()实现深拷贝</code></pre><h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><h2 id="1-类式继承"><a href="#1-类式继承" class="headerlink" title="1. 类式继承"></a>1. 类式继承</h2><h4 id="描述："><a href="#描述：" class="headerlink" title="描述："></a>描述：</h4><p>将父类对象的实例赋值给子类的原型，则子类的原型可以访问父类原型上的属性和方法，以及父类构造函数中复制的属性和方法。</p>
+<pre><code>//1。类式继承
+//声明父类
+function SuperClass(){
+    this.superValue = true;
+}
+//为父类添加公有方法
+SuperClass.prototype.getSuperValue = function(){
+    return this.superValue;
+};
+//声明子类
+function SubClass(){
+    this.subValue = false;
+}
+//继承父类
+SubClass.prototype = new SuperClass();//将父类对象赋值给子类原型，子类原型可以访问父类原型上的属性和方法 -- 类式继承原理
+//子类添加公有方法
+SubClass.prototype.getSubValue = function(){
+    return this.subValue;
+};  
+//测试
+var instance = new SubClass();
+console.log(instance.getSuperValue());//t
+console.log(instance.getSubValue());//f
+//
+console.log(instance instanceof SuperClass);//t
+console.log(instance instanceof SubClass);//t
+console.log(SubClass instanceof SuperClass);//f
+console.log(SubClass.prototype instanceof SuperClass);//t</code></pre><p>通过instanceof来检测某个对象是否是某个类的实例，<br>或者某个对象是否继承了某个类，这样可以判断对象和类之间的继承关系。<br>instanceof通过判断对象的prototype链来确定这个对象是否是某个类的实例。<br>需要注意的是，inatanceof是判断前面的对象是否是后面类（对象）的实例，并不表示两者的继承。<br>所以console.log(SubCass instanceof SuperClass)会打印出false，而console.log(SubClass.prototype instanceof SuperClass)才会打印出true。</p>
+<h4 id="缺点（2个）"><a href="#缺点（2个）" class="headerlink" title="缺点（2个）"></a><strong>缺点（2个）</strong></h4><ol>
+<li>子类通过其原型prototype对父类实例化，继承了父类。但当父类中的共有属性是引用类型时，会在子类中被所有的实例共用，如此在一个子类实例中更改从父类中继承过来的公有属性时，会影响到其他子类。</li>
+</ol>
+<pre><code>function SuperClass() {
+  this.book = [&apos;javascript&apos;,&apos;html&apos;,&apos;css&apos;];
+}
+function SubClass() {}
+SubClass.prototype = new SuperClass();
+var ins1 = new SubClass();
+var ins2 = new SubClass();
+console.log(ins1.book);
+console.log(ins2.book);
+ins1.book.push(&quot;Node&quot;);
+console.log(&quot;after&quot;);
+//引用类型在子类中被所有实例共用
+console.log(ins1.book);//[ &apos;javascript&apos;, &apos;html&apos;, &apos;css&apos;, &apos;Node&apos; ]
+console.log(ins2.book);//[ &apos;javascript&apos;, &apos;html&apos;, &apos;css&apos;, &apos;Node&apos; ]</code></pre><ol start="2">
+<li>由于子类是通过原型prototype实例化父类实现继承的，所以在创建父类的时候，无法向父类传递参数，因而在实例化父类的时候无法对父类构造函数内的属性初始化。</li>
+</ol>
+<h2 id="2-构造函数式继承"><a href="#2-构造函数式继承" class="headerlink" title="2. 构造函数式继承"></a>2. 构造函数式继承</h2><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>通过在子类的构造函数中执行一次父类的构造函数实现。</p>
+<pre><code>//2.构造函数式继承
+//声明父类
+function SuperClass(id){
+    this.book = [&apos;javascript&apos;,&apos;html&apos;,&apos;css&apos;];//引用类型共有属性
+    this.id = id//值类型公有属性
+}
+//父类声明原型方法
+SuperClass.prototype.showBooks = function(){
+    console.log(this.books);
+}
+//声明子类
+function SubClass(id){
+    //继承父类
+    SuperClass.call(this,id);
+}
+//测试
+var ins1 = new SubClass(1);
+var ins2 = new SubClass(2);
+ins1.book.push(&quot;Node&quot;);
+console.log(ins1.id);//1
+console.log(ins1.book);//[&apos;javascript&apos;, &apos;html&apos;, &apos;css&apos;, &apos;Node&apos;]
+console.log(ins2.id);//2
+console.log(ins2.book);//[&apos;javascript&apos;, &apos;html&apos;, &apos;css&apos;]
+
+ins1.showBooks();//TypeError: ins1.showBooks is not a function</code></pre><p>SuperClass.call(this,id)是构造函数式继承的中心。<br>call方法可以改变函数的作用环境，在子类中调用这个方法就是将子类中的变量在父类中执行，父类中给this绑定属性，因而子类继承了父类的共有属性。</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>这种类型的继承没有涉及原型prototype，所以父类的原型方法不会被子类继承。<br>如想被子类继承就必须放在构造函数中(如books对象属性)，这样创造的每个实例都会单独拥有一份而不能共用，违背了代码复用原则。</p>
+<h2 id="3-组合式继承"><a href="#3-组合式继承" class="headerlink" title="3. 组合式继承"></a>3. 组合式继承</h2><h4 id="简介：-1"><a href="#简介：-1" class="headerlink" title="简介："></a>简介：</h4><p>综合以上两种模式的优点，在子类原型上实例化父类，在子类构造函数中执行一边父类的构造函数。这样融合了类式继承和构造函数继承的优点，过滤了缺点。</p>
+<pre><code>//3.组合式继承
+function SuperClass(name){
+    this.name = name;
+    this.book = [&apos;javascript&apos;,&apos;html&apos;,&apos;css&apos;];
+}
+SuperClass.prototype.getName = function () {
+console.log(this.name);
+};
+function SubClass(name,time){
+    //构造函数式继承，继承父类name属性
+    SuperClass.call(this,name);
+    this.time = time;
+}
+/类式继承，子类原型继承
+SubClass.prototype = new SuperClass();
+//子类原型方法
+SubClass.prototype.getTime = function () {
+console.log(this.time);
+};
+//测试
+var ins1 = new SubClass(&apos;Node&apos;,2016);
+ins1.book.push(&quot;Node&quot;);
+console.log(ins1.book);
+ins1.getName();
+ins1.getTime();
+
+var ins2 = new SubClass(&apos;React&apos;,2015);
+console.log(ins2.book);
+ins2.getName();
+ins2.getTime();</code></pre><h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><p>父类的构造函数执行了两遍：一次在子类的构造函数中call方法执行一遍，一次在子类原型实例化父类的时候执行一遍。</p>
+<h2 id="4-原型式继承"><a href="#4-原型式继承" class="headerlink" title="4.原型式继承"></a>4.原型式继承</h2><h4 id="简介：-2"><a href="#简介：-2" class="headerlink" title="简介："></a>简介：</h4><p>对类式继承的封装，过渡对象相当于子类</p>
+<pre><code>//4.原型式继承
+funciton inheritObject(o){
+    //声明过度函数对象
+    function F(){}
+    //过渡对象的原型继承父类
+    F.prototype = o;
+    return new F();
+}
+//测试
+var book = {
+  name : &quot;javascript&quot;,
+  book : [&apos;js&apos;,&apos;css&apos;]
+};
+var newbook = inheritObject(book);
+newbook.name = &quot;ajax&quot;;
+newbook.book.push(&quot;Node&quot;);
+var otherbook = inheritObject(book);
+otherbook.name = &quot;xml&quot;;
+otherbook.book.push(&quot;React&quot;);
+console.log(newbook.name);//ajax
+console.log(newbook.book);//[ &apos;js&apos;, &apos;css&apos;, &apos;Node&apos;, &apos;React&apos; ]
+console.log(otherbook.name);//xml
+console.log(otherbook.book);//[ &apos;js&apos;, &apos;css&apos;, &apos;Node&apos;, &apos;React&apos; ]
+console.log(book.name);//javascript
+console.log(book.book);//[ &apos;js&apos;, &apos;css&apos;, &apos;Node&apos;, &apos;React&apos; ]</code></pre><h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><p>和类式继承一样，父类对象的引用类型值被共用。</p>
+<h2 id="5-寄生式继承"><a href="#5-寄生式继承" class="headerlink" title="5. 寄生式继承"></a>5. 寄生式继承</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>寄生式继承其实是对原型继承的第二次封装，并且在第二次封装的过程中对继承的对象进行了拓展。</p>
+<pre><code>//5. 寄生式继承
+function inheritObject(o){
+    //声明过渡函数对象
+    function F(){}
+    //过渡对象的原型继承父类
+    F.prototype = o;
+    return new F();
+}
+//声明基对象
+var book ={
+    name: &apos;javaScript&apos;,
+    book: [&apos;js&apos;,&apos;css&apos;]
+};
+function createBook(obj){
+    //通过原型继承方式创建对象
+    var o = new inheritObject(obj);
+    //拓展新对象
+    o.getName = function(){
+        console.log(name);
+    }
+    //返回拓展后的新对象
+    return o;
+}
+var newbook = createBook(book);
+newbook.name = &quot;ajax&quot;;
+newbook.book.push(&quot;Node&quot;);
+var otherbook = createBook(book);
+otherbook.name = &quot;xml&quot;;
+otherbook.book.push(&quot;React&quot;);
+console.log(newbook.name);//ajax
+console.log(newbook.book);//[ &apos;js&apos;, &apos;css&apos;, &apos;Node&apos;, &apos;React&apos; ]
+console.log(otherbook.name);//xml
+console.log(otherbook.book);//[ &apos;js&apos;, &apos;css&apos;, &apos;Node&apos;, &apos;React&apos; ]
+console.log(book.name);//javascript
+console.log(book.book);//[ &apos;js&apos;, &apos;css&apos;, &apos;Node&apos;, &apos;React&apos; ]</code></pre><h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><p>和类式继承一样，父类对象的引用类型值被共用。</p>
+<h2 id="5-寄生组合式继承"><a href="#5-寄生组合式继承" class="headerlink" title="5. 寄生组合式继承"></a>5. 寄生组合式继承</h2><h4 id="简介：-3"><a href="#简介：-3" class="headerlink" title="简介："></a>简介：</h4><p>寄生式继承和构造函数式继承结合使用。</p>
+<pre><code>//6. 寄生组合式继承
+function inheritObject(o){
+    //声明过度函数对象
+    function F(){}
+    //过度函数对象的原型继承父类
+    F.prototype = o;
+    return new F();
+}
+//寄生式继承 继承原型
+functioninheritPrototype(subClass,superClass){
+    //复制一份父类的原型副本保存在变量中
+    var p = inheritObject(superClass.prototype);
+    //修正因为重写子类原型导致子类的constructor属性被修改
+    p.constructor = subClass;
+    //设置子类的原型
+    subClass.prototype = p;
+}
+function SuperClass(name){
+    this.name = name;
+    this.colors = [&quot;red&quot;,&quot;bule&quot;];
+}
+//定义父类原型方法
+SuperClass.prototype.getName = function() {
+console.log(this.name);
+}
+function SubClass(name,time){
+    SuperClass.call(this,name);
+    this.time = time;
+}
+//寄生式继承父类原型
+inheritPrototype(SubClass,SuperClass);
+//子类新增原型方法
+SubClass.prototype.getTime = function() {
+  console.log(this.time);
+}
+//测试
+var ins1 = new SubClass(&quot;js&quot;,2014);
+var ins2 = new SubClass(&quot;css&quot;,2015);
+ins1.colors.push(&quot;black&quot;);
+console.log(ins1.colors);
+console.log(ins2.colors);
+ins2.getName();
+ins2.getTime();</code></pre><h2 id="6-混入方式继承多个方式"><a href="#6-混入方式继承多个方式" class="headerlink" title="6.混入方式继承多个方式"></a>6.混入方式继承多个方式</h2><h4 id="简介：-4"><a href="#简介：-4" class="headerlink" title="简介："></a>简介：</h4><p>利用Object.assign将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</p>
+<pre><code>Object.assign(Child.prototype,Parent.prototype);
+Child.prototype.constructor = Child;</code></pre><h2 id="7-ES6类extends"><a href="#7-ES6类extends" class="headerlink" title="7.ES6类extends"></a>7.ES6类extends</h2><h4 id="简介：-5"><a href="#简介：-5" class="headerlink" title="简介："></a>简介：</h4><p>使用extends表明继承自哪个父类，并且在子类构造函数中必须使用super，可以看作是<br>Parent.call(this,value);</p>
+<pre><code>Class Parent{
+    constructor(value){
+        this.val = value;
+    }
+}
+class Child extends Parent{
+    constructor(value){
+        super(value);
+        this.val = value;
+    }
+}</code></pre>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 f798735475@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Yelog</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+</body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#Hexo','#JavaScript',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
