@@ -4,13 +4,79 @@
   
     
     <entry>
+      <title>Vue数据绑定与虚拟DOM</title>
+      <link href="/2019/08/25/Vue%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B8%8E%E8%99%9A%E6%8B%9FDOM/"/>
+      <url>/2019/08/25/Vue%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B8%8E%E8%99%9A%E6%8B%9FDOM/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vue数据绑定"><a href="#vue数据绑定" class="headerlink" title="vue数据绑定"></a>vue数据绑定</h1><h4 id="单向绑定："><a href="#单向绑定：" class="headerlink" title="单向绑定："></a>单向绑定：</h4><p>把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。因此，我们不需要进行额外的DOM操作，只需要进行Model的操作就可以实现视图的联动更新。</p><h4 id="双向绑定："><a href="#双向绑定：" class="headerlink" title="双向绑定："></a>双向绑定：</h4><p>把Model绑定到View的同时也将View绑定到Model上，这样就既可以通过更新Model来实现View的自动更新，也可以通过更新View来实现Model数据的更新。所以，当我们用JavaScript代码更新Model时，View就会自动更新，反之，如果用户更新了View，Model的数据也自动被更新了。</p><h4 id="1-插值形式-（单向）"><a href="#1-插值形式-（单向）" class="headerlink" title="1. 插值形式   （单向）"></a>1. 插值形式   （单向）</h4><p>插值形式就是的形式，它使用的是单向绑定。</p><h4 id="2-v-bind形式-（单向）"><a href="#2-v-bind形式-（单向）" class="headerlink" title="2. v-bind形式 （单向）"></a>2. v-bind形式 （单向）</h4><p>如果我们希望html的某些属性能够支持单向绑定，我们只需要在该属性前面加上v-bind:指令，这样Vue在解析的时候会识别出该指令，就会将该将其属性的值跟Vue实例的Model进行绑定。这样我们就可以通过Model来动态的操作该属性从而实现DOM的联动更新。  </p><pre><code>&lt;p v-bind:class=&quot;classed&quot;&gt;</code></pre><h4 id="3-v-model-（双向）"><a href="#3-v-model-（双向）" class="headerlink" title="3. v-model （双向）"></a>3. v-model （双向）</h4><p>v-model主要是用在表单元素中，实现了双向绑定。<br>当用户填写表单时，View的状态就被更新了，如果此时Model的数据也会随着输入的数据动态的更新，那就相当于我们把Model和View做了双向绑定。  </p><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>vue的数据双向绑定是通过数据劫持结合发布者－订阅者模式来实现的<br>说白了就是通过Object.defineProperty()来劫持对象属性的setter和getter操作，在数据变动时做你想要做的事情． </p><h4 id="数据劫持"><a href="#数据劫持" class="headerlink" title="数据劫持"></a>数据劫持</h4><p>当我们访问或设置对象的属性的时候，都会触发相对应的函数，然后在这个函数里返回或设置属性的值。<br>我们可以在触发函数的时候动一些手脚做点我们自己想做的事情，这也就是“劫持”操作。<br>在Vue中其实就是通过Object.defineProperty来劫持对象属性的setter和getter操作，并“种下”一个监听器，当数据发生变化的时候发出通知。</p><p><strong>例子</strong></p><pre><code>var data = {name:&apos;lhl&apos;}Object.keys(data).forEach(function(key){    Object.defineProperty(data,key,{        enumerable:true, // 是否能在for...in循环中遍历出来或在Object.keys中列举出来。        configurable:true, // false，不可修改、删除目标属性或修改属性性以下特性        get:function(){            console.log(&apos;get&apos;);        },        set:function(){            console.log(&apos;监听到数据发生了变化&apos;);        }    })})；data.name //控制台会打印出 “get”data.name = &apos;hxx&apos; //控制台会打印出 &quot;监听到数据发生了变化&quot;</code></pre><h4 id="发布者-订阅者模式"><a href="#发布者-订阅者模式" class="headerlink" title="发布者-订阅者模式"></a>发布者-订阅者模式</h4><p>一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知。  （跟关注微信公众号差不多）</p><h4 id="defineProperty方法"><a href="#defineProperty方法" class="headerlink" title="defineProperty方法"></a>defineProperty方法</h4><p>Object.defineProperty(obj,prop,descriptor)<br>obj: 要定义属性的对象<br>prop: 要定义或者修改的属性的名称<br>descriptor： 将被定义或修改的属性描述符<br>返回值：被传递给函数的对象。obj</p><pre><code>//在console.log(book.name)同时,直接给书加一个书号var Book = {};var name = &apos;&apos;;Object.defineProperty(Book,&apos;name&apos;,{    set:function(value) {        name = value;        console.log(&apos;你取了一个书名叫:&apos;+value);    },    get:function() {        console.log(&apos;get方法被监听到&apos;);        return &apos;&lt;&apos;+name+&apos;&gt;&apos;;    }});Book.name = &apos;人性的弱点&apos;;  //你取了一个书名叫:人性的弱点console.log(Book.name);　//&lt;人性的弱点&gt;</code></pre><p><strong>实现步骤：</strong><br>1.实现一个监听者Oberver来劫持并监听所有的属性，一旦有属性发生变化就通知订阅者  </p><p>2.实现一个订阅者watcher来接受属性变化的通知并执行相应的方法，从而更新视图  </p><p>3.实现一个解析器compile，可以扫描和解析每个节点的相关指令，并根据初始化模板数据以及初始化相对应的订阅者  </p><h1 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h1><h3 id="Diff算法"><a href="#Diff算法" class="headerlink" title="Diff算法"></a>Diff算法</h3><p>其核心是基于两个简单的假设：</p><ol><li>两个相同的组件产生类似的DOM结构，不同的组件产生不同的DOM结构。  </li><li>同一层级的一组节点，他们可以通过唯一的id进行区分。（如v-for 中的key）</li></ol><p>基于以上这两点假设，使得虚拟DOM的Diff算法的复杂度从O(n^3)降到了O(n)。</p><p><img src="//lyfflied.github.io/2019/08/25/Vue数据绑定与虚拟DOM/20190726vue_diff.png" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+            <tag> 数据绑定 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>事件防抖与节流</title>
+      <link href="/2019/08/25/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/"/>
+      <url>/2019/08/25/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/</url>
+      
+        <content type="html"><![CDATA[<h2 id="事件的节流和防抖"><a href="#事件的节流和防抖" class="headerlink" title="事件的节流和防抖"></a>事件的节流和防抖</h2><p>有些浏览器事件可以在短时间内快速触发多次，比如调整窗口大小或向下滚动页面。例如，监听页面窗口滚动事件，并且用户持续快速地向下滚动页面，那么滚动事件可能在 3 秒内触发数千次，这可能会导致一些严重的性能问题。</p><p>如果在面试中讨论构建应用程序，出现滚动、窗口大小调整或按下键等事件请务必提及 防抖(Debouncing) 和 函数节流（Throttling）来提升页面速度和性能。这两兄弟的本质都是以闭包的形式存在。通过对事件对应的回调函数进行包裹、以自由变量的形式缓存时间信息，最后用 setTimeout 来控制事件的触发频率。  </p><h3 id="函节流抖：-第一个人说了算"><a href="#函节流抖：-第一个人说了算" class="headerlink" title="函节流抖： 第一个人说了算"></a>函节流抖： 第一个人说了算</h3><p>throttle 的主要思想在于：在某段时间内，不管你触发了多少次回调，都只认第一次，并在计时结束时给予响应。<br>当持续触发事件时，保证一定时间段内只调用一次事件处理函数。节流通俗解释就比如我们水龙头放水，<br>阀门一打开，水哗哗的往下流，秉着勤俭节约的优良传统美德，我们要把水龙头关小点，最好是如我们心意按照一定规律在某个时间间隔内一滴一滴的往下滴<br>，持续触发scroll事件时，并不立即执行scroll，每隔1000毫秒才会执行一次scroll。</p><pre><code>// fn是我们需要包装的事件回调, interval是时间间隔的阈值function throttle(fn, interval) {  // last为上一次触发回调的时间  // 对比时间戳，初始化为0则首次触发立即执行，初始化为当前时间戳则wait毫秒后触发才会执行  let last = 0  // 将throttle处理结果当作函数返回  return function () {      // 保留调用时的this上下文      let context = this      // 保留调用时传入的参数      let args = arguments      // 记录本次触发回调的时间      let now = +new Date()      // 判断上次触发的时间和本次触发的时间差是否小于时间间隔的阈值      if (now - last &gt;= interval) {      // 如果时间间隔大于我们设定的时间间隔阈值，则执行回调          last = now;          fn.apply(context, args);      }    }}// 用throttle来包装scroll的回调const better_scroll = throttle(() =&gt; console.log(&apos;触发了滚动事件&apos;), 1000)document.addEventListener(&apos;scroll&apos;, better_scroll)</code></pre><h3 id="函数防抖debounce：-最后一个说了算"><a href="#函数防抖debounce：-最后一个说了算" class="headerlink" title="函数防抖debounce： 最后一个说了算"></a>函数防抖debounce： 最后一个说了算</h3><p>防抖的主要思想在于：我会等你到底。在某段时间内，不管你触发了多少次回调，我都只认最后一次。<br>当持续触发事件时，一定时间段内没有再触发事件，事件处理函数才会执行一次，如果设定的时间到来之前，又一次触发了事件，就重新开始延时，持续触发scroll事件时，并不执行handle函数，当1000毫秒内没有触发scroll事件时，才会延时触发scroll事件。</p><pre><code>// fn是我们需要包装的事件回调, delay是每次推迟执行的等待时间function debounce(fn, delay) {  // 定时器  let timer = null  // 将debounce处理结果当作函数返回  return function () {    // 保留调用时的this上下文    let context = this    // 保留调用时传入的参数    let args = arguments    // 每次事件被触发时，都去清除之前的旧定时器    if(timer) {        clearTimeout(timer)    }    // 设立新定时器    timer = setTimeout(function () {      fn.apply(context, args)    }, delay)  }}// 用debounce来包装scroll的回调const better_scroll = debounce(() =&gt; console.log(&apos;触发了滚动事件&apos;), 1000)document.addEventListener(&apos;scroll&apos;, better_scroll)</code></pre><h3 id="用-Throttle-来优化-Debounce"><a href="#用-Throttle-来优化-Debounce" class="headerlink" title="用 Throttle 来优化 Debounce"></a>用 Throttle 来优化 Debounce</h3><p>debounce 的问题在于它“太有耐心了”。试想，如果用户的操作十分频繁——他每次都不等 debounce 设置的 delay 时间结束就进行下一次操作，于是每次 debounce 都为该用户重新生成定时器，回调函数被延迟了不计其数次。频繁的延迟会导致用户迟迟得不到响应，用户同样会产生“这个页面卡死了”的观感。  </p><p>为了避免弄巧成拙，我们需要借力 throttle 的思想，打造一个“有底线”的 debounce——等你可以，但我有我的原则：delay 时间内，我可以为你重新生成定时器；但只要delay的时间到了，我必须要给用户一个响应。这个 throttle 与 debounce “合体”思路，已经被很多成熟的前端库应用到了它们的加强版 throttle 函数的实现中：  </p><pre><code>// fn是我们需要包装的事件回调, delay是时间间隔的阈值function throttle(fn, delay) {  // last为上一次触发回调的时间, timer是定时器  let last = 0, timer = null  // 将throttle处理结果当作函数返回  return function () {     // 保留调用时的this上下文    let context = this    // 保留调用时传入的参数    let args = arguments    // 记录本次触发回调的时间    let now = +new Date()    // 判断上次触发的时间和本次触发的时间差是否小于时间间隔的阈值    if (now - last &lt; delay) {    // 如果时间间隔小于我们设定的时间间隔阈值，则为本次触发操作设立一个新的定时器       clearTimeout(timer)       timer = setTimeout(function () {          last = now          fn.apply(context, args)        }, delay)    } else {        // 如果时间间隔超出了我们设定的时间间隔阈值，那就不等了，无论如何要反馈给用户一次响应        last = now        fn.apply(context, args)    }  }}// 用新的throttle包装scroll的回调const better_scroll = throttle(() =&gt; console.log(&apos;触发了滚动事件&apos;), 1000)document.addEventListener(&apos;scroll&apos;, better_scroll)</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>函数防抖</strong>：将几次操作合并为一此操作进行。原理是维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发的话，就会取消之前的计时器而重新设置。 这样一来，只有最后一次操作能被触发。</p><p><strong>函数节流</strong>：使得一定时间内只触发一次函数。原理是通过判断是否到达一定时间来触发函数。</p><p><strong>区别</strong>： 函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，而函数防抖只是在最后一次事件后才触发一次函数。<br>比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次 Ajax 请求，<br> 而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> 事件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo常用命令</title>
       <link href="/2019/08/24/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2019/08/24/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><pre><code>$ hexo new [layout] &lt;title&gt;</code></pre><h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><pre><code>$ hexo server或者$ hexo s</code></pre><p>访问URL： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p><h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><pre><code>$ hexo clean$ hexo generate$ hexo deploy</code></pre><p>或者简写  </p><pre><code>$ hexo clean$ hexo g$ hexo d</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
       
     </entry>
     

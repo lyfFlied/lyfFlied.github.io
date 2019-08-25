@@ -3,17 +3,21 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   <title>Hexo常用命令 | LYF&#39;s blog</title>
-  <meta name="keywords" content>
+  <meta name="keywords" content=" Hexo ">
   <meta name="description" content="Hexo常用命令 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="事件的节流和防抖有些浏览器事件可以在短时间内快速触发多次，比如调整窗口大小或向下滚动页面。例如，监听页面窗口滚动事件，并且用户持续快速地向下滚动页面，那么滚动事件可能在 3 秒内触发数千次，这可能会导致一些严重的性能问题。 如果在面试中讨论构建应用程序，出现滚动、窗口大小调整或按下键等事件请务必提及 防抖(Debouncing) 和 函数节流（Throttling）来提升页面速度和性能。这两兄弟的">
+<meta name="keywords" content="JavaScript,事件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo常用命令">
-<meta property="og:url" content="https://lyfflied.github.io/2019/08/24/Hexo常用命令/index.html">
+<meta property="og:title" content="事件防抖与节流">
+<meta property="og:url" content="https://lyfflied.github.io/2019/08/25/函数防抖与节流/index.html">
 <meta property="og:site_name" content="LYF&#39;s blog">
+<meta property="og:description" content="事件的节流和防抖有些浏览器事件可以在短时间内快速触发多次，比如调整窗口大小或向下滚动页面。例如，监听页面窗口滚动事件，并且用户持续快速地向下滚动页面，那么滚动事件可能在 3 秒内触发数千次，这可能会导致一些严重的性能问题。 如果在面试中讨论构建应用程序，出现滚动、窗口大小调整或按下键等事件请务必提及 防抖(Debouncing) 和 函数节流（Throttling）来提升页面速度和性能。这两兄弟的">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-24T03:11:30.846Z">
+<meta property="og:updated_time" content="2019-08-25T03:12:55.480Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo常用命令">
+<meta name="twitter:title" content="事件防抖与节流">
+<meta name="twitter:description" content="事件的节流和防抖有些浏览器事件可以在短时间内快速触发多次，比如调整窗口大小或向下滚动页面。例如，监听页面窗口滚动事件，并且用户持续快速地向下滚动页面，那么滚动事件可能在 3 秒内触发数千次，这可能会导致一些严重的性能问题。 如果在面试中讨论构建应用程序，出现滚动、窗口大小调整或按下键等事件请务必提及 防抖(Debouncing) 和 函数节流（Throttling）来提升页面速度和性能。这两兄弟的">
 
 
 <link rel="icon" href="/img/1.jpg">
@@ -104,11 +108,27 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(2)</small></div></li>
+    <li><div class="all active">全部文章<small>(4)</small></div></li>
     
         
             
-            <li><div data-rel="JavaScript">JavaScript<small>(1)</small></div>
+            <li><div data-rel="Hexo">Hexo<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Vue">Vue<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="JavaScript">JavaScript<small>(2)</small></div>
                 
             </li>
             
@@ -124,7 +144,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="2">
+<input type="hidden" id="yelog_site_posts_number" value="4">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -159,7 +179,23 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">Hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">Vue</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">数据绑定</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color1">JavaScript</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">事件</a>
     </li>
     
     <div class="clearfix"></div>
@@ -172,12 +208,28 @@
     
     <nav id="title-list-nav">
         
-        <a  class=""
+        <a  class="Hexo "
            href="/2019/08/24/Hexo常用命令/"
-           data-tag=""
+           data-tag="Hexo"
            data-author="" >
             <span class="post-title" title="Hexo常用命令">Hexo常用命令</span>
             <span class="post-date" title="2019-08-24 11:11:30">2019/08/24</span>
+        </a>
+        
+        <a  class="Vue "
+           href="/2019/08/25/Vue数据绑定与虚拟DOM/"
+           data-tag="Vue,数据绑定"
+           data-author="" >
+            <span class="post-title" title="Vue数据绑定与虚拟DOM">Vue数据绑定与虚拟DOM</span>
+            <span class="post-date" title="2019-08-25 11:11:23">2019/08/25</span>
+        </a>
+        
+        <a  class="JavaScript "
+           href="/2019/08/25/函数防抖与节流/"
+           data-tag="JavaScript,事件"
+           data-author="" >
+            <span class="post-title" title="事件防抖与节流">事件防抖与节流</span>
+            <span class="post-date" title="2019-08-25 10:50:59">2019/08/25</span>
         </a>
         
         <a  class="JavaScript "
@@ -208,11 +260,23 @@
         
         
         
+        <span class="book">
+            
+                <a href="javascript:" data-rel="Hexo">Hexo</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color5">Hexo</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-24 11:11:30'>2019-08-24 11:11</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-24 14:09:49'>2019-08-24 11:11</time>
         
     </div>
     <div class="article-meta">
@@ -234,7 +298,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写作"><span class="toc-text">写作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建文章"><span class="toc-text">创建文章</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行"><span class="toc-text">运行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署"><span class="toc-text">部署</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -249,7 +313,15 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><pre><code>$ hexo new [layout] &lt;title&gt;</code></pre><h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><pre><code>$ hexo server
+或者
+$ hexo s</code></pre><p>访问URL： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><pre><code>$ hexo clean
+$ hexo generate
+$ hexo deploy</code></pre><p>或者简写  </p>
+<pre><code>$ hexo clean
+$ hexo g
+$ hexo d</code></pre>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 f798735475@163.com </span>
     </div>
@@ -294,7 +366,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#JavaScript',],
+            'data': ['#Hexo','#Vue','#数据绑定','#JavaScript','#事件',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
