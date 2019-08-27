@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>v-show和v-if</title>
+      <link href="/2019/08/27/v-show%E5%92%8Cv-if/"/>
+      <url>/2019/08/27/v-show%E5%92%8Cv-if/</url>
+      
+        <content type="html"><![CDATA[<h1 id="v-if和v-show"><a href="#v-if和v-show" class="headerlink" title="v-if和v-show"></a>v-if和v-show</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在做项目的时候遇到一个问题，选项卡中的一个板块可以让用户点击选择显示/隐藏（默认隐藏）。当切换选项卡时，隐藏模块中数据应该根据不同的选项卡去渲染不同的数据。当时我们采用的是v-show，出现了一个问题：当点击不同的选项卡时，隐藏模块中的数据没有改变。<br>经过查阅资料了解到，这里使用v-for可以解决v-show的问题。(v-if控制下，元素会销毁和重建)<br>于是整理了一下v-if和v-show的异同。</p><h2 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h2><p>功能控制元素的显隐性</p><h2 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h2><p><strong>v-if</strong> ：动态地向DOM树内添加或者删除DOM元素；元素会销毁和重建。<br><strong>v-show</strong> ：是通过设置DOM元素的display样式属性控制显隐； </p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一般来说，如果需要非常频繁地切换，则使用v-show较好；<br>如果在运行时条件不太可能改变，则使用 v-if 较好；<br>据用户不同的权限,对功能进行显示/隐藏时用v-if比较好，因为v-show：style=”display: none; 可以被修改。<br>v-if 是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+            <tag> 项目中遇到的问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>动态规划算法——台阶问题</title>
       <link href="/2019/08/27/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/"/>
       <url>/2019/08/27/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/</url>

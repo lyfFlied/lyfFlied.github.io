@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>事件防抖与节流 | LYF&#39;s blog</title>
-  <meta name="keywords" content=" JavaScript , 事件 ">
-  <meta name="description" content="事件防抖与节流 | LYF&#39;s blog">
+  <title>v-show和v-if | LYF&#39;s blog</title>
+  <meta name="keywords" content=" Vue , 项目中遇到的问题 ">
+  <meta name="description" content="v-show和v-if | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="v-if和v-show问题在做项目的时候遇到一个问题，选项卡中的一个板块可以让用户点击选择显示/隐藏（默认隐藏）。当切换选项卡时，隐藏模块中数据应该根据不同的选项卡去渲染不同的数据。当时我们采用的是v-show，出现了一个问题：当点击不同的选项卡时，隐藏模块中的数据没有改变。经过查阅资料了解到，这里使用v-for可以解决v-show的问题。(v-if控制下，元素会销毁和重建)于是整理了一下v-if">
 <meta name="keywords" content="Vue,项目中遇到的问题">
@@ -376,9 +376,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-函数防抖与节流" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-v-show和v-if" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">事件防抖与节流</h1>
+        <h1 class="article-title">v-show和v-if</h1>
     
     <div class="article-meta">
         
@@ -386,23 +386,23 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="JavaScript">JavaScript</a>
+                <a href="javascript:" data-rel="Vue">Vue</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color1">JavaScript</a>
+            <a href="javascript:" class="color4">Vue</a>
             
-            <a href="javascript:" class="color3">事件</a>
+            <a href="javascript:" class="color4">项目中遇到的问题</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-25 11:12:55'>2019-08-25 10:50</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-27 15:36:57'>2019-08-27 15:36</time>
         
     </div>
     <div class="article-meta">
@@ -424,7 +424,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件的节流和防抖"><span class="toc-text">事件的节流和防抖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#函节流抖：-第一个人说了算"><span class="toc-text">函节流抖： 第一个人说了算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数防抖debounce：-最后一个说了算"><span class="toc-text">函数防抖debounce： 最后一个说了算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用-Throttle-来优化-Debounce"><span class="toc-text">用 Throttle 来优化 Debounce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#v-if和v-show"><span class="toc-text">v-if和v-show</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相同点"><span class="toc-text">相同点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同点"><span class="toc-text">不同点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -439,101 +439,10 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="事件的节流和防抖"><a href="#事件的节流和防抖" class="headerlink" title="事件的节流和防抖"></a>事件的节流和防抖</h2><p>有些浏览器事件可以在短时间内快速触发多次，比如调整窗口大小或向下滚动页面。例如，监听页面窗口滚动事件，并且用户持续快速地向下滚动页面，那么滚动事件可能在 3 秒内触发数千次，这可能会导致一些严重的性能问题。</p>
-<p>如果在面试中讨论构建应用程序，出现滚动、窗口大小调整或按下键等事件请务必提及 防抖(Debouncing) 和 函数节流（Throttling）来提升页面速度和性能。这两兄弟的本质都是以闭包的形式存在。通过对事件对应的回调函数进行包裹、以自由变量的形式缓存时间信息，最后用 setTimeout 来控制事件的触发频率。  </p>
-<h3 id="函节流抖：-第一个人说了算"><a href="#函节流抖：-第一个人说了算" class="headerlink" title="函节流抖： 第一个人说了算"></a>函节流抖： 第一个人说了算</h3><p>throttle 的主要思想在于：在某段时间内，不管你触发了多少次回调，都只认第一次，并在计时结束时给予响应。<br>当持续触发事件时，保证一定时间段内只调用一次事件处理函数。节流通俗解释就比如我们水龙头放水，<br>阀门一打开，水哗哗的往下流，秉着勤俭节约的优良传统美德，我们要把水龙头关小点，最好是如我们心意按照一定规律在某个时间间隔内一滴一滴的往下滴<br>，持续触发scroll事件时，并不立即执行scroll，每隔1000毫秒才会执行一次scroll。</p>
-<pre><code>// fn是我们需要包装的事件回调, interval是时间间隔的阈值
-function throttle(fn, interval) {
-  // last为上一次触发回调的时间
-  // 对比时间戳，初始化为0则首次触发立即执行，初始化为当前时间戳则wait毫秒后触发才会执行
-  let last = 0
-
-  // 将throttle处理结果当作函数返回
-  return function () {
-      // 保留调用时的this上下文
-      let context = this
-      // 保留调用时传入的参数
-      let args = arguments
-      // 记录本次触发回调的时间
-      let now = +new Date()
-
-      // 判断上次触发的时间和本次触发的时间差是否小于时间间隔的阈值
-      if (now - last &gt;= interval) {
-      // 如果时间间隔大于我们设定的时间间隔阈值，则执行回调
-          last = now;
-          fn.apply(context, args);
-      }
-    }
-}
-
-// 用throttle来包装scroll的回调
-const better_scroll = throttle(() =&gt; console.log(&apos;触发了滚动事件&apos;), 1000)
-
-document.addEventListener(&apos;scroll&apos;, better_scroll)</code></pre><h3 id="函数防抖debounce：-最后一个说了算"><a href="#函数防抖debounce：-最后一个说了算" class="headerlink" title="函数防抖debounce： 最后一个说了算"></a>函数防抖debounce： 最后一个说了算</h3><p>防抖的主要思想在于：我会等你到底。在某段时间内，不管你触发了多少次回调，我都只认最后一次。<br>当持续触发事件时，一定时间段内没有再触发事件，事件处理函数才会执行一次，如果设定的时间到来之前，又一次触发了事件，就重新开始延时，持续触发scroll事件时，并不执行handle函数，当1000毫秒内没有触发scroll事件时，才会延时触发scroll事件。</p>
-<pre><code>// fn是我们需要包装的事件回调, delay是每次推迟执行的等待时间
-function debounce(fn, delay) {
-  // 定时器
-  let timer = null
-
-  // 将debounce处理结果当作函数返回
-  return function () {
-    // 保留调用时的this上下文
-    let context = this
-    // 保留调用时传入的参数
-    let args = arguments
-
-    // 每次事件被触发时，都去清除之前的旧定时器
-    if(timer) {
-        clearTimeout(timer)
-    }
-    // 设立新定时器
-    timer = setTimeout(function () {
-      fn.apply(context, args)
-    }, delay)
-  }
-}
-
-// 用debounce来包装scroll的回调
-const better_scroll = debounce(() =&gt; console.log(&apos;触发了滚动事件&apos;), 1000)
-
-document.addEventListener(&apos;scroll&apos;, better_scroll)</code></pre><h3 id="用-Throttle-来优化-Debounce"><a href="#用-Throttle-来优化-Debounce" class="headerlink" title="用 Throttle 来优化 Debounce"></a>用 Throttle 来优化 Debounce</h3><p>debounce 的问题在于它“太有耐心了”。试想，如果用户的操作十分频繁——他每次都不等 debounce 设置的 delay 时间结束就进行下一次操作，于是每次 debounce 都为该用户重新生成定时器，回调函数被延迟了不计其数次。频繁的延迟会导致用户迟迟得不到响应，用户同样会产生“这个页面卡死了”的观感。  </p>
-<p>为了避免弄巧成拙，我们需要借力 throttle 的思想，打造一个“有底线”的 debounce——等你可以，但我有我的原则：delay 时间内，我可以为你重新生成定时器；但只要delay的时间到了，我必须要给用户一个响应。这个 throttle 与 debounce “合体”思路，已经被很多成熟的前端库应用到了它们的加强版 throttle 函数的实现中：  </p>
-<pre><code>// fn是我们需要包装的事件回调, delay是时间间隔的阈值
-function throttle(fn, delay) {
-  // last为上一次触发回调的时间, timer是定时器
-  let last = 0, timer = null
-  // 将throttle处理结果当作函数返回
-
-  return function () { 
-    // 保留调用时的this上下文
-    let context = this
-    // 保留调用时传入的参数
-    let args = arguments
-    // 记录本次触发回调的时间
-    let now = +new Date()
-
-    // 判断上次触发的时间和本次触发的时间差是否小于时间间隔的阈值
-    if (now - last &lt; delay) {
-    // 如果时间间隔小于我们设定的时间间隔阈值，则为本次触发操作设立一个新的定时器
-       clearTimeout(timer)
-       timer = setTimeout(function () {
-          last = now
-          fn.apply(context, args)
-        }, delay)
-    } else {
-        // 如果时间间隔超出了我们设定的时间间隔阈值，那就不等了，无论如何要反馈给用户一次响应
-        last = now
-        fn.apply(context, args)
-    }
-  }
-}
-
-// 用新的throttle包装scroll的回调
-const better_scroll = throttle(() =&gt; console.log(&apos;触发了滚动事件&apos;), 1000)
-
-document.addEventListener(&apos;scroll&apos;, better_scroll)</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>函数防抖</strong>：将几次操作合并为一此操作进行。原理是维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发的话，就会取消之前的计时器而重新设置。 这样一来，只有最后一次操作能被触发。</p>
-<p><strong>函数节流</strong>：使得一定时间内只触发一次函数。原理是通过判断是否到达一定时间来触发函数。</p>
-<p><strong>区别</strong>： 函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，而函数防抖只是在最后一次事件后才触发一次函数。<br>比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次 Ajax 请求，<br> 而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现。</p>
+        <h1 id="v-if和v-show"><a href="#v-if和v-show" class="headerlink" title="v-if和v-show"></a>v-if和v-show</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在做项目的时候遇到一个问题，选项卡中的一个板块可以让用户点击选择显示/隐藏（默认隐藏）。当切换选项卡时，隐藏模块中数据应该根据不同的选项卡去渲染不同的数据。当时我们采用的是v-show，出现了一个问题：当点击不同的选项卡时，隐藏模块中的数据没有改变。<br>经过查阅资料了解到，这里使用v-for可以解决v-show的问题。(v-if控制下，元素会销毁和重建)<br>于是整理了一下v-if和v-show的异同。</p>
+<h2 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h2><p>功能控制元素的显隐性</p>
+<h2 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h2><p><strong>v-if</strong> ：动态地向DOM树内添加或者删除DOM元素；元素会销毁和重建。<br><strong>v-show</strong> ：是通过设置DOM元素的display样式属性控制显隐； </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一般来说，如果需要非常频繁地切换，则使用v-show较好；<br>如果在运行时条件不太可能改变，则使用 v-if 较好；<br>据用户不同的权限,对功能进行显示/隐藏时用v-if比较好，因为v-show：style=”display: none; 可以被修改。<br>v-if 是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 f798735475@163.com </span>
