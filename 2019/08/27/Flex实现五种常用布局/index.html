@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Hexo常用命令 | LYF&#39;s blog</title>
-  <meta name="keywords" content=" Hexo ">
-  <meta name="description" content="Hexo常用命令 | LYF&#39;s blog">
+  <title>Flex实现五种常用布局 | LYF&#39;s blog</title>
+  <meta name="keywords" content=" css , 布局 ">
+  <meta name="description" content="Flex实现五种常用布局 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Flex布局(弹性布局)一、Flex布局是什么任何一个容器都可以指定为Flex布局 .box{     display:flex; }行内元素也可以使用Flex布局 .box{     display:inline-flex; }Webkit内核的浏览器，必须加上-webkit前缀 .box{     display:-webkit-flex;/*Safari*/     display:flex">
 <meta name="keywords" content="css,布局">
@@ -340,9 +340,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Hexo常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Flex实现五种常用布局" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Hexo常用命令</h1>
+        <h1 class="article-title">Flex实现五种常用布局</h1>
     
     <div class="article-meta">
         
@@ -350,21 +350,23 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="Hexo">Hexo</a>
+                <a href="javascript:" data-rel="css">css</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">Hexo</a>
+            <a href="javascript:" class="color4">css</a>
+            
+            <a href="javascript:" class="color3">布局</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-24 14:09:49'>2019-08-24 11:11</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-27 14:42:24'>2019-08-27 14:41</time>
         
     </div>
     <div class="article-meta">
@@ -386,7 +388,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写作"><span class="toc-text">写作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建文章"><span class="toc-text">创建文章</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行"><span class="toc-text">运行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署"><span class="toc-text">部署</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flex实现五大常用布局"><span class="toc-text">Flex实现五大常用布局</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -401,15 +403,219 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><pre><code>$ hexo new [layout] &lt;title&gt;</code></pre><h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><pre><code>$ hexo server
-或者
-$ hexo s</code></pre><p>访问URL： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><pre><code>$ hexo clean
-$ hexo generate
-$ hexo deploy</code></pre><p>或者简写  </p>
-<pre><code>$ hexo clean
-$ hexo g
-$ hexo d</code></pre>
+        <h1 id="Flex实现五大常用布局"><a href="#Flex实现五大常用布局" class="headerlink" title="Flex实现五大常用布局"></a>Flex实现五大常用布局</h1><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;div1&quot;&gt;
+    &lt;header&gt;HEADER&lt;/header&gt;
+    &lt;article&gt;CONTENT&lt;/article&gt;
+    &lt;footer&gt;FOOTER&lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;div2&quot;&gt;
+    &lt;header&gt;header&lt;/header&gt;
+    &lt;div class=&quot;content&quot;&gt;
+        &lt;aside&gt;ASIDE&lt;/aside&gt;
+        &lt;article&gt;article&lt;/article&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;footer&lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;div3&quot;&gt;
+&lt;aside&gt;aside&lt;/aside&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;header&gt;header&lt;/header&gt;
+&lt;article&gt;article&lt;/article&gt;
+&lt;footer&gt;footer&lt;/footer&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+
+
+
+    &lt;!-- &lt;div class=&quot;div4&quot;&gt;
+            &lt;header&gt;HEADER&lt;/header&gt;
+            &lt;article&gt;CONTENT&lt;/article&gt;
+            &lt;footer&gt;FOOTER&lt;/footer&gt;
+    &lt;/div&gt; --&gt;
+
+
+
+    &lt;div class=&quot;div5&quot;&gt;
+        &lt;aside&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+            &lt;p&gt;item&lt;/p&gt;
+
+        &lt;/aside&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;header&gt;header&lt;/header&gt;
+            &lt;article&gt;&lt;div&gt;content&lt;/div&gt;&lt;/article&gt;
+            &lt;footer&gt;footer&lt;/footer&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;style&gt;
+
+/* 1.vw：1vw等于视口宽度的1%。
+
+2.vh：1vh等于视口高度的1%。
+
+3.vmin：选取vw和vh中最小的那个。
+
+4.vmax：选取vw和vh中最大的那个。 */
+
+
+body{
+    min-height: 100vh;    
+    display: flex;
+    flex-direction: column;
+}
+
+/* 1.经典的上-中-下布局。 */
+
+.div1&gt;article{
+    background-color: aqua;
+    flex:auto;
+}
+.div1&gt;header,.div1 footer{
+    background-color: rgb(46, 223, 140)
+}
+.div1{
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 2.在上-中-下布局的基础上，加了左侧定宽 sidebar。 */
+
+.div2{
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+}
+.div2 .content{
+    flex:1 0 auto;
+    display:flex;
+    background-color: aqua;
+} 
+.div2 .content article{
+    flex:1 0 auto;
+    background-color: darkgrey;
+}
+.div2 header,.div2 footer{
+    background-color: bisque;
+}
+
+/* 3.左边是定宽 sidebar，右边是上-中-下布局。 */
+.div3{
+    display:flex;
+    flex-flow: row;
+    min-height:20vh;
+}
+.div3 aside{
+    background-color: aqua;
+}
+.div3 .content{
+    display: flex;
+    flex: 1 0 auto;
+    flex-flow: column;
+}
+.div3 article{
+    flex:1 0 auto;
+    background-color: antiquewhite;
+}
+.div3 header,.div3 footer{
+    background-color: aquamarine;
+}
+
+
+
+
+
+/* 4. 还是上-中-下布局，区别是 header 固定在顶部，不会随着页面滚动。 */
+
+/* body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+}
+header {
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+}
+article {
+  flex: auto;
+  height: 1000px;
+} */
+
+/* 5.左侧 sidebar 固定在左侧且与视窗同高，当内容超出视窗高度时，在 sidebar 内部出现滚动条。左右两侧滚动条互相独立。 */
+
+
+.div5{
+    min-height:20vh;
+    display:flex;
+    flex-flow:row;
+}
+/* overflow-y: visible|hidden|scroll|auto|no-display|no-content;
+visible    不裁剪内容，可能会显示在内容框之外。
+hidden    裁剪内容 - 不提供滚动机制。
+scroll    裁剪内容 - 提供滚动机制。
+auto    如果溢出框，则应该提供滚动机制。
+no-display    如果内容不适合内容框，则删除整个框。
+no-content    如果内容不适合内容框，则隐藏整个内容。 */
+
+.div5 aside{
+    background-color: aqua;
+    flex: 0 1 10%;
+    overflow-y: auto;
+    max-height:20vh;
+}
+.div5 .content{
+    display:flex;
+    flex:auto;
+    flex-flow: column;
+}
+.div5 header,.div5 footer{
+    background-color: blanchedalmond;
+
+}
+/* 设置垂直水平居中 */
+.div5 article{
+    flex: auto;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+&lt;/style&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 f798735475@163.com </span>
     </div>

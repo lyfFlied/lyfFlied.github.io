@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Hexo常用命令 | LYF&#39;s blog</title>
-  <meta name="keywords" content=" Hexo ">
-  <meta name="description" content="Hexo常用命令 | LYF&#39;s blog">
+  <title>Vueue_MVVM | LYF&#39;s blog</title>
+  <meta name="keywords" content=" Vue ">
+  <meta name="description" content="Vueue_MVVM | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Flex布局(弹性布局)一、Flex布局是什么任何一个容器都可以指定为Flex布局 .box{     display:flex; }行内元素也可以使用Flex布局 .box{     display:inline-flex; }Webkit内核的浏览器，必须加上-webkit前缀 .box{     display:-webkit-flex;/*Safari*/     display:flex">
 <meta name="keywords" content="css,布局">
@@ -340,9 +340,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Hexo常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Vueue-MVVM" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Hexo常用命令</h1>
+        <h1 class="article-title">Vueue_MVVM</h1>
     
     <div class="article-meta">
         
@@ -350,21 +350,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="Hexo">Hexo</a>
+                <a href="javascript:" data-rel="Vue">Vue</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">Hexo</a>
+            <a href="javascript:" class="color4">Vue</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-24 14:09:49'>2019-08-24 11:11</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-25 13:57:45'>2019-08-25 13:57</time>
         
     </div>
     <div class="article-meta">
@@ -386,7 +386,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写作"><span class="toc-text">写作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建文章"><span class="toc-text">创建文章</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行"><span class="toc-text">运行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署"><span class="toc-text">部署</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#对于MVVM的理解"><span class="toc-text">对于MVVM的理解</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -401,15 +401,9 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><pre><code>$ hexo new [layout] &lt;title&gt;</code></pre><h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><pre><code>$ hexo server
-或者
-$ hexo s</code></pre><p>访问URL： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><pre><code>$ hexo clean
-$ hexo generate
-$ hexo deploy</code></pre><p>或者简写  </p>
-<pre><code>$ hexo clean
-$ hexo g
-$ hexo d</code></pre>
+        <h1 id="对于MVVM的理解"><a href="#对于MVVM的理解" class="headerlink" title="对于MVVM的理解"></a>对于MVVM的理解</h1><p>MVVM 是 Model-View-ViewModel 的缩写。<br>Model代表数据模型，也可以在Model中定义数据修改和操作的业务逻辑。<br>View 代表UI 组件，它负责将数据模型转化成UI 展现出来。<br>ViewModel 监听模型数据的改变和控制视图行为、处理用户交互，简单理解就是一个同步View 和 Model的对象，连接Model和View。<br>在MVVM架构下，View和Model之间并没有直接的联系，而是通过ViewModel进行交互，Model 和 ViewModel 之间的交互是双向的， 因此View 数据的变化会同步到Model中，而Model 数据的变化也会立即反应到View 上。<br>ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而View 和 Model 之间的同步工作完全是自动的，无需人为干涉，因此开发者只需关注业务逻辑，不需要手动操作DOM, 不需要关注数据状态的同步问题，复杂的数据状态维护完全由 MVVM 来统一管理。  </p>
+<p>Controller不再像MVC那样直接持有Model了，Controller只需要数据解析的结果而不关心过程，所以就相当于VM把“如何解析Model”给封装起来了</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 f798735475@163.com </span>
     </div>

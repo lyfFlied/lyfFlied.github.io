@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Hexo常用命令 | LYF&#39;s blog</title>
-  <meta name="keywords" content=" Hexo ">
-  <meta name="description" content="Hexo常用命令 | LYF&#39;s blog">
+  <title>跨域以及解决办法 | LYF&#39;s blog</title>
+  <meta name="keywords" content=" 跨域 ">
+  <meta name="description" content="跨域以及解决办法 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Flex布局(弹性布局)一、Flex布局是什么任何一个容器都可以指定为Flex布局 .box{     display:flex; }行内元素也可以使用Flex布局 .box{     display:inline-flex; }Webkit内核的浏览器，必须加上-webkit前缀 .box{     display:-webkit-flex;/*Safari*/     display:flex">
 <meta name="keywords" content="css,布局">
@@ -340,9 +340,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Hexo常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-跨域以及解决办法" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Hexo常用命令</h1>
+        <h1 class="article-title">跨域以及解决办法</h1>
     
     <div class="article-meta">
         
@@ -350,21 +350,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="Hexo">Hexo</a>
+                <a href="javascript:" data-rel="JavaScript">JavaScript</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">Hexo</a>
+            <a href="javascript:" class="color3">跨域</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-24 14:09:49'>2019-08-24 11:11</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-25 14:00:14'>2019-08-25 13:59</time>
         
     </div>
     <div class="article-meta">
@@ -386,7 +386,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写作"><span class="toc-text">写作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建文章"><span class="toc-text">创建文章</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行"><span class="toc-text">运行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署"><span class="toc-text">部署</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#跨域问题以及解决"><span class="toc-text">跨域问题以及解决</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方式一：jsonp跨域"><span class="toc-text">解决方式一：jsonp跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方式二-修改响应头"><span class="toc-text">解决方式二 修改响应头</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -401,15 +401,30 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><pre><code>$ hexo new [layout] &lt;title&gt;</code></pre><h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><pre><code>$ hexo server
-或者
-$ hexo s</code></pre><p>访问URL： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><pre><code>$ hexo clean
-$ hexo generate
-$ hexo deploy</code></pre><p>或者简写  </p>
-<pre><code>$ hexo clean
-$ hexo g
-$ hexo d</code></pre>
+        <h2 id="跨域问题以及解决"><a href="#跨域问题以及解决" class="headerlink" title="跨域问题以及解决"></a>跨域问题以及解决</h2><p>浏览器都有一个“同源策略”限制，限制了ajax的请求同源策略：表示请求的协议，域名，端口号相同，就是同源，ajax只能访问同源的请求。</p>
+<p>同源策略的限制：</p>
+<p>ajax只能请求同源的地址<br>js只能获取同源的cookie及本地存储<br>js只能操作同源的dom</p>
+<p>同源策略的限制，使网络之间相互访问的安全性得到了提高。</p>
+<h3 id="解决方式一：jsonp跨域"><a href="#解决方式一：jsonp跨域" class="headerlink" title="解决方式一：jsonp跨域"></a>解决方式一：jsonp跨域</h3><p><a href="https://blog.csdn.net/HansExploration/article/details/80314948" target="_blank" rel="noopener">https://blog.csdn.net/HansExploration/article/details/80314948</a><br><strong>缺点</strong>：只支持GET不支持POST  </p>
+<p>原理：虽然同源策略限制了ajax的跨域请求，但是并没有限制标签上的src 和href访问不同域下的资源，jsonp就是利用了这一点。</p>
+<pre><code>$.ajax({
+    url: &quot;http://www.kugou.com/yy/index.php?r=play/getdata&amp;_=1497972864535&quot;,
+    dataType: &apos;jsonp&apos;,    //设置dataType为jsonp
+    data:{hash: &quot;ECB956D9AD23EC123617F63EC6E90A7F&quot;,album_id:&quot;1008922&quot;},   //url后面的参数
+    success: function (data) {
+        console.log(data);
+    }
+});</code></pre><p>为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</p>
+<h3 id="解决方式二-修改响应头"><a href="#解决方式二-修改响应头" class="headerlink" title="解决方式二 修改响应头"></a>解决方式二 修改响应头</h3><p>Cross-Origin Resource Sharing（CORS）跨域资源共享是一份浏览器技术的规范，与 JSONP 不同，CORS 除了 GET 要求方法以外也支持其他的 HTTP 要求。服务器一般需要增加如下响应头的一种或几种：</p>
+<pre><code>//设置跨域访问的中间件
+router.all(&apos;*&apos;, function(req, res, next) {
+  res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;); //允许所有的外来地址 都可以访问
+  res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);//检查是不是ajax访问
+  res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;POST,GET&quot;);//允许请求的方法是post 和get
+  res.header(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);//设置响应的头部
+  next();
+});</code></pre><p>除此之外还有：window.name+iframe的方式， window.postMessage()的方法，修改document.domain跨子域等方法。   </p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 f798735475@163.com </span>
     </div>

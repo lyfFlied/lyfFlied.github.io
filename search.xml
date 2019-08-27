@@ -4,6 +4,164 @@
   
     
     <entry>
+      <title>CSS布局</title>
+      <link href="/2019/08/27/CSS%E5%B8%83%E5%B1%80/"/>
+      <url>/2019/08/27/CSS%E5%B8%83%E5%B1%80/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Flex布局-弹性布局"><a href="#Flex布局-弹性布局" class="headerlink" title="Flex布局(弹性布局)"></a>Flex布局(弹性布局)</h1><h2 id="一、Flex布局是什么"><a href="#一、Flex布局是什么" class="headerlink" title="一、Flex布局是什么"></a>一、Flex布局是什么</h2><p>任何一个容器都可以指定为Flex布局</p><pre><code>.box{    display:flex;}</code></pre><p>行内元素也可以使用Flex布局</p><pre><code>.box{    display:inline-flex;}</code></pre><p>Webkit内核的浏览器，必须加上-webkit前缀</p><pre><code>.box{    display:-webkit-flex;/*Safari*/    display:flex;}</code></pre><p><strong>注意</strong>：设置为flex布局后，子元素的float、clear、vertical-align属性将失效。</p><h2 id="二、基本概念"><a href="#二、基本概念" class="headerlink" title="二、基本概念"></a>二、基本概念</h2><p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。  </p><p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。</p><p>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</p><h2 id="三、容器的属性"><a href="#三、容器的属性" class="headerlink" title="三、容器的属性"></a>三、容器的属性</h2><p>有六个属性：<br>flex-direction<br>flex-wrap<br>flex-flow<br>justify-content<br>align-items<br>align-content  </p><h3 id="3-1-flex-direction"><a href="#3-1-flex-direction" class="headerlink" title="3.1 flex-direction"></a>3.1 flex-direction</h3><p>flex-direction属性决定主轴的方向（即项目的排列方向）。</p><pre><code>.box {  flex-direction: row(默认) | row-reverse | column | column-reverse;}/*row(默认)：主轴为水平方向，起点在左端。row-reverse: 主轴为水平方向，起点在右端。column：主轴为垂直方向，起点在上沿。column-reverse：主轴在垂直方向，起点在下沿。*/</code></pre><h3 id="3-2-flex-wrap"><a href="#3-2-flex-wrap" class="headerlink" title="3.2 flex-wrap"></a>3.2 flex-wrap</h3><p>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。</p><pre><code>.box{    flex-wrap: nowrap(默认) | wrap | wrap-reverse;}/*nowrap（默认）：不换行；wrap：换行，第一行在上方wrap-reverse：换行，第一行在下方*/</code></pre><h3 id="3-3flex-flow（排列）"><a href="#3-3flex-flow（排列）" class="headerlink" title="3.3flex-flow（排列）"></a>3.3flex-flow（排列）</h3><p>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</p><pre><code>.box {  flex-flow: &lt;flex-direction&gt; &lt;flex-wrap&gt;;}</code></pre><h3 id="3-4justify-content-主轴对齐方式"><a href="#3-4justify-content-主轴对齐方式" class="headerlink" title="3.4justify-content(主轴对齐方式)"></a>3.4justify-content(主轴对齐方式)</h3><p>justify-content属性定义了项目在主轴上的对齐方式。  </p><pre><code>.box {    justify-content: flex-start | flex-end | center | space-between | space-around;}/*flex-start（默认值）：左对齐；flex-end：右对齐center：居中；space-between:两端对齐，项目之前间隔相等；space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。（两边也不靠边）*/</code></pre><h3 id="3-5align-items（交叉轴对齐）"><a href="#3-5align-items（交叉轴对齐）" class="headerlink" title="3.5align-items（交叉轴对齐）"></a>3.5align-items（交叉轴对齐）</h3><pre><code>.box {  align-items: flex-start | flex-end | center | baseline | stretch;}/*stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。flex-start：交叉轴的起点对齐。flex-end：交叉轴的终点对齐。center：交叉轴的中点对齐。baseline: 项目的第一行文字的基线对齐。*/</code></pre><h3 id="3-6align-content"><a href="#3-6align-content" class="headerlink" title="3.6align-content"></a>3.6align-content</h3><p>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p><pre><code>.box {  align-content: flex-start | flex-end | center | space-between | space-around | stretch;}/*stretch(默认值)：轴线占满整个交叉轴；flex-start：与交叉轴的起点对齐flex-end：与交叉轴的终点对齐center：与交叉轴的中点对齐；space-between：与交叉轴两端对齐，轴线之间的间隔平均分布；space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍；*/</code></pre><h2 id="四、项目的属性"><a href="#四、项目的属性" class="headerlink" title="四、项目的属性"></a>四、项目的属性</h2><p>order<br>flex-grow<br>flex-shrink<br>flex-basis<br>flex<br>align-self  </p><h3 id="4-1-order"><a href="#4-1-order" class="headerlink" title="4.1 order"></a>4.1 order</h3><p>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。  </p><pre><code>.item {  order: &lt;integer&gt;;}</code></pre><h3 id="4-2-flex-grow"><a href="#4-2-flex-grow" class="headerlink" title="4.2 flex-grow"></a>4.2 flex-grow</h3><p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p><pre><code>.item {  flex-grow: &lt;number&gt;; /* default 0 */}</code></pre><p>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p><h3 id="4-3-flex-shrink"><a href="#4-3-flex-shrink" class="headerlink" title="4.3 flex-shrink"></a>4.3 flex-shrink</h3><p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。  </p><pre><code>.item {  flex-shrink: &lt;number&gt;; /* default 1 */}</code></pre><p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</p><p>负值对该属性无效。</p><h3 id="4-4-flex-basis"><a href="#4-4-flex-basis" class="headerlink" title="4.4 flex-basis"></a>4.4 flex-basis</h3><p>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p><pre><code>.item {  flex-basis: &lt;length&gt; | auto; /* default auto */}</code></pre><p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p><h3 id="4-5-flex（放大，缩小，所占空间）"><a href="#4-5-flex（放大，缩小，所占空间）" class="headerlink" title="4.5 flex（放大，缩小，所占空间）"></a>4.5 flex（放大，缩小，所占空间）</h3><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p><pre><code>.item {  flex: none | [ &lt;&apos;flex-grow&apos;&gt; &lt;&apos;flex-shrink&apos;&gt;? || &lt;&apos;flex-basis&apos;&gt; ]}</code></pre><p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p><p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p><h3 id="4-6-align-self"><a href="#4-6-align-self" class="headerlink" title="4.6 align-self"></a>4.6 align-self</h3><p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p><pre><code>.item {  align-self: auto | flex-start | flex-end | center | baseline | stretch;}</code></pre><p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> css </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> css </tag>
+            
+            <tag> 布局 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Flex实现五种常用布局</title>
+      <link href="/2019/08/27/Flex%E5%AE%9E%E7%8E%B0%E4%BA%94%E7%A7%8D%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80/"/>
+      <url>/2019/08/27/Flex%E5%AE%9E%E7%8E%B0%E4%BA%94%E7%A7%8D%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Flex实现五大常用布局"><a href="#Flex实现五大常用布局" class="headerlink" title="Flex实现五大常用布局"></a>Flex实现五大常用布局</h1><pre><code>&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;    &lt;title&gt;Document&lt;/title&gt;&lt;/head&gt;&lt;body&gt;    &lt;div class=&quot;div1&quot;&gt;    &lt;header&gt;HEADER&lt;/header&gt;    &lt;article&gt;CONTENT&lt;/article&gt;    &lt;footer&gt;FOOTER&lt;/footer&gt;&lt;/div&gt;&lt;div class=&quot;div2&quot;&gt;    &lt;header&gt;header&lt;/header&gt;    &lt;div class=&quot;content&quot;&gt;        &lt;aside&gt;ASIDE&lt;/aside&gt;        &lt;article&gt;article&lt;/article&gt;    &lt;/div&gt;    &lt;footer&gt;footer&lt;/footer&gt;&lt;/div&gt;&lt;div class=&quot;div3&quot;&gt;&lt;aside&gt;aside&lt;/aside&gt;&lt;div class=&quot;content&quot;&gt;&lt;header&gt;header&lt;/header&gt;&lt;article&gt;article&lt;/article&gt;&lt;footer&gt;footer&lt;/footer&gt;&lt;/div&gt;    &lt;/div&gt;    &lt;!-- &lt;div class=&quot;div4&quot;&gt;            &lt;header&gt;HEADER&lt;/header&gt;            &lt;article&gt;CONTENT&lt;/article&gt;            &lt;footer&gt;FOOTER&lt;/footer&gt;    &lt;/div&gt; --&gt;    &lt;div class=&quot;div5&quot;&gt;        &lt;aside&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;            &lt;p&gt;item&lt;/p&gt;        &lt;/aside&gt;        &lt;div class=&quot;content&quot;&gt;            &lt;header&gt;header&lt;/header&gt;            &lt;article&gt;&lt;div&gt;content&lt;/div&gt;&lt;/article&gt;            &lt;footer&gt;footer&lt;/footer&gt;        &lt;/div&gt;    &lt;/div&gt;&lt;style&gt;/* 1.vw：1vw等于视口宽度的1%。2.vh：1vh等于视口高度的1%。3.vmin：选取vw和vh中最小的那个。4.vmax：选取vw和vh中最大的那个。 */body{    min-height: 100vh;        display: flex;    flex-direction: column;}/* 1.经典的上-中-下布局。 */.div1&gt;article{    background-color: aqua;    flex:auto;}.div1&gt;header,.div1 footer{    background-color: rgb(46, 223, 140)}.div1{    min-height: 20vh;    display: flex;    flex-direction: column;}/* 2.在上-中-下布局的基础上，加了左侧定宽 sidebar。 */.div2{    min-height: 20vh;    display: flex;    flex-direction: column;}.div2 .content{    flex:1 0 auto;    display:flex;    background-color: aqua;} .div2 .content article{    flex:1 0 auto;    background-color: darkgrey;}.div2 header,.div2 footer{    background-color: bisque;}/* 3.左边是定宽 sidebar，右边是上-中-下布局。 */.div3{    display:flex;    flex-flow: row;    min-height:20vh;}.div3 aside{    background-color: aqua;}.div3 .content{    display: flex;    flex: 1 0 auto;    flex-flow: column;}.div3 article{    flex:1 0 auto;    background-color: antiquewhite;}.div3 header,.div3 footer{    background-color: aquamarine;}/* 4. 还是上-中-下布局，区别是 header 固定在顶部，不会随着页面滚动。 *//* body {  min-height: 100vh;  display: flex;  flex-direction: column;  padding-top: 60px;}header {  height: 60px;  position: fixed;  top: 0;  left: 0;  right: 0;  padding: 0;}article {  flex: auto;  height: 1000px;} *//* 5.左侧 sidebar 固定在左侧且与视窗同高，当内容超出视窗高度时，在 sidebar 内部出现滚动条。左右两侧滚动条互相独立。 */.div5{    min-height:20vh;    display:flex;    flex-flow:row;}/* overflow-y: visible|hidden|scroll|auto|no-display|no-content;visible    不裁剪内容，可能会显示在内容框之外。hidden    裁剪内容 - 不提供滚动机制。scroll    裁剪内容 - 提供滚动机制。auto    如果溢出框，则应该提供滚动机制。no-display    如果内容不适合内容框，则删除整个框。no-content    如果内容不适合内容框，则隐藏整个内容。 */.div5 aside{    background-color: aqua;    flex: 0 1 10%;    overflow-y: auto;    max-height:20vh;}.div5 .content{    display:flex;    flex:auto;    flex-flow: column;}.div5 header,.div5 footer{    background-color: blanchedalmond;}/* 设置垂直水平居中 */.div5 article{    flex: auto;    background-color: aliceblue;    display: flex;    align-items: center;    justify-content: center;}&lt;/style&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> css </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> css </tag>
+            
+            <tag> 布局 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>跨域以及解决办法</title>
+      <link href="/2019/08/25/%E8%B7%A8%E5%9F%9F%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+      <url>/2019/08/25/%E8%B7%A8%E5%9F%9F%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="跨域问题以及解决"><a href="#跨域问题以及解决" class="headerlink" title="跨域问题以及解决"></a>跨域问题以及解决</h2><p>浏览器都有一个“同源策略”限制，限制了ajax的请求同源策略：表示请求的协议，域名，端口号相同，就是同源，ajax只能访问同源的请求。</p><p>同源策略的限制：</p><p>ajax只能请求同源的地址<br>js只能获取同源的cookie及本地存储<br>js只能操作同源的dom</p><p>同源策略的限制，使网络之间相互访问的安全性得到了提高。</p><h3 id="解决方式一：jsonp跨域"><a href="#解决方式一：jsonp跨域" class="headerlink" title="解决方式一：jsonp跨域"></a>解决方式一：jsonp跨域</h3><p><a href="https://blog.csdn.net/HansExploration/article/details/80314948" target="_blank" rel="noopener">https://blog.csdn.net/HansExploration/article/details/80314948</a><br><strong>缺点</strong>：只支持GET不支持POST  </p><p>原理：虽然同源策略限制了ajax的跨域请求，但是并没有限制标签上的src 和href访问不同域下的资源，jsonp就是利用了这一点。</p><pre><code>$.ajax({    url: &quot;http://www.kugou.com/yy/index.php?r=play/getdata&amp;_=1497972864535&quot;,    dataType: &apos;jsonp&apos;,    //设置dataType为jsonp    data:{hash: &quot;ECB956D9AD23EC123617F63EC6E90A7F&quot;,album_id:&quot;1008922&quot;},   //url后面的参数    success: function (data) {        console.log(data);    }});</code></pre><p>为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</p><h3 id="解决方式二-修改响应头"><a href="#解决方式二-修改响应头" class="headerlink" title="解决方式二 修改响应头"></a>解决方式二 修改响应头</h3><p>Cross-Origin Resource Sharing（CORS）跨域资源共享是一份浏览器技术的规范，与 JSONP 不同，CORS 除了 GET 要求方法以外也支持其他的 HTTP 要求。服务器一般需要增加如下响应头的一种或几种：</p><pre><code>//设置跨域访问的中间件router.all(&apos;*&apos;, function(req, res, next) {  res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;); //允许所有的外来地址 都可以访问  res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);//检查是不是ajax访问  res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;POST,GET&quot;);//允许请求的方法是post 和get  res.header(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);//设置响应的头部  next();});</code></pre><p>除此之外还有：window.name+iframe的方式， window.postMessage()的方法，修改document.domain跨子域等方法。   </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 跨域 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vueue_MVVM</title>
+      <link href="/2019/08/25/Vueue-MVVM/"/>
+      <url>/2019/08/25/Vueue-MVVM/</url>
+      
+        <content type="html"><![CDATA[<h1 id="对于MVVM的理解"><a href="#对于MVVM的理解" class="headerlink" title="对于MVVM的理解"></a>对于MVVM的理解</h1><p>MVVM 是 Model-View-ViewModel 的缩写。<br>Model代表数据模型，也可以在Model中定义数据修改和操作的业务逻辑。<br>View 代表UI 组件，它负责将数据模型转化成UI 展现出来。<br>ViewModel 监听模型数据的改变和控制视图行为、处理用户交互，简单理解就是一个同步View 和 Model的对象，连接Model和View。<br>在MVVM架构下，View和Model之间并没有直接的联系，而是通过ViewModel进行交互，Model 和 ViewModel 之间的交互是双向的， 因此View 数据的变化会同步到Model中，而Model 数据的变化也会立即反应到View 上。<br>ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而View 和 Model 之间的同步工作完全是自动的，无需人为干涉，因此开发者只需关注业务逻辑，不需要手动操作DOM, 不需要关注数据状态的同步问题，复杂的数据状态维护完全由 MVVM 来统一管理。  </p><p>Controller不再像MVC那样直接持有Model了，Controller只需要数据解析的结果而不关心过程，所以就相当于VM把“如何解析Model”给封装起来了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Vue生命周期</title>
+      <link href="/2019/08/25/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+      <url>/2019/08/25/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Vue的生命周期"><a href="#Vue的生命周期" class="headerlink" title="Vue的生命周期"></a>Vue的生命周期</h1><h3 id="beforeCreate（创建前）"><a href="#beforeCreate（创建前）" class="headerlink" title="beforeCreate（创建前）"></a>beforeCreate（创建前）</h3><p>在数据观测和初始化事件还未开始</p><h3 id="created（创建后）"><a href="#created（创建后）" class="headerlink" title="created（创建后）"></a>created（创建后）</h3><p>完成数据观测，属性和方法的运算，初始化事件，$el属性还没有显示出来</p><h3 id="beforeMount（载入前）"><a href="#beforeMount（载入前）" class="headerlink" title="beforeMount（载入前）"></a>beforeMount（载入前）</h3><p>在挂载开始之前被调用，相关的render函数首次被调用。实例已完成以下的配置：编译模板，把data里面的数据和模板生成html。注意此时还没有挂载html到页面上。</p><h3 id="mounted（载入后）"><a href="#mounted（载入后）" class="headerlink" title="mounted（载入后）"></a>mounted（载入后）</h3><p>在el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用。实例已完成以下的配置：用上面编译好的html内容替换el属性指向的DOM对象。完成模板中的html渲染到html页面中。此过程中进行ajax交互。</p><h3 id="beforeUpdate（更新前）"><a href="#beforeUpdate（更新前）" class="headerlink" title="beforeUpdate（更新前）"></a>beforeUpdate（更新前）</h3><p>在数据更新之前调用，发生在虚拟DOM重新渲染和打补丁之前。可以在该钩子中进一步地更改状态，不会触发附加的重渲染过程。</p><h3 id="updated（更新后）"><a href="#updated（更新后）" class="headerlink" title="updated（更新后）"></a>updated（更新后）</h3><p>在由于数据更改导致的虚拟DOM重新渲染和打补丁之后调用。调用时，组件DOM已经更新，所以可以执行依赖于DOM的操作。然而在大多数情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环。该钩子在服务器端渲染期间不被调用。</p><h3 id="beforeDestroy（销毁前）"><a href="#beforeDestroy（销毁前）" class="headerlink" title="beforeDestroy（销毁前）"></a>beforeDestroy（销毁前）</h3><p>在实例销毁之前调用。实例仍然完全可用。</p><h3 id="destroyed（销毁后）"><a href="#destroyed（销毁后）" class="headerlink" title="destroyed（销毁后）"></a>destroyed（销毁后）</h3><p>在实例销毁之后调用。调用后，所有的事件监听器会被移除，所有的子实例也会被销毁。该钩子在服务器端渲染期间不被调用。</p><h2 id="什么是vue生命周期？"><a href="#什么是vue生命周期？" class="headerlink" title="什么是vue生命周期？"></a>什么是vue生命周期？</h2><p>Vue 实例从创建到销毁的过程，就是生命周期。从开始创建、初始化数据、编译模板、挂载Dom→渲染、更新→渲染、销毁等一系列过程，称之为 Vue 的生命周期。  </p><h2 id="vue生命周期的作用是什么？"><a href="#vue生命周期的作用是什么？" class="headerlink" title="vue生命周期的作用是什么？"></a>vue生命周期的作用是什么？</h2><p>它的生命周期中有多个事件钩子，让我们在控制整个Vue实例的过程时更容易形成好的逻辑。  </p><h2 id="vue生命周期总共有几个阶段"><a href="#vue生命周期总共有几个阶段" class="headerlink" title="vue生命周期总共有几个阶段"></a>vue生命周期总共有几个阶段</h2><p>它可以总共分为8个阶段：创建前/后, 载入前/后,更新前/后,销毁前/销毁后。 </p><h2 id="第一次页面加载会触发哪几个钩子？"><a href="#第一次页面加载会触发哪几个钩子？" class="headerlink" title="第一次页面加载会触发哪几个钩子？"></a>第一次页面加载会触发哪几个钩子？</h2><p>会触发 下面这几个beforeCreate, created, beforeMount, mounted 。 </p><h2 id="DOM-渲染在-哪个周期中就已经完成？"><a href="#DOM-渲染在-哪个周期中就已经完成？" class="headerlink" title="DOM 渲染在 哪个周期中就已经完成？"></a>DOM 渲染在 哪个周期中就已经完成？</h2><p>DOM 渲染在 mounted 中就已经完成了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络</title>
+      <link href="/2019/08/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+      <url>/2019/08/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h2><p>ISO制定了国际标准OSI（开放式系统互联网通信参考模型），将复杂的协议分为7层。TCP/IP将通信的过程抽象为4层，被视为简化的OSI模型，由IETF负责维护。<br>应用层（应用层）：SMTP、FTP、HTTP<br>表示层（应用层）<br>会话层（应用层）<br>传输层（传输层）：TCP、UDP<br>网络层（互联网层）：IP<br>数据链路层（网络接口层）：以太网<br>物理层（网络接口层）  </p><p>发送的数据会在分层模型内传递，每到一层，就会附加该层的包首部–包含该层的协议的相关信息，包括MAC地址、IP地址和端口号。  </p><h2 id="HTTP-HTTP1-1"><a href="#HTTP-HTTP1-1" class="headerlink" title="HTTP(HTTP1.1)"></a>HTTP(HTTP1.1)</h2><p>HTTP即超文本传输协议，是一种获取网络资源（如图像、HTML、文档）的应用层协议，由请求和响应构成。  </p><h3 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h3><p>URI：统一资源标识符，由URL（统一资源定位符）和URN（统一资源名称，URI过去的名字）组成。URL：包括绝对和相对两种表示方式，相对URL请求的资源必须在同一台服务器中。  </p><ol><li>协议方案scheme（HTTP/FTP）</li><li>登录信息user/password</li><li>主机host（用域名或IP地址表示）</li><li>端口port</li><li>路径path</li><li>查询字符串query</li><li>片段frag</li></ol><h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>HTTP协议有三个特征：持久连接、管道化以及无状态。  </p><ol><li>持久连接：通信两端的任意一端没有明确提出断开，就保持连接状态。</li><li>管道化：将队列顺序迁移到服务器，可以同时发送多个请求。</li><li>状态管理：HTTP是无状态协议，请求和响应一一对应，每个请求都是独立的。为了能够管理状态，引入了Cookie技术。</li></ol><h3 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h3><p>HTTP报文就是HTTP协议通信的内容，是一种简单的格式化数据块，由带语义的纯文本组成。  </p><ol><li>请求报文：请求方法、请求URL、HTTP协议版本、可选的请求首部和内容</li><li>响应报文：HTTP协议版本、状态码、原因短语、可选的响应首部和内容</li></ol><ul><li>请求方法：GET获取数据、POST提交数据、PUT上传文件、DELETE删除文件、HEAD获取除了内容以外的资源信息。</li><li>状态码：1xx信息、2xx成功、3xx重定向、4xx客户端错误、5xx服务器错误。</li></ul><h3 id="HTTP首部"><a href="#HTTP首部" class="headerlink" title="HTTP首部"></a>HTTP首部</h3><ol><li>通用首部：既可以存在于请求中，也可以存在于响应中。</li><li>请求首部：只存在于请求报文中，提供客户端的信息及对服务器的要求。accept首部表示可接受的MIME类型，MIME类型就是媒体类型，accept首部能同时制定多种媒体类型并分别增加权重。 </li><li>响应首部：只存在于响应报文中，提供服务器的信息及对客户端的要求。</li><li>实体首部：请求和响应都可能包含实体首部，提供大量的实体信息。</li><li>扩展首部  </li></ol><h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>缓存的处理过程：(三步)<br>（1）在缓存中搜索指定资源的副本，如果命中就执行第二步。<br>（2）对资源副本进行新鲜度检测，如果不新鲜就执行第三步。<br>（3）与服务器进行再验证。验证通过就更新资源副本的新鲜度，再返回这个资源副本；不通过就从服务器返回资源，再将最新资源的副本放入缓存中。  </p><ul><li>新鲜度检测：通用首部Cache-Control和实体首部Expires会为每一个资源附加一个过期日期。实体首部会指定具体地过期日期，但由于服务器的时钟不同步会导致误差；通用首部能制定资源处于新鲜状态的秒数。Cache-Control中no-cache可以将资源缓存，no-store禁止资源被缓存。</li><li>日期比对法进行再验证：在响应报文中附加实体首部Last-Modified指明资源最后修改日期。验证时，在请求报文中附加If-Modified-Since首部，携带最后修改日期，与服务器上的日期进行对比。依赖服务器上日期准确。</li><li>实体标记法进行再验证：服务器会为每个资源生成唯一的字符串形式的标记，保存在实体首部ETag中。验证时，在请求报文中附加If-None-Match首部，只有当携带的标记与服务器上的资源一致时，才能说明缓存没有过期。</li></ul><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>TCP是一种面向连接、可靠的字节流通信协议，位于传输层中，具有顺序控制、重发控制、流量控制和拥塞控制等功能。<br>TCP进行数据传输的通信过程：  </p><ol><li>通过三次握手建立连接。</li><li>把发送窗口调整到合适的大小（避免网络拥塞，提高传输效率）。 </li><li>发出的每个包都会得到对面的确认。包丢失时可以执行超时重发；包乱序时可以根据序号按顺序排列；同时也能丢弃重复的包。</li><li>根据端口号将数据准确传送至通信中的应用程序。</li><li>待所有数据安全到达后，执行四次挥手断开连接。</li></ol><h3 id="连接管理"><a href="#连接管理" class="headerlink" title="连接管理"></a>连接管理</h3><h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><p>（二次握手不可靠，因为延迟等原因会建立无效的连接）：</p><ol><li>客户端发送一个携带SYN标志位的包，请求建立连接。</li><li>服务器响应一个携带SYN和ACK标志位的包，同意建立连接。</li><li>客户端再发送一个携带ACK标志位的包，表示连接成功，开始进行数据传输。</li></ol><h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><ol><li>客户端发送一个携带FIN标志位的包，请求断开连接。</li><li>服务器响应一个携带ACK标志位的包，同意客户断开连接。</li><li>服务器再发送一个携带FIN标志位的包，请求断开连接。</li><li>客户端最后发送一个携带ACK标志位的包，同意服务器断开连接。</li></ol><h3 id="确认应答"><a href="#确认应答" class="headerlink" title="确认应答"></a>确认应答</h3><ol><li>字段：Seq表示每个包的序号，用于排列乱序的包；Len表示数据的长度，不包括TCP头信息；Ack表示确认号，用于确认已经收到的字节。Seq等于上一个包中的Seq和Len的和；Ack等于对面发送过来的包中Seq和Len之和。通信两端会维护各自的Seq。</li><li>延迟确认：在一段时间内如果没有数据发送，就将几个确认信息合并成一个包再一起确认。</li><li>Nagle算法：发出的数据没有得到确认之前，又有几块小数据要发送，就把它们合并成一个包，再一起发送。</li></ol><p>延迟确认和Nagle都能够降低网络负担，提升传输效率，但不能结合使用。</p><h3 id="窗口控制"><a href="#窗口控制" class="headerlink" title="窗口控制"></a>窗口控制</h3><p>数据包所能携带的最大数据量称为MSS。当TCP传送大块数据的时候，会先将其分割为多个MSS再进行传输。MSS是发送数据包的单位，重发时也是以MSS为单位。在建立连接时，两端都会告诉对方自己所能接受的MSS的大小，然后选择一个较小的值投入使用。  </p><ol><li>发送窗口：控制一次能发的字节量，即一次能发MSS数量。阈值被称为拥塞点。</li><li>拥塞窗口：开始时通过慢启动对拥塞窗口进行控制；拥塞窗口的大小超过慢启动阈值时，改用拥塞避免方法。<br>拥塞窗口：在发送端设置一个窗口结构，根据网络的拥塞情况，动态调整该窗口大小，发送端只能发送大小小于滑动窗口和拥塞窗口的数据 </li></ol><h3 id="重传控制"><a href="#重传控制" class="headerlink" title="重传控制"></a>重传控制</h3><ol><li>超时重传：TCP会设定一个超时重传计数器（RTO），定义数据包从发出到失效的时间间隔。在这段时间内没有收到确认，就会重传这个包。超时重传严重降低传输性能，重传后还需要调整拥塞窗口。</li><li>快速重传：当发送方连续收到3个或3个以上对相同数据包的重复确认时，就会认为数据包丢失了并立即重发。  </li></ol><p>由于TCP采用的是累计确认机制，即当接收端收到比期望序号大的报文段时，便会重复发送最近一次确认的报文段的确认信号，我们称之为冗余ACK（duplicate ACK）。 如图所示，报文段1成功接收并被确认ACK 2，接收端的期待序号为2，当报文段2丢失，报文段3失序到来，与接收端的期望不匹配，接收端重复发送冗余ACK 2。<br><img src="//lyfflied.github.io/2019/08/25/计算机网络/%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0/img/DST856QXGMDJM38JBLQSOZV.png" alt="快速重传" title="快速重传">  </p><h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>HTTPS是一种构建在SSL或TLS上的HTTP协议，是HTTP的安全版本。<br>TTP不安全的原因：  </p><ol><li>数据以明文传递，有被窃听的风险。</li><li>接收到的报文无法证明是发送时的报文，不能保障完整性，有被篡改的风险。</li><li>不验证通信两端的身份，请求或相应有被伪造的风险。</li></ol><h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p>HTTPS采用混合加密机制，将对称加密和非对称加密算法组合使用。交换公钥阶段使用非对称加密，传输报文阶段使用对称加密。</p><h3 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h3><p>数字签名由发送者生成的特殊加密校验码，用于确认报文的完整性，包括非对称加密和数字摘要（将变长的报文提取成定长的摘要，常用MD5和SHA）。<br>签名和校验的过程：  </p><ol><li>发送方用摘要算法对报文进行提取，生成一段摘要。</li><li>用私钥对摘要进行加密作为数字签名附在报文上，一起发送给接收方。</li><li>接收方收到报文后，用同样的摘要算法提取出摘要。</li><li>再用接收到的公钥对报文中的数字签名进行解密。</li><li>如果两个摘要相同，就证明报文没被篡改。</li></ol><h3 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h3><p>数字证书相当于网络上的身份证，用于身份识别，内容包括有效期、颁发机构、颁发机构的签名、证书所有者的名称、证书所有者的公开密钥、版本号和唯一序列号等信息。</p><h3 id="安全通信机制"><a href="#安全通信机制" class="headerlink" title="安全通信机制"></a>安全通信机制</h3><ol><li>客户端发送Client Hello报文开始SSL通信，报文中还包括协议版本号、加密算法等信息。</li><li>服务器发送Server Hello报文作为应答，在报文中也会包括协议版本号、加密算法等信息。</li><li>服务器发送数字证书，数字证书中包含服务器的公开密钥。</li><li>客户端解开并验证数字证书，验证通过后，生成一个随机密码串，在用收到的服务器公钥加密，发送给服务器。</li><li>客户端再发送Change Cipher Spec报文，提示服务器在此条报文之后，采用刚刚生成的随机密码串进行数据加密。</li><li>服务器也发送Change Cipher Spec报文。</li><li>SSL连接建立完成，可以开始数据传输。</li></ol><h2 id="HTTP2-0"><a href="#HTTP2-0" class="headerlink" title="HTTP2.0"></a>HTTP2.0</h2><p>HTTP2.0是HTTP1.1的拓展版本，主要基于Google发布的SPDY协议，引入了全新的二进制分帧层。HTTP2.0的目标是优化应用，突破性能限制，改善用户在浏览Web页面时的速度体验。  </p><p><strong>HTTP1.1中5个有代表性的不足</strong>：  </p><ol><li>在传输中会出现首阻塞问题。</li><li>响应不分轻重缓急只会按先来后到的顺序执行。</li><li>并行通信需要建立多个TCP连接。</li><li>服务器不能主动推送客户端想要的资源，只能被动的等待客户端发起的请求。</li><li>由于HTTP是无状态的，所以每次请求和响应会携带大量冗余信息。</li></ol><h3 id="二进制分帧层"><a href="#二进制分帧层" class="headerlink" title="二进制分帧层"></a>二进制分帧层</h3><p>二进制分帧层是HTTP2.0性能增强的关键，先对数据进行二进制编码，再把数据分成一个一个的帧，接着把帧送到数据流中，最后对接收帧拼成一条消息再处理请求。在HTTP2.0中，通信最小的单位为帧，若干帧组成一条消息，若干条消息在数据流中传输，一个TCP连接可以分出若干条数据流，因此只建立一次TCP连接就能完成所有传输。</p><h3 id="多路通信"><a href="#多路通信" class="headerlink" title="多路通信"></a>多路通信</h3><p>队首阻塞：TCP中途出现丢包，发送方会根据重发机制再发一次丢失的包，由于通信两端都是串行处理请求的，所以接收端在等待这个包到达之前，不会再处理后面的请求。<br>HTTP2.0不仅解决了队首阻塞问题，还将TCP建立次数降低到一次。通信两端只需将消息分解为独立的帧，然后在多条数据中乱序发送，最后在接收端把帧重新组合成消息，并且各条消息的组合互不干扰，实现真正意义上的并行通信，达到多路复用的效果。</p><h3 id="请求优先级"><a href="#请求优先级" class="headerlink" title="请求优先级"></a>请求优先级</h3><p>在HTTP2.0中，每条数据流都有一个31位的优先值，值越小优先级越大，0的优先级最高。</p><h3 id="服务器推送"><a href="#服务器推送" class="headerlink" title="服务器推送"></a>服务器推送</h3><p>HTTP2.0支持服务器主动推送，一次请求返回多个响应，处理最初的请求外，还会额外推送客户端想要的资源。主动推送的资源可以缓存和压缩，客户端可以主动拒绝推送过来的资源。</p><h3 id="首部压缩"><a href="#首部压缩" class="headerlink" title="首部压缩"></a>首部压缩</h3><p>HTTP2.0利用HPACK算法，让通信两端各自维护一张首部字典表（表中包含了首部名和首部值），对首部进行压缩，再进行传输。每次请求都会记住已发的首部，下一次只需传输不同的数据，相同的数据传索引即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> HTTP </tag>
+            
+            <tag> TCP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue数据绑定与虚拟DOM</title>
       <link href="/2019/08/25/Vue%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B8%8E%E8%99%9A%E6%8B%9FDOM/"/>
       <url>/2019/08/25/Vue%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B8%8E%E8%99%9A%E6%8B%9FDOM/</url>

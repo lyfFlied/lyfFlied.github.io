@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Hexo常用命令 | LYF&#39;s blog</title>
-  <meta name="keywords" content=" Hexo ">
-  <meta name="description" content="Hexo常用命令 | LYF&#39;s blog">
+  <title>Vue生命周期 | LYF&#39;s blog</title>
+  <meta name="keywords" content=" Vue ">
+  <meta name="description" content="Vue生命周期 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Flex布局(弹性布局)一、Flex布局是什么任何一个容器都可以指定为Flex布局 .box{     display:flex; }行内元素也可以使用Flex布局 .box{     display:inline-flex; }Webkit内核的浏览器，必须加上-webkit前缀 .box{     display:-webkit-flex;/*Safari*/     display:flex">
 <meta name="keywords" content="css,布局">
@@ -340,9 +340,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Hexo常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Vue生命周期" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Hexo常用命令</h1>
+        <h1 class="article-title">Vue生命周期</h1>
     
     <div class="article-meta">
         
@@ -350,21 +350,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="Hexo">Hexo</a>
+                <a href="javascript:" data-rel="Vue">Vue</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">Hexo</a>
+            <a href="javascript:" class="color4">Vue</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-24 14:09:49'>2019-08-24 11:11</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-25 13:55:56'>2019-08-25 13:55</time>
         
     </div>
     <div class="article-meta">
@@ -386,7 +386,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写作"><span class="toc-text">写作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建文章"><span class="toc-text">创建文章</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行"><span class="toc-text">运行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署"><span class="toc-text">部署</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue的生命周期"><span class="toc-text">Vue的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#beforeCreate（创建前）"><span class="toc-text">beforeCreate（创建前）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#created（创建后）"><span class="toc-text">created（创建后）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#beforeMount（载入前）"><span class="toc-text">beforeMount（载入前）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mounted（载入后）"><span class="toc-text">mounted（载入后）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#beforeUpdate（更新前）"><span class="toc-text">beforeUpdate（更新前）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#updated（更新后）"><span class="toc-text">updated（更新后）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#beforeDestroy（销毁前）"><span class="toc-text">beforeDestroy（销毁前）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#destroyed（销毁后）"><span class="toc-text">destroyed（销毁后）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是vue生命周期？"><span class="toc-text">什么是vue生命周期？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue生命周期的作用是什么？"><span class="toc-text">vue生命周期的作用是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue生命周期总共有几个阶段"><span class="toc-text">vue生命周期总共有几个阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一次页面加载会触发哪几个钩子？"><span class="toc-text">第一次页面加载会触发哪几个钩子？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-渲染在-哪个周期中就已经完成？"><span class="toc-text">DOM 渲染在 哪个周期中就已经完成？</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -401,15 +401,20 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><pre><code>$ hexo new [layout] &lt;title&gt;</code></pre><h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><pre><code>$ hexo server
-或者
-$ hexo s</code></pre><p>访问URL： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><pre><code>$ hexo clean
-$ hexo generate
-$ hexo deploy</code></pre><p>或者简写  </p>
-<pre><code>$ hexo clean
-$ hexo g
-$ hexo d</code></pre>
+        <h1 id="Vue的生命周期"><a href="#Vue的生命周期" class="headerlink" title="Vue的生命周期"></a>Vue的生命周期</h1><h3 id="beforeCreate（创建前）"><a href="#beforeCreate（创建前）" class="headerlink" title="beforeCreate（创建前）"></a>beforeCreate（创建前）</h3><p>在数据观测和初始化事件还未开始</p>
+<h3 id="created（创建后）"><a href="#created（创建后）" class="headerlink" title="created（创建后）"></a>created（创建后）</h3><p>完成数据观测，属性和方法的运算，初始化事件，$el属性还没有显示出来</p>
+<h3 id="beforeMount（载入前）"><a href="#beforeMount（载入前）" class="headerlink" title="beforeMount（载入前）"></a>beforeMount（载入前）</h3><p>在挂载开始之前被调用，相关的render函数首次被调用。实例已完成以下的配置：编译模板，把data里面的数据和模板生成html。注意此时还没有挂载html到页面上。</p>
+<h3 id="mounted（载入后）"><a href="#mounted（载入后）" class="headerlink" title="mounted（载入后）"></a>mounted（载入后）</h3><p>在el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用。实例已完成以下的配置：用上面编译好的html内容替换el属性指向的DOM对象。完成模板中的html渲染到html页面中。此过程中进行ajax交互。</p>
+<h3 id="beforeUpdate（更新前）"><a href="#beforeUpdate（更新前）" class="headerlink" title="beforeUpdate（更新前）"></a>beforeUpdate（更新前）</h3><p>在数据更新之前调用，发生在虚拟DOM重新渲染和打补丁之前。可以在该钩子中进一步地更改状态，不会触发附加的重渲染过程。</p>
+<h3 id="updated（更新后）"><a href="#updated（更新后）" class="headerlink" title="updated（更新后）"></a>updated（更新后）</h3><p>在由于数据更改导致的虚拟DOM重新渲染和打补丁之后调用。调用时，组件DOM已经更新，所以可以执行依赖于DOM的操作。然而在大多数情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环。该钩子在服务器端渲染期间不被调用。</p>
+<h3 id="beforeDestroy（销毁前）"><a href="#beforeDestroy（销毁前）" class="headerlink" title="beforeDestroy（销毁前）"></a>beforeDestroy（销毁前）</h3><p>在实例销毁之前调用。实例仍然完全可用。</p>
+<h3 id="destroyed（销毁后）"><a href="#destroyed（销毁后）" class="headerlink" title="destroyed（销毁后）"></a>destroyed（销毁后）</h3><p>在实例销毁之后调用。调用后，所有的事件监听器会被移除，所有的子实例也会被销毁。该钩子在服务器端渲染期间不被调用。</p>
+<h2 id="什么是vue生命周期？"><a href="#什么是vue生命周期？" class="headerlink" title="什么是vue生命周期？"></a>什么是vue生命周期？</h2><p>Vue 实例从创建到销毁的过程，就是生命周期。从开始创建、初始化数据、编译模板、挂载Dom→渲染、更新→渲染、销毁等一系列过程，称之为 Vue 的生命周期。  </p>
+<h2 id="vue生命周期的作用是什么？"><a href="#vue生命周期的作用是什么？" class="headerlink" title="vue生命周期的作用是什么？"></a>vue生命周期的作用是什么？</h2><p>它的生命周期中有多个事件钩子，让我们在控制整个Vue实例的过程时更容易形成好的逻辑。  </p>
+<h2 id="vue生命周期总共有几个阶段"><a href="#vue生命周期总共有几个阶段" class="headerlink" title="vue生命周期总共有几个阶段"></a>vue生命周期总共有几个阶段</h2><p>它可以总共分为8个阶段：创建前/后, 载入前/后,更新前/后,销毁前/销毁后。 </p>
+<h2 id="第一次页面加载会触发哪几个钩子？"><a href="#第一次页面加载会触发哪几个钩子？" class="headerlink" title="第一次页面加载会触发哪几个钩子？"></a>第一次页面加载会触发哪几个钩子？</h2><p>会触发 下面这几个beforeCreate, created, beforeMount, mounted 。 </p>
+<h2 id="DOM-渲染在-哪个周期中就已经完成？"><a href="#DOM-渲染在-哪个周期中就已经完成？" class="headerlink" title="DOM 渲染在 哪个周期中就已经完成？"></a>DOM 渲染在 哪个周期中就已经完成？</h2><p>DOM 渲染在 mounted 中就已经完成了。</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 f798735475@163.com </span>
     </div>

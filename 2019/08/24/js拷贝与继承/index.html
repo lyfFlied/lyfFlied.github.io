@@ -6,18 +6,18 @@
   <meta name="keywords" content=" JavaScript ">
   <meta name="description" content="js拷贝与继承 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="事件的节流和防抖有些浏览器事件可以在短时间内快速触发多次，比如调整窗口大小或向下滚动页面。例如，监听页面窗口滚动事件，并且用户持续快速地向下滚动页面，那么滚动事件可能在 3 秒内触发数千次，这可能会导致一些严重的性能问题。 如果在面试中讨论构建应用程序，出现滚动、窗口大小调整或按下键等事件请务必提及 防抖(Debouncing) 和 函数节流（Throttling）来提升页面速度和性能。这两兄弟的">
-<meta name="keywords" content="JavaScript,事件">
+<meta name="description" content="Flex布局(弹性布局)一、Flex布局是什么任何一个容器都可以指定为Flex布局 .box{     display:flex; }行内元素也可以使用Flex布局 .box{     display:inline-flex; }Webkit内核的浏览器，必须加上-webkit前缀 .box{     display:-webkit-flex;/*Safari*/     display:flex">
+<meta name="keywords" content="css,布局">
 <meta property="og:type" content="article">
-<meta property="og:title" content="事件防抖与节流">
-<meta property="og:url" content="https://lyfflied.github.io/2019/08/25/函数防抖与节流/index.html">
+<meta property="og:title" content="CSS布局">
+<meta property="og:url" content="https://lyfflied.github.io/2019/08/27/CSS布局/index.html">
 <meta property="og:site_name" content="LYF&#39;s blog">
-<meta property="og:description" content="事件的节流和防抖有些浏览器事件可以在短时间内快速触发多次，比如调整窗口大小或向下滚动页面。例如，监听页面窗口滚动事件，并且用户持续快速地向下滚动页面，那么滚动事件可能在 3 秒内触发数千次，这可能会导致一些严重的性能问题。 如果在面试中讨论构建应用程序，出现滚动、窗口大小调整或按下键等事件请务必提及 防抖(Debouncing) 和 函数节流（Throttling）来提升页面速度和性能。这两兄弟的">
+<meta property="og:description" content="Flex布局(弹性布局)一、Flex布局是什么任何一个容器都可以指定为Flex布局 .box{     display:flex; }行内元素也可以使用Flex布局 .box{     display:inline-flex; }Webkit内核的浏览器，必须加上-webkit前缀 .box{     display:-webkit-flex;/*Safari*/     display:flex">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T03:12:55.480Z">
+<meta property="og:updated_time" content="2019-08-27T06:43:45.290Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="事件防抖与节流">
-<meta name="twitter:description" content="事件的节流和防抖有些浏览器事件可以在短时间内快速触发多次，比如调整窗口大小或向下滚动页面。例如，监听页面窗口滚动事件，并且用户持续快速地向下滚动页面，那么滚动事件可能在 3 秒内触发数千次，这可能会导致一些严重的性能问题。 如果在面试中讨论构建应用程序，出现滚动、窗口大小调整或按下键等事件请务必提及 防抖(Debouncing) 和 函数节流（Throttling）来提升页面速度和性能。这两兄弟的">
+<meta name="twitter:title" content="CSS布局">
+<meta name="twitter:description" content="Flex布局(弹性布局)一、Flex布局是什么任何一个容器都可以指定为Flex布局 .box{     display:flex; }行内元素也可以使用Flex布局 .box{     display:inline-flex; }Webkit内核的浏览器，必须加上-webkit前缀 .box{     display:-webkit-flex;/*Safari*/     display:flex">
 
 
 <link rel="icon" href="/img/1.jpg">
@@ -108,7 +108,15 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(4)</small></div></li>
+    <li><div class="all active">全部文章<small>(10)</small></div></li>
+    
+        
+            
+            <li><div data-rel="css">css<small>(2)</small></div>
+                
+            </li>
+            
+        
     
         
             
@@ -120,7 +128,7 @@
     
         
             
-            <li><div data-rel="Vue">Vue<small>(1)</small></div>
+            <li><div data-rel="Vue">Vue<small>(3)</small></div>
                 
             </li>
             
@@ -128,7 +136,15 @@
     
         
             
-            <li><div data-rel="JavaScript">JavaScript<small>(2)</small></div>
+            <li><div data-rel="JavaScript">JavaScript<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="计算机网络">计算机网络<small>(1)</small></div>
                 
             </li>
             
@@ -144,7 +160,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="4">
+<input type="hidden" id="yelog_site_posts_number" value="10">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -179,6 +195,14 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">css</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">布局</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color5">Hexo</a>
     </li>
     
@@ -198,6 +222,22 @@
         <a href="javascript:" class="color3">事件</a>
     </li>
     
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">跨域</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">计算机网络</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">HTTP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">TCP</a>
+    </li>
+    
     <div class="clearfix"></div>
 </div>
 
@@ -208,6 +248,14 @@
     
     <nav id="title-list-nav">
         
+        <a  class="css "
+           href="/2019/08/27/CSS布局/"
+           data-tag="css,布局"
+           data-author="" >
+            <span class="post-title" title="CSS布局">CSS布局</span>
+            <span class="post-date" title="2019-08-27 14:43:05">2019/08/27</span>
+        </a>
+        
         <a  class="Hexo "
            href="/2019/08/24/Hexo常用命令/"
            data-tag="Hexo"
@@ -216,12 +264,36 @@
             <span class="post-date" title="2019-08-24 11:11:30">2019/08/24</span>
         </a>
         
+        <a  class="css "
+           href="/2019/08/27/Flex实现五种常用布局/"
+           data-tag="css,布局"
+           data-author="" >
+            <span class="post-title" title="Flex实现五种常用布局">Flex实现五种常用布局</span>
+            <span class="post-date" title="2019-08-27 14:41:43">2019/08/27</span>
+        </a>
+        
+        <a  class="Vue "
+           href="/2019/08/25/Vueue-MVVM/"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="Vueue_MVVM">Vueue_MVVM</span>
+            <span class="post-date" title="2019-08-25 13:57:03">2019/08/25</span>
+        </a>
+        
         <a  class="Vue "
            href="/2019/08/25/Vue数据绑定与虚拟DOM/"
            data-tag="Vue,数据绑定"
            data-author="" >
             <span class="post-title" title="Vue数据绑定与虚拟DOM">Vue数据绑定与虚拟DOM</span>
             <span class="post-date" title="2019-08-25 11:11:23">2019/08/25</span>
+        </a>
+        
+        <a  class="Vue "
+           href="/2019/08/25/Vue生命周期/"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="Vue生命周期">Vue生命周期</span>
+            <span class="post-date" title="2019-08-25 13:55:35">2019/08/25</span>
         </a>
         
         <a  class="JavaScript "
@@ -233,11 +305,27 @@
         </a>
         
         <a  class="JavaScript "
+           href="/2019/08/25/跨域以及解决办法/"
+           data-tag="跨域"
+           data-author="" >
+            <span class="post-title" title="跨域以及解决办法">跨域以及解决办法</span>
+            <span class="post-date" title="2019-08-25 13:59:06">2019/08/25</span>
+        </a>
+        
+        <a  class="JavaScript "
            href="/2019/08/24/js拷贝与继承/"
            data-tag="JavaScript"
            data-author="" >
             <span class="post-title" title="js拷贝与继承">js拷贝与继承</span>
             <span class="post-date" title="2019-08-24 10:57:50">2019/08/24</span>
+        </a>
+        
+        <a  class="计算机网络 "
+           href="/2019/08/25/计算机网络/"
+           data-tag="计算机网络,HTTP,TCP"
+           data-author="" >
+            <span class="post-title" title="计算机网络">计算机网络</span>
+            <span class="post-date" title="2019-08-25 13:50:24">2019/08/25</span>
         </a>
         
     </nav>
@@ -718,7 +806,7 @@ class Child extends Parent{
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#Hexo','#Vue','#数据绑定','#JavaScript','#事件',],
+            'data': ['#css','#布局','#Hexo','#Vue','#数据绑定','#JavaScript','#事件','#跨域','#计算机网络','#HTTP','#TCP',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
