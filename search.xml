@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>利用velocity解决poi-tl数据缺失不渲染的问题</title>
+      <link href="/2019/08/27/%E5%88%A9%E7%94%A8velocity%E8%A7%A3%E5%86%B3poi-tl%E6%95%B0%E6%8D%AE%E7%BC%BA%E5%A4%B1%E4%B8%8D%E6%B8%B2%E6%9F%93%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <url>/2019/08/27/%E5%88%A9%E7%94%A8velocity%E8%A7%A3%E5%86%B3poi-tl%E6%95%B0%E6%8D%AE%E7%BC%BA%E5%A4%B1%E4%B8%8D%E6%B8%B2%E6%9F%93%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 遇到的问题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 项目中遇到的问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>v-show和v-if</title>
       <link href="/2019/08/27/v-show%E5%92%8Cv-if/"/>
       <url>/2019/08/27/v-show%E5%92%8Cv-if/</url>
@@ -14,6 +39,8 @@
       <categories>
           
           <category> Vue </category>
+          
+          <category> 遇到的问题 </category>
           
       </categories>
       
