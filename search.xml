@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>回调炼狱_树形导航</title>
+      <link href="/2019/09/01/%E5%9B%9E%E8%B0%83%E7%82%BC%E7%8B%B1-%E6%A0%91%E5%BD%A2%E5%AF%BC%E8%88%AA/"/>
+      <url>/2019/09/01/%E5%9B%9E%E8%B0%83%E7%82%BC%E7%8B%B1-%E6%A0%91%E5%BD%A2%E5%AF%BC%E8%88%AA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="回调炼狱-树形导航"><a href="#回调炼狱-树形导航" class="headerlink" title="回调炼狱_树形导航"></a>回调炼狱_树形导航</h1><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在做项目的时候曾被要求写过一个树形的导航栏。当时也没多想，直接搞了一串的嵌套后台请求。<br>根据根节点ID去后台查询子节点信息——&gt;<br>根据子节点ID去后台查询孙子节点ID——&gt;<br>。。。一系列嵌套查询  </p><p>一度导致页面加载速度缓慢。<br>后来被指出，你这简直是回调炼狱。<br>于是去了解了解了回调炼狱。</p><h1 id="回调炼狱"><a href="#回调炼狱" class="headerlink" title="回调炼狱"></a>回调炼狱</h1><h2 id="什么是回调炼狱"><a href="#什么是回调炼狱" class="headerlink" title="什么是回调炼狱"></a>什么是回调炼狱</h2><p>说起回调地狱 首先想到的是异步，在js中我们经常会大量使用异步回调，例如使用ajax请求<br>我们来看下面这段代码：</p><pre><code>function getNode1(id){    function getNode2(node1Id){        function getNode3(node2Id){            function getNode4(node3Id){                function getNode5(node4Id){                }            }        }    }}</code></pre><p>我们发现上面代码大量使用了回调函数（将一个函数的结果作为参数传递给另个函数）并且有许多 }结尾的符号，使得代码看起来很混乱。</p><h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><h2 id="避免如此调用"><a href="#避免如此调用" class="headerlink" title="避免如此调用"></a>避免如此调用</h2><p>后来直接在后台把数据查询完之后，返回给了前台。</p><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><pre><code>//获取第一个节点var getNode1 = new Promise((resolve,reject)=&gt;{    $.ajax({        type:&quot;get&quot;,        url:&quot;****&quot;,        success:function(data){            if(data.Status == &quot;1&quot;){            resolve(data.result);        }else{            reject(data.err);        }    });})//获取第二个节点var getNode2 = new Promise((resolve,reject)=&gt;{    $.ajax({        type:&quot;get&quot;,        url:&quot;****&quot;,        success:function(data){            if(data.Status == &quot;1&quot;){                resolve(data.result);            }else{                reject(data.err);            }        }    });})//Promise的then(),catch()；getNode1.then(function(dataId){    return getNode2;}).catch(err=&gt;{//处理失败时。})//Promise的all()方法，等数组中的所有promise对象都完成执行Promise.all([getNode1,getNode2]).then(function([ResultJson1,ResultJson2]){//这里写等这两个ajax都成功返回数据才执行的业务逻辑})</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 遇到的问题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 项目中遇到的问题 </tag>
+            
+            <tag> 回调炼狱 </tag>
+            
+            <tag> promise </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Safari无痕模式下，storage被禁用问题</title>
       <link href="/2019/08/30/Safari%E6%97%A0%E7%97%95%E6%A8%A1%E5%BC%8F%E4%B8%8B%EF%BC%8Cstorage%E8%A2%AB%E7%A6%81%E7%94%A8%E9%97%AE%E9%A2%98/"/>
       <url>/2019/08/30/Safari%E6%97%A0%E7%97%95%E6%A8%A1%E5%BC%8F%E4%B8%8B%EF%BC%8Cstorage%E8%A2%AB%E7%A6%81%E7%94%A8%E9%97%AE%E9%A2%98/</url>
@@ -99,9 +128,9 @@
       
         <tags>
             
-            <tag> 项目中遇到的问题 </tag>
-            
             <tag> Vue </tag>
+            
+            <tag> 项目中遇到的问题 </tag>
             
         </tags>
       
@@ -191,11 +220,11 @@
     
     
     <entry>
-      <title>跨域以及解决办法</title>
-      <link href="/2019/08/25/%E8%B7%A8%E5%9F%9F%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
-      <url>/2019/08/25/%E8%B7%A8%E5%9F%9F%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+      <title>Ajax以及跨域</title>
+      <link href="/2019/08/25/Ajax%E4%BB%A5%E5%8F%8A%E8%B7%A8%E5%9F%9F/"/>
+      <url>/2019/08/25/Ajax%E4%BB%A5%E5%8F%8A%E8%B7%A8%E5%9F%9F/</url>
       
-        <content type="html"><![CDATA[<h2 id="跨域问题以及解决"><a href="#跨域问题以及解决" class="headerlink" title="跨域问题以及解决"></a>跨域问题以及解决</h2><p>浏览器都有一个“同源策略”限制，限制了ajax的请求同源策略：表示请求的协议，域名，端口号相同，就是同源，ajax只能访问同源的请求。</p><p>同源策略的限制：</p><p>ajax只能请求同源的地址<br>js只能获取同源的cookie及本地存储<br>js只能操作同源的dom</p><p>同源策略的限制，使网络之间相互访问的安全性得到了提高。</p><h3 id="解决方式一：jsonp跨域"><a href="#解决方式一：jsonp跨域" class="headerlink" title="解决方式一：jsonp跨域"></a>解决方式一：jsonp跨域</h3><p><a href="https://blog.csdn.net/HansExploration/article/details/80314948" target="_blank" rel="noopener">https://blog.csdn.net/HansExploration/article/details/80314948</a><br><strong>缺点</strong>：只支持GET不支持POST  </p><p>原理：虽然同源策略限制了ajax的跨域请求，但是并没有限制标签上的src 和href访问不同域下的资源，jsonp就是利用了这一点。</p><pre><code>$.ajax({    url: &quot;http://www.kugou.com/yy/index.php?r=play/getdata&amp;_=1497972864535&quot;,    dataType: &apos;jsonp&apos;,    //设置dataType为jsonp    data:{hash: &quot;ECB956D9AD23EC123617F63EC6E90A7F&quot;,album_id:&quot;1008922&quot;},   //url后面的参数    success: function (data) {        console.log(data);    }});</code></pre><p>为了便于客户端使用数据，逐渐形成了一种非正式传输协议，人们把它称作JSONP，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</p><h3 id="解决方式二-修改响应头"><a href="#解决方式二-修改响应头" class="headerlink" title="解决方式二 修改响应头"></a>解决方式二 修改响应头</h3><p>Cross-Origin Resource Sharing（CORS）跨域资源共享是一份浏览器技术的规范，与 JSONP 不同，CORS 除了 GET 要求方法以外也支持其他的 HTTP 要求。服务器一般需要增加如下响应头的一种或几种：</p><pre><code>//设置跨域访问的中间件router.all(&apos;*&apos;, function(req, res, next) {  res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;); //允许所有的外来地址 都可以访问  res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);//检查是不是ajax访问  res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;POST,GET&quot;);//允许请求的方法是post 和get  res.header(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);//设置响应的头部  next();});</code></pre><p>除此之外还有：window.name+iframe的方式， window.postMessage()的方法，修改document.domain跨子域等方法。   </p>]]></content>
+        <content type="html"><![CDATA[<p>[toc]</p><h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><h2 id="原生写法"><a href="#原生写法" class="headerlink" title="原生写法"></a>原生写法</h2><pre><code>function ajax(url){        var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : ActiveXObject(&quot;microsoft.XMLHttp&quot;)        xhr.open(&quot;get&quot;,url,true);        xhr.send();        xhr.onreadysattechange = () =&gt;{            if(xhr.readystate == 4){                if(xhr.status == 200){                    var data = xhr.responseText;                    return data;                }            }        }        }</code></pre><h3 id="原生GET请求"><a href="#原生GET请求" class="headerlink" title="原生GET请求"></a>原生GET请求</h3><pre><code>var  xmlhttp = null; if (window.XMLHttpRequest) {// code for Firefox, Opera, IE7, etc.     xmlhttp = new XMLHttpRequest(); } else if (window.ActiveXObject) {// code for IE6, IE5     xmlhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;); } //编写回调函数 xmlhttp.onreadystatechange = function() {     if (xmlhttp.readyState == 4 &amp;&amp; xmlhttp.status == 200) {         alert(xmlhttp.responseText)     } } //open设置请求方式和请求路径 xmlhttp.open(&quot;get&quot;, &quot;/Ajax/ajax2?username=张三&quot;);//一个servlet，后面还可以写是否同步 //send 发送 xmlhttp.send();</code></pre><h3 id="原生POST请求"><a href="#原生POST请求" class="headerlink" title="原生POST请求"></a>原生POST请求</h3><pre><code>var xmlhttp = null;if (window.XMLHttpRequest) {// code for Firefox, Opera, IE7, etc.    xmlhttp = new XMLHttpRequest();} else if (window.ActiveXObject) {// code for IE6, IE5    xmlhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);}//编写回调函数xmlhttp.onreadystatechange = function() {    if (xmlhttp.readyState == 4 &amp;&amp; xmlhttp.status == 200) {        alert(xmlhttp.responseText)    }}//open设置请求方式和请求路径xmlhttp.open(&quot;post&quot;, &quot;/Ajax/ajax2&quot;);//一个servlet，后面还可以写是否同步//设置请求头xmlhttp.setRequestHeader(&quot;content-type&quot;, &quot;application/x-www-form-urlencoded&quot;)//send 发送xmlhttp.send(&quot;username=张三&quot;);</code></pre><h2 id="Jquery版Ajax"><a href="#Jquery版Ajax" class="headerlink" title="Jquery版Ajax"></a>Jquery版Ajax</h2><h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><pre><code>$.ajax({//请求方式    type:&apos;GET&apos;,    //发送请求的地址以及传输的数据    url:&apos;fzz.php?number&apos;+=xxx,    //服务器返回的数据类型    dataType:&apos;json&apos;,    success:function(data){        //请求成功函数内容    },    error:function(jqXHR){        //请求失败函数内容    }});</code></pre><h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><pre><code>$.ajax({    //请求方式    type:&apos;POST&apos;,    //发送请求的地址    url:&apos;fzz.php&apos;,    //服务器返回的数据类型    dataType:&apos;json&apos;,    //发送到服务器的数据，对象必须为key/value的格式，jquery会自动转换为字符串格式    data:{name:xxx,age:xxx},    success:function(data){        //请求成功函数内容    },    error:function(jqXHR){        //请求失败函数内容    }});</code></pre><h3 id="get"><a href="#get" class="headerlink" title="$.get()"></a>$.get()</h3><pre><code>$.get(&apos;fzz.php&apos;,{    //发送至服务器的数据，格式为key/value    number:xxx  },function(data){    //请求成功时的callback},&apos;json&apos;);//json为返回内容的格式</code></pre><h3 id="post"><a href="#post" class="headerlink" title="$.post()"></a>$.post()</h3><pre><code>$.post(&apos;fzz.php&apos;,{    //发送至服务器的数据，格式为key/value    number:xxx  },function(data){    //请求成功时的callback},&apos;json&apos;);//json为返回内容的格式</code></pre><h3 id="load-方法"><a href="#load-方法" class="headerlink" title="load()方法"></a>load()方法</h3><p>能载入远程HTML代码并插入DOM中</p><pre><code>//data为发送的key/value数据，可选//callback为请求完成的回调，可选无论请求成功或失败都会调用$(‘xxx’).load(‘fzz.html’,data,callback);</code></pre><h3 id="serialize-方法"><a href="#serialize-方法" class="headerlink" title="serialize()方法"></a>serialize()方法</h3><p>serialize()作用于一个jQuery对象，能够将DOM元素内容序列化为字符串,用于Ajax请求.</p><pre><code>$(‘#form1’).serialize();</code></pre><h2 id="Ajax跨域"><a href="#Ajax跨域" class="headerlink" title="Ajax跨域"></a>Ajax跨域</h2><h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>同源策略<br>协议、域名、端口号  </p><h3 id="解决跨域"><a href="#解决跨域" class="headerlink" title="解决跨域"></a>解决跨域</h3><ul><li>jsonp解决跨域</li><li>CORS跨域资源共享</li><li>document.domain</li></ul><h4 id="jsonp解决跨域"><a href="#jsonp解决跨域" class="headerlink" title="jsonp解决跨域"></a>jsonp解决跨域</h4><p><strong>原理</strong>：动态创建一个script标签。利用script标签的src属性不受同源策略限制。因为所有的src属性和href属性都不受同源策略限制。可以请求第三方服务器数据内容。<br>步骤</p><ul><li>去创建一个script标签</li><li>script的src属性设置接口地址</li><li>接口参数,必须要带一个自定义函数名 要不然后台无法返回数据。</li><li>通过定义函数名去接收后台返回数据</li></ul><pre><code>//去创建一个script标签 var script = document.createElement(&quot;script&quot;); //script的src属性设置接口地址 并带一个callback回调函数名称 script.src=&quot;http://127.0.0.1:8888/index.php?callback=jsonpCallback&quot;;//插入到页面 document.head.appendChild(script); //通过定义函数名去接收后台返回数据 function jsonpCallback(data){ //注意 jsonp返回的数据是json对象可以直接使用 //ajax 取得数据是json字符串需要转换成json对象才可以使用。 }</code></pre><h4 id="CORS跨域资源共享"><a href="#CORS跨域资源共享" class="headerlink" title="CORS跨域资源共享"></a>CORS跨域资源共享</h4><p><strong>原理</strong>：服务器设置Access-Control-Allow-OriginHTTP响应头之后，浏览器将会允许跨域请求<br><strong>限制</strong>：浏览器需要支持HTML5，可以支持POST，PUT等方法兼容ie9以上<br>需要后台设置</p><pre><code>Access-Control-Allow-Origin: * //允许所有域名访问，或者Access-Control-Allow-Origin: http://a.com //只允许所有域名访问</code></pre><h4 id="document-domain"><a href="#document-domain" class="headerlink" title="document.domain"></a>document.domain</h4><p><strong>原理</strong>：相同主域名不同子域名下的页面，可以设置document.domain让它们同域  </p><p><strong>限制</strong>：同域document提供的是页面间的互操作，需要载入iframe页面</p><pre><code>// URL http://a.com/foovar ifr = document.createElement(&apos;iframe&apos;);ifr.src = &apos;http://b.a.com/bar&apos;; ifr.onload = function(){    var ifrdoc = ifr.contentDocument || ifr.contentWindow.document;    ifrdoc.getElementsById(&quot;foo&quot;).innerHTML);};ifr.style.display = &apos;none&apos;;document.body.appendChild(ifr);</code></pre><p><strong>参考文章</strong>：<a href="https://forgiveforever.github.io/2019/08/26/Ajax/" target="_blank" rel="noopener">https://forgiveforever.github.io/2019/08/26/Ajax/</a></p>]]></content>
       
       
       <categories>
@@ -207,6 +236,8 @@
       
         <tags>
             
+            <tag> Ajax </tag>
+            
             <tag> 跨域 </tag>
             
         </tags>
@@ -216,9 +247,9 @@
     
     
     <entry>
-      <title>Vueue_MVVM</title>
-      <link href="/2019/08/25/Vueue-MVVM/"/>
-      <url>/2019/08/25/Vueue-MVVM/</url>
+      <title>Vue_MVVM</title>
+      <link href="/2019/08/25/Vue-MVVM/"/>
+      <url>/2019/08/25/Vue-MVVM/</url>
       
         <content type="html"><![CDATA[<h1 id="对于MVVM的理解"><a href="#对于MVVM的理解" class="headerlink" title="对于MVVM的理解"></a>对于MVVM的理解</h1><p>MVVM 是 Model-View-ViewModel 的缩写。<br>Model代表数据模型，也可以在Model中定义数据修改和操作的业务逻辑。<br>View 代表UI 组件，它负责将数据模型转化成UI 展现出来。<br>ViewModel 监听模型数据的改变和控制视图行为、处理用户交互，简单理解就是一个同步View 和 Model的对象，连接Model和View。<br>在MVVM架构下，View和Model之间并没有直接的联系，而是通过ViewModel进行交互，Model 和 ViewModel 之间的交互是双向的， 因此View 数据的变化会同步到Model中，而Model 数据的变化也会立即反应到View 上。<br>ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而View 和 Model 之间的同步工作完全是自动的，无需人为干涉，因此开发者只需关注业务逻辑，不需要手动操作DOM, 不需要关注数据状态的同步问题，复杂的数据状态维护完全由 MVVM 来统一管理。  </p><p>Controller不再像MVC那样直接持有Model了，Controller只需要数据解析的结果而不关心过程，所以就相当于VM把“如何解析Model”给封装起来了</p>]]></content>
       
