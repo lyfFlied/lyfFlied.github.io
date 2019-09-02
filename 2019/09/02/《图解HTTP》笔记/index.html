@@ -2,29 +2,29 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>图解HTTP笔记 | LYF&#39;s blog</title>
+  <title>《图解HTTP》笔记 | LYF&#39;s blog</title>
   <meta name="keywords" content=" 计算机网络 , http , http状态码 ">
-  <meta name="description" content="图解HTTP笔记 | LYF&#39;s blog">
+  <meta name="description" content="《图解HTTP》笔记 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="图解HTTP第1章 了解Web及网络基础TCP/IP的分层管理应用层决定了向用户提供应用服务时通信的活动     传输层 提供处于网络连接中的两台计算机之间的数据传输 两个协议:TCP、UDP       网络层 处理网络上流动的数据包     数据包是网络传输中的最小数据单位   在众多的选择内选择一条传输路线  链路层 用来处理连接网络的硬件部分，包括操作系统、硬件的设备驱动、NIC、光纤等。">
 <meta name="keywords" content="计算机网络,http,http状态码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图解HTTP笔记">
-<meta property="og:url" content="https://lyfflied.github.io/2019/09/02/图解HTTP笔记/index.html">
+<meta property="og:title" content="《图解HTTP》笔记">
+<meta property="og:url" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/index.html">
 <meta property="og:site_name" content="LYF&#39;s blog">
 <meta property="og:description" content="图解HTTP第1章 了解Web及网络基础TCP/IP的分层管理应用层决定了向用户提供应用服务时通信的活动     传输层 提供处于网络连接中的两台计算机之间的数据传输 两个协议:TCP、UDP       网络层 处理网络上流动的数据包     数据包是网络传输中的最小数据单位   在众多的选择内选择一条传输路线  链路层 用来处理连接网络的硬件部分，包括操作系统、硬件的设备驱动、NIC、光纤等。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/图解HTTP笔记/%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http010.png">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/图解HTTP笔记/%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http013.png">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/图解HTTP笔记/%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http024.png">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/图解HTTP笔记/%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http025.png">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/图解HTTP笔记/%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http038.png">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/图解HTTP笔记/%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http054.png">
-<meta property="og:updated_time" content="2019-09-02T11:36:04.778Z">
+<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http010.png">
+<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http013.png">
+<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http024.png">
+<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http025.png">
+<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http038.png">
+<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http054.png">
+<meta property="og:updated_time" content="2019-09-02T11:46:46.791Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图解HTTP笔记">
+<meta name="twitter:title" content="《图解HTTP》笔记">
 <meta name="twitter:description" content="图解HTTP第1章 了解Web及网络基础TCP/IP的分层管理应用层决定了向用户提供应用服务时通信的活动     传输层 提供处于网络连接中的两台计算机之间的数据传输 两个协议:TCP、UDP       网络层 处理网络上流动的数据包     数据包是网络传输中的最小数据单位   在众多的选择内选择一条传输路线  链路层 用来处理连接网络的硬件部分，包括操作系统、硬件的设备驱动、NIC、光纤等。">
-<meta name="twitter:image" content="https://lyfflied.github.io/2019/09/02/图解HTTP笔记/%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http010.png">
+<meta name="twitter:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http010.png">
 
 
 <link rel="icon" href="/img/1.jpg">
@@ -127,23 +127,15 @@
     
         
             
-            <li><div data-rel="css">css<small>(2)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="算法">算法<small>(2)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
             <li><div data-rel="面经">面经<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="css">css<small>(2)</small></div>
                 
             </li>
             
@@ -159,7 +151,7 @@
     
         
             
-            <li><div data-rel="遇到的问题">遇到的问题<small>(3)</small></div>
+            <li><div data-rel="算法">算法<small>(2)</small></div>
                 
             </li>
             
@@ -176,6 +168,14 @@
                         </li>
                             
                     </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="遇到的问题">遇到的问题<small>(3)</small></div>
                 
             </li>
             
@@ -246,11 +246,19 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">面经</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">css</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">布局</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">Hexo</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -262,18 +270,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">面经</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">Hexo</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">项目中遇到的问题</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">Vue</a>
     </li>
     
@@ -282,11 +278,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">JavaScript</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">事件</a>
+        <a href="javascript:" class="color4">项目中遇到的问题</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -299,6 +291,14 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">http状态码</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">JavaScript</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">事件</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -343,22 +343,6 @@
             <span class="post-date" title="2019-08-25 13:59:06">2019/08/25</span>
         </a>
         
-        <a  class="css "
-           href="/2019/08/27/CSS布局/"
-           data-tag="css,布局"
-           data-author="" >
-            <span class="post-title" title="CSS布局">CSS布局</span>
-            <span class="post-date" title="2019-08-27 14:43:05">2019/08/27</span>
-        </a>
-        
-        <a  class="算法 "
-           href="/2019/08/28/KMP字符匹配算法/"
-           data-tag="算法,字符串匹配"
-           data-author="" >
-            <span class="post-title" title="KMP字符匹配算法">KMP字符匹配算法</span>
-            <span class="post-date" title="2019-08-28 20:54:29">2019/08/28</span>
-        </a>
-        
         <a  class="面经 "
            href="/2019/09/02/GIGO一面面经/"
            data-tag="面经"
@@ -375,6 +359,14 @@
             <span class="post-date" title="2019-08-27 14:41:43">2019/08/27</span>
         </a>
         
+        <a  class="css "
+           href="/2019/08/27/CSS布局/"
+           data-tag="css,布局"
+           data-author="" >
+            <span class="post-title" title="CSS布局">CSS布局</span>
+            <span class="post-date" title="2019-08-27 14:43:05">2019/08/27</span>
+        </a>
+        
         <a  class="Hexo "
            href="/2019/08/24/Hexo常用命令/"
            data-tag="Hexo"
@@ -383,12 +375,20 @@
             <span class="post-date" title="2019-08-24 11:11:30">2019/08/24</span>
         </a>
         
-        <a  class="遇到的问题 "
-           href="/2019/08/30/Safari无痕模式下，storage被禁用问题/"
-           data-tag="项目中遇到的问题"
+        <a  class="算法 "
+           href="/2019/08/28/KMP字符匹配算法/"
+           data-tag="算法,字符串匹配"
            data-author="" >
-            <span class="post-title" title="Safari无痕模式下，storage被禁用问题">Safari无痕模式下，storage被禁用问题</span>
-            <span class="post-date" title="2019-08-30 10:44:00">2019/08/30</span>
+            <span class="post-title" title="KMP字符匹配算法">KMP字符匹配算法</span>
+            <span class="post-date" title="2019-08-28 20:54:29">2019/08/28</span>
+        </a>
+        
+        <a  class="Vue "
+           href="/2019/08/25/Vue-MVVM/"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="Vue_MVVM">Vue_MVVM</span>
+            <span class="post-date" title="2019-08-25 13:57:03">2019/08/25</span>
         </a>
         
         <a  class="Vue "
@@ -407,12 +407,28 @@
             <span class="post-date" title="2019-08-25 13:55:35">2019/08/25</span>
         </a>
         
-        <a  class="Vue "
-           href="/2019/08/25/Vue-MVVM/"
-           data-tag="Vue"
+        <a  class="遇到的问题 "
+           href="/2019/08/30/Safari无痕模式下，storage被禁用问题/"
+           data-tag="项目中遇到的问题"
            data-author="" >
-            <span class="post-title" title="Vue_MVVM">Vue_MVVM</span>
-            <span class="post-date" title="2019-08-25 13:57:03">2019/08/25</span>
+            <span class="post-title" title="Safari无痕模式下，storage被禁用问题">Safari无痕模式下，storage被禁用问题</span>
+            <span class="post-date" title="2019-08-30 10:44:00">2019/08/30</span>
+        </a>
+        
+        <a  class="Vue 遇到的问题 "
+           href="/2019/08/27/v-show和v-if/"
+           data-tag="Vue,项目中遇到的问题"
+           data-author="" >
+            <span class="post-title" title="v-show和v-if">v-show和v-if</span>
+            <span class="post-date" title="2019-08-27 15:36:01">2019/08/27</span>
+        </a>
+        
+        <a  class="计算机网络 "
+           href="/2019/09/02/《图解HTTP》笔记/"
+           data-tag="计算机网络,http,http状态码"
+           data-author="" >
+            <span class="post-title" title="《图解HTTP》笔记">《图解HTTP》笔记</span>
+            <span class="post-date" title="2019-09-02 19:44:12">2019/09/02</span>
         </a>
         
         <a  class="JavaScript "
@@ -421,22 +437,6 @@
            data-author="" >
             <span class="post-title" title="事件防抖与节流">事件防抖与节流</span>
             <span class="post-date" title="2019-08-25 10:50:59">2019/08/25</span>
-        </a>
-        
-        <a  class="Vue 遇到的问题 "
-           href="/2019/08/27/v-show和v-if/"
-           data-tag="项目中遇到的问题,Vue"
-           data-author="" >
-            <span class="post-title" title="v-show和v-if">v-show和v-if</span>
-            <span class="post-date" title="2019-08-27 15:36:01">2019/08/27</span>
-        </a>
-        
-        <a  class="计算机网络 "
-           href="/2019/09/02/图解HTTP笔记/"
-           data-tag="计算机网络,http,http状态码"
-           data-author="" >
-            <span class="post-title" title="图解HTTP笔记">图解HTTP笔记</span>
-            <span class="post-date" title="2019-09-02 19:35:15">2019/09/02</span>
         </a>
         
         <a  class="遇到的问题 "
@@ -463,30 +463,6 @@
             <span class="post-date" title="2019-09-01 17:00:34">2019/09/01</span>
         </a>
         
-        <a  class="Vue "
-           href="/2019/09/02/Vue-diff算法/"
-           data-tag="Vue"
-           data-author="" >
-            <span class="post-title" title="Vue_diff算法">Vue_diff算法</span>
-            <span class="post-date" title="2019-09-02 14:25:23">2019/09/02</span>
-        </a>
-        
-        <a  class="JavaScript "
-           href="/2019/08/24/js拷贝与继承/"
-           data-tag="JavaScript"
-           data-author="" >
-            <span class="post-title" title="js拷贝与继承">js拷贝与继承</span>
-            <span class="post-date" title="2019-08-24 10:57:50">2019/08/24</span>
-        </a>
-        
-        <a  class="JavaScript "
-           href="/2019/09/02/数组去重/"
-           data-tag="数组"
-           data-author="" >
-            <span class="post-title" title="数组去重">数组去重</span>
-            <span class="post-date" title="2019-09-02 13:18:04">2019/09/02</span>
-        </a>
-        
         <a  class="JavaScript "
            href="/2019/09/02/数组扁平化/"
            data-tag="数组"
@@ -501,6 +477,30 @@
            data-author="" >
             <span class="post-title" title="虚拟DOM">虚拟DOM</span>
             <span class="post-date" title="2019-09-02 14:25:52">2019/09/02</span>
+        </a>
+        
+        <a  class="JavaScript "
+           href="/2019/09/02/数组去重/"
+           data-tag="数组"
+           data-author="" >
+            <span class="post-title" title="数组去重">数组去重</span>
+            <span class="post-date" title="2019-09-02 13:18:04">2019/09/02</span>
+        </a>
+        
+        <a  class="JavaScript "
+           href="/2019/08/24/js拷贝与继承/"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="js拷贝与继承">js拷贝与继承</span>
+            <span class="post-date" title="2019-08-24 10:57:50">2019/08/24</span>
+        </a>
+        
+        <a  class="Vue "
+           href="/2019/09/02/Vue-diff算法/"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="Vue_diff算法">Vue_diff算法</span>
+            <span class="post-date" title="2019-09-02 14:25:23">2019/09/02</span>
         </a>
         
         <a  class="计算机网络 "
@@ -523,9 +523,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-图解HTTP笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-《图解HTTP》笔记" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">图解HTTP笔记</h1>
+        <h1 class="article-title">《图解HTTP》笔记</h1>
     
     <div class="article-meta">
         
@@ -551,7 +551,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-09-02 19:36:04'>2019-09-02 19:35</time>
+        创建时间:<time class="date" title='更新时间: 2019-09-02 19:46:46'>2019-09-02 19:44</time>
         
     </div>
     <div class="article-meta">
@@ -601,8 +601,8 @@
 <h4 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h4><ul>
 <li>用来处理连接网络的硬件部分，包括操作系统、硬件的设备驱动、NIC、光纤等。</li>
 </ul>
-<h4 id="传输过程"><a href="#传输过程" class="headerlink" title="传输过程"></a>传输过程</h4><p><img src="%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http010.png" alt="传输流程"></p>
-<h3 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h3><p><img src="%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http013.png" alt="TCP三次握手" title="TCP三次握手">  </p>
+<h4 id="传输过程"><a href="#传输过程" class="headerlink" title="传输过程"></a>传输过程</h4><p><img src="%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http010.png" alt="传输流程"></p>
+<h3 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h3><p><img src="%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http013.png" alt="TCP三次握手" title="TCP三次握手">  </p>
 <p><strong>SYN</strong>：同步序列编号（Synchronize Sequence Numbers）。是TCP/IP建立连接时使用的握手信号。<br><strong>ACK</strong> (Acknowledge character）即是确认字符，在数据通信中，接收站发给发送站的一种传输类控制字符。表示发来的数据已确认接收无误。  </p>
 <ol>
 <li>客户端发送一个携带SYN标志位的包，请求建立连接。</li>
@@ -610,11 +610,11 @@
 <li>客户端再发送一个携带ACK标志位的包，表示连接成功，开始进行数据传输。</li>
 </ol>
 <h2 id="第2章-简单的HTTP协议"><a href="#第2章-简单的HTTP协议" class="headerlink" title="第2章 简单的HTTP协议"></a>第2章 简单的HTTP协议</h2><h3 id="请求报文的构成（P23）"><a href="#请求报文的构成（P23）" class="headerlink" title="请求报文的构成（P23）"></a>请求报文的构成（P23）</h3><p>请求方法、请求URI、请求版本、可选的请求首部字段、内容实体。  </p>
-<p><img src="%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http024.png" alt="请求报文">  </p>
-<h3 id="响应报文的构成"><a href="#响应报文的构成" class="headerlink" title="响应报文的构成"></a>响应报文的构成</h3><p><img src="%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http025.png" alt="响应报文">  </p>
+<p><img src="%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http024.png" alt="请求报文">  </p>
+<h3 id="响应报文的构成"><a href="#响应报文的构成" class="headerlink" title="响应报文的构成"></a>响应报文的构成</h3><p><img src="%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http025.png" alt="响应报文">  </p>
 <h3 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h3><p>只要任意一端没有明确提出要断开连接，就保持TCP连接状态。  </p>
-<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p><img src="%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http038.png" alt="cookie">  </p>
-<h2 id="第3章-HTTP报文中的HTTP信息"><a href="#第3章-HTTP报文中的HTTP信息" class="headerlink" title="第3章 HTTP报文中的HTTP信息"></a>第3章 HTTP报文中的HTTP信息</h2><h2 id="第4章-返回结果的HTTP状态"><a href="#第4章-返回结果的HTTP状态" class="headerlink" title="第4章 返回结果的HTTP状态"></a>第4章 返回结果的HTTP状态</h2><h3 id="状态码的类别"><a href="#状态码的类别" class="headerlink" title="状态码的类别"></a>状态码的类别</h3><p><img src="%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/http054.png" alt="状态码类别">  </p>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p><img src="%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http038.png" alt="cookie">  </p>
+<h2 id="第3章-HTTP报文中的HTTP信息"><a href="#第3章-HTTP报文中的HTTP信息" class="headerlink" title="第3章 HTTP报文中的HTTP信息"></a>第3章 HTTP报文中的HTTP信息</h2><h2 id="第4章-返回结果的HTTP状态"><a href="#第4章-返回结果的HTTP状态" class="headerlink" title="第4章 返回结果的HTTP状态"></a>第4章 返回结果的HTTP状态</h2><h3 id="状态码的类别"><a href="#状态码的类别" class="headerlink" title="状态码的类别"></a>状态码的类别</h3><p><img src="%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E7%AC%94%E8%AE%B0/http054.png" alt="状态码类别">  </p>
 <h4 id="2XX-成功"><a href="#2XX-成功" class="headerlink" title="2XX 成功"></a>2XX 成功</h4><ul>
 <li>200 OK: 请求已正常处理</li>
 <li>204 No Content: 请求处理成功，但是没有资源可以返回</li>
@@ -692,7 +692,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#Ajax','#跨域','#css','#布局','#算法','#字符串匹配','#面经','#Hexo','#项目中遇到的问题','#Vue','#数据绑定','#JavaScript','#事件','#计算机网络','#http','#http状态码','#动态规划','#回调炼狱','#promise','#数组','#HTTP','#TCP',],
+            'data': ['#Ajax','#跨域','#面经','#css','#布局','#Hexo','#算法','#字符串匹配','#Vue','#数据绑定','#项目中遇到的问题','#计算机网络','#http','#http状态码','#JavaScript','#事件','#动态规划','#回调炼狱','#promise','#数组','#HTTP','#TCP',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
