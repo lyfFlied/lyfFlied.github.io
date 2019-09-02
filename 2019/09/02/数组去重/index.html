@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Safari无痕模式下，storage被禁用问题 | LYF&#39;s blog</title>
-  <meta name="keywords" content=" 项目中遇到的问题 ">
-  <meta name="description" content="Safari无痕模式下，storage被禁用问题 | LYF&#39;s blog">
+  <title>数组去重 | LYF&#39;s blog</title>
+  <meta name="keywords" content=" 数组 ">
+  <meta name="description" content="数组去重 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="数组去重1.from&amp;amp;&amp;amp;setfunction ddd1(arr){     let res = Array.from(new Set(arr));     return res; }2.filter &amp;amp;&amp;amp; indexOffunction ddd2(arr){     let res = arr.filter((item,index,arr)=&amp;gt;{">
 <meta name="keywords" content="数组">
@@ -464,9 +464,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Safari无痕模式下，storage被禁用问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-数组去重" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Safari无痕模式下，storage被禁用问题</h1>
+        <h1 class="article-title">数组去重</h1>
     
     <div class="article-meta">
         
@@ -474,21 +474,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="遇到的问题">遇到的问题</a>
+                <a href="javascript:" data-rel="JavaScript">JavaScript</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color4">项目中遇到的问题</a>
+            <a href="javascript:" class="color3">数组</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-30 10:45:31'>2019-08-30 10:44</time>
+        创建时间:<time class="date" title='更新时间: 2019-09-02 13:33:55'>2019-09-02 13:18</time>
         
     </div>
     <div class="article-meta">
@@ -510,7 +510,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Safari无痕模式下，storage被禁用"><span class="toc-text">Safari无痕模式下，storage被禁用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充"><span class="toc-text">补充</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数组去重"><span class="toc-text">数组去重</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-from-amp-amp-set"><span class="toc-text">1.from&amp;&amp;set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-filter-amp-amp-indexOf"><span class="toc-text">2.filter &amp;&amp; indexOf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-forEach-amp-amp-includes"><span class="toc-text">3. forEach &amp;&amp; includes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-filter-amp-amp-map"><span class="toc-text">4. filter &amp;&amp; map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-引用类型数组去重"><span class="toc-text">5. 引用类型数组去重</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -525,91 +525,34 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Safari无痕模式下，storage被禁用"><a href="#Safari无痕模式下，storage被禁用" class="headerlink" title="Safari无痕模式下，storage被禁用"></a>Safari无痕模式下，storage被禁用</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>Safari开启无痕模式后，localStorage和sessionStorage为空，对其进行set操作也会报错，也就是说这种情况下，storage是被禁止使用了。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
-<li>对storage进行一层封装，遇到这种开启无痕模式的情况，会定义一个window的全局变量，把之前准备存放到storage的内容改为存到这个全局变量中。</li>
-<li>无痕模式下localStorage和sessionStorage对象本身依然是存在的，只是调用setItem方法是会报错。</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code>try {
-     sessionStorage.setItem(&apos;private_test&apos;, 1);
-   } catch (e) {
-     //无痕模式
-   }</code></pre><ul>
-<li>另外定义一个NameStorage对象，在原生storage失效时使用</li>
-</ul>
-<pre><code>// 隐私模式下面，把临时值存到window.name中去
-  function NameStorage(type) {
-    this.store = NameStorage[type];
-  }
-
-
-  Object.assign(NameStorage.prototype, {
-    getItem: function(key) {
-      return this.store[key];
-    },
-    setItem: function(key, value) {
-      this.store[key] = value;
-      this._saveNameValue();
-    },
-    removeItem: function(key) {
-      delete this.store[key];
-      this._saveNameValue();
-    },
-    clear: function() {
-      this.store = {};
-      this._saveNameValue();
-    },
-    _saveNameValue: function() {
-      var ret = {
-        session: NameStorage.session,
-        local: NameStorage.local
-      }
-
-      window.name = JSON.stringify(ret);
-    }
-  });</code></pre><ul>
-<li>上面会把所有的local和session数据存储到window.name上去，然后在每个页面启动时，调用一下keepName方法，把window.name的数据拿下来放到NameStorage上面。这时候，只需要调用new NameStorage(‘local’)来代替localStorage进行操作就行了</li>
-</ul>
-<pre><code>function keepName () {
-    if (keepName.done) {
-      return;
-    }
-
-    var ret;
-
-    if (window.name) {
-      try {
-        ret = JSON.parse(window.name);
-      } catch (e) {
-        ret = {};
-      }
-    }
-
-    if (!_.isPlainObject(ret)) {
-      ret = {};
-    }
-
-
-    if (!ret.session) {
-      ret.session = {};
-    }
-
-    if (!ret.local) {
-      ret.local = {};
-    }
-
-
-    NameStorage.session = ret.session;
-    NameStorage.local = ret.local;
-    keepName.done = true;
-  }</code></pre><h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
-<li>无痕模式下，localStorage和sessionStorage的报错信息是：QuotaExceededError，code为22，这个其实是storage存储空间用完了报的错，就比如当前浏览器storage内存为5mb，你已经存储了5mb的数据后，再进行setItem操作就会报这个错误。</li>
-<li>所以我猜想无痕模式下，浏览器是把storage的内存先清空，然后再设置最大值为0，这样调用setItem就直接报错了。</li>
-<li>另外无痕模式下cookie是可以使用的，大概因为cookie是跟服务器有关，而storage是属于浏览器的特性吧。</li>
-<li>最后还有一种情况，就是无痕模式下打开了某个页面，然后把浏览器关闭再打开，这个时候会打开访问的页面，但是window.name已经丢失了，所以就拿不到以前存储的数据了。这种情况只能页面做容错处理了。</li>
-</ul>
-<p>参考原文链接： <a href="https://www.jianshu.com/p/ae5f1e3ed84d" target="_blank" rel="noopener">https://www.jianshu.com/p/ae5f1e3ed84d</a></p>
-
+        <h1 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h1><h2 id="1-from-amp-amp-set"><a href="#1-from-amp-amp-set" class="headerlink" title="1.from&amp;&amp;set"></a>1.from&amp;&amp;set</h2><pre><code>function ddd1(arr){
+    let res = Array.from(new Set(arr));
+    return res;
+}</code></pre><h2 id="2-filter-amp-amp-indexOf"><a href="#2-filter-amp-amp-indexOf" class="headerlink" title="2.filter &amp;&amp; indexOf"></a>2.filter &amp;&amp; indexOf</h2><pre><code>function ddd2(arr){
+    let res = arr.filter((item,index,arr)=&gt;{
+        return arr.indexOf(item) == index;
+    });
+    return res;
+}</code></pre><h2 id="3-forEach-amp-amp-includes"><a href="#3-forEach-amp-amp-includes" class="headerlink" title="3. forEach &amp;&amp; includes"></a>3. forEach &amp;&amp; includes</h2><pre><code>function ddd4(arr){
+    let res = [];
+    arr.forEach(item=&gt;{
+        if(!res.includes(item)) res.push(item);
+    });
+    return res;
+}</code></pre><h2 id="4-filter-amp-amp-map"><a href="#4-filter-amp-amp-map" class="headerlink" title="4. filter &amp;&amp; map"></a>4. filter &amp;&amp; map</h2><pre><code>function ddd4(arr){
+    const tem = new Map();
+    let res = arr.filter(itme=&gt;{
+        return !tem.has(item) &amp;&amp; tem.set(item,1);
+    });
+    return res;
+}</code></pre><h2 id="5-引用类型数组去重"><a href="#5-引用类型数组去重" class="headerlink" title="5. 引用类型数组去重"></a>5. 引用类型数组去重</h2><pre><code>function ddd5(arr){
+    let hash = {};
+    arr = arr.reduce((itme,next)=&gt;{
+        hash[next.name]? &apos;&apos; : hash[next.name] = true &amp;&amp; item.push(next);
+        return item;
+    },[]);
+    return arr;
+}</code></pre>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 f798735475@163.com </span>
     </div>

@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>数组去重</title>
+      <link href="/2019/09/02/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/"/>
+      <url>/2019/09/02/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h1><h2 id="1-from-amp-amp-set"><a href="#1-from-amp-amp-set" class="headerlink" title="1.from&amp;&amp;set"></a>1.from&amp;&amp;set</h2><pre><code>function ddd1(arr){    let res = Array.from(new Set(arr));    return res;}</code></pre><h2 id="2-filter-amp-amp-indexOf"><a href="#2-filter-amp-amp-indexOf" class="headerlink" title="2.filter &amp;&amp; indexOf"></a>2.filter &amp;&amp; indexOf</h2><pre><code>function ddd2(arr){    let res = arr.filter((item,index,arr)=&gt;{        return arr.indexOf(item) == index;    });    return res;}</code></pre><h2 id="3-forEach-amp-amp-includes"><a href="#3-forEach-amp-amp-includes" class="headerlink" title="3. forEach &amp;&amp; includes"></a>3. forEach &amp;&amp; includes</h2><pre><code>function ddd4(arr){    let res = [];    arr.forEach(item=&gt;{        if(!res.includes(item)) res.push(item);    });    return res;}</code></pre><h2 id="4-filter-amp-amp-map"><a href="#4-filter-amp-amp-map" class="headerlink" title="4. filter &amp;&amp; map"></a>4. filter &amp;&amp; map</h2><pre><code>function ddd4(arr){    const tem = new Map();    let res = arr.filter(itme=&gt;{        return !tem.has(item) &amp;&amp; tem.set(item,1);    });    return res;}</code></pre><h2 id="5-引用类型数组去重"><a href="#5-引用类型数组去重" class="headerlink" title="5. 引用类型数组去重"></a>5. 引用类型数组去重</h2><pre><code>function ddd5(arr){    let hash = {};    arr = arr.reduce((itme,next)=&gt;{        hash[next.name]? &apos;&apos; : hash[next.name] = true &amp;&amp; item.push(next);        return item;    },[]);    return arr;}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数组扁平化</title>
+      <link href="/2019/09/02/%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/"/>
+      <url>/2019/09/02/%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数组扁平化"><a href="#数组扁平化" class="headerlink" title="数组扁平化"></a>数组扁平化</h1><h2 id="1-递归"><a href="#1-递归" class="headerlink" title="1. 递归"></a>1. 递归</h2><pre><code>function flatten1(arr){    let result = [];    for(var i =0;i&lt;arr.length;i++){        if(Array.isArray(arr[i])){            result = result.concat(flatten1(arr[i]));        }else{            result.push(arr[i]);        }    }    return result;}</code></pre><h2 id="2-toString"><a href="#2-toString" class="headerlink" title="2. toString"></a>2. toString</h2><pre><code>function flatten2(arr){   let arr = arr.join(&apos;,&apos;).split(&apos;,&apos;);   arr = arr.map(itme=&gt;+item); //将被转成字符串的数字转换回去；   return arr;}</code></pre><h2 id="3-reduce"><a href="#3-reduce" class="headerlink" title="3. reduce()"></a>3. reduce()</h2><pre><code>function flatten3(arr){    return arr.reduce((prev,next)=&gt;{        return prev.concat(Array.isArray(next)? flatten3(next) : next);    },[])}</code></pre><h2 id="4-…扩展运算符"><a href="#4-…扩展运算符" class="headerlink" title="4. …扩展运算符"></a>4. …扩展运算符</h2><pre><code>function ddd4(arr){    while(arr.some(item=&gt;{Array.isArray(itme)})){        arr = [].concat(...arr);    }    return arr;}</code></pre><h2 id="5-arr-flat"><a href="#5-arr-flat" class="headerlink" title="5. arr.flat()"></a>5. arr.flat()</h2><pre><code>//arr.flat()   会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。 //Infinity 无穷大， -Infinity无穷小function flatten5(arr){    return  arr.flat(Infinity);}</code></pre><h2 id="6-JSON"><a href="#6-JSON" class="headerlink" title="6. JSON"></a>6. JSON</h2><pre><code>function flatten6(arr){    let str = JSON.stringify(arr);    let str1 = str.replace(/\[|\]/g,&apos;&apos;);    let arr1 = str1.split(&apos;,&apos;);    return arr1.map(item=&gt;+item);//将被转成字符串的数字转换回去；}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>回调炼狱_树形导航</title>
       <link href="/2019/09/01/%E5%9B%9E%E8%B0%83%E7%82%BC%E7%8B%B1-%E6%A0%91%E5%BD%A2%E5%AF%BC%E8%88%AA/"/>
       <url>/2019/09/01/%E5%9B%9E%E8%B0%83%E7%82%BC%E7%8B%B1-%E6%A0%91%E5%BD%A2%E5%AF%BC%E8%88%AA/</url>
@@ -128,9 +178,9 @@
       
         <tags>
             
-            <tag> Vue </tag>
-            
             <tag> 项目中遇到的问题 </tag>
+            
+            <tag> Vue </tag>
             
         </tags>
       
