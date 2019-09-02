@@ -6,25 +6,18 @@
   <meta name="keywords" content=" 面经 ">
   <meta name="description" content="GIGO一面面经 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="图解HTTP第1章 了解Web及网络基础TCP/IP的分层管理应用层决定了向用户提供应用服务时通信的活动     传输层 提供处于网络连接中的两台计算机之间的数据传输 两个协议:TCP、UDP       网络层 处理网络上流动的数据包     数据包是网络传输中的最小数据单位   在众多的选择内选择一条传输路线  链路层 用来处理连接网络的硬件部分，包括操作系统、硬件的设备驱动、NIC、光纤等。">
-<meta name="keywords" content="计算机网络,http,http状态码">
+<meta name="description" content="[toc] http2.0 http1.1 https主要区别一、HTTP1.0和HTTP2.0的区别总的区别就是：  HTTP/2采用二进制格式而非文本格式   HTTP/2是完全多路复用的，而非有序并阻塞的——只需一个连接即可实现并行 使用报头压缩，HTTP/2降低了开销 HTTP/2让服务器可以将响应主动“推送”到客户端缓存中  二、HTTP和HTTPS的区别HTTPS：是以安全为目标的HT">
+<meta name="keywords" content="计算机网络,HTTP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《图解HTTP》笔记">
-<meta property="og:url" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/index.html">
+<meta property="og:title" content="http2.0,http1.1,https主要区别">
+<meta property="og:url" content="https://lyfflied.github.io/2019/09/02/http2-0-http1-1-https主要区别/index.html">
 <meta property="og:site_name" content="LYF&#39;s blog">
-<meta property="og:description" content="图解HTTP第1章 了解Web及网络基础TCP/IP的分层管理应用层决定了向用户提供应用服务时通信的活动     传输层 提供处于网络连接中的两台计算机之间的数据传输 两个协议:TCP、UDP       网络层 处理网络上流动的数据包     数据包是网络传输中的最小数据单位   在众多的选择内选择一条传输路线  链路层 用来处理连接网络的硬件部分，包括操作系统、硬件的设备驱动、NIC、光纤等。">
+<meta property="og:description" content="[toc] http2.0 http1.1 https主要区别一、HTTP1.0和HTTP2.0的区别总的区别就是：  HTTP/2采用二进制格式而非文本格式   HTTP/2是完全多路复用的，而非有序并阻塞的——只需一个连接即可实现并行 使用报头压缩，HTTP/2降低了开销 HTTP/2让服务器可以将响应主动“推送”到客户端缓存中  二、HTTP和HTTPS的区别HTTPS：是以安全为目标的HT">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E4%BC%A0%E8%BE%93%E6%B5%81%E7%A8%8B.png">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87.png">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/cookie.png">
-<meta property="og:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E7%8A%B6%E6%80%81%E7%A0%81%E7%B1%BB%E5%88%AB.png">
-<meta property="og:updated_time" content="2019-09-02T11:57:38.254Z">
+<meta property="og:updated_time" content="2019-09-02T12:46:36.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《图解HTTP》笔记">
-<meta name="twitter:description" content="图解HTTP第1章 了解Web及网络基础TCP/IP的分层管理应用层决定了向用户提供应用服务时通信的活动     传输层 提供处于网络连接中的两台计算机之间的数据传输 两个协议:TCP、UDP       网络层 处理网络上流动的数据包     数据包是网络传输中的最小数据单位   在众多的选择内选择一条传输路线  链路层 用来处理连接网络的硬件部分，包括操作系统、硬件的设备驱动、NIC、光纤等。">
-<meta name="twitter:image" content="https://lyfflied.github.io/2019/09/02/《图解HTTP》笔记/%E4%BC%A0%E8%BE%93%E6%B5%81%E7%A8%8B.png">
+<meta name="twitter:title" content="http2.0,http1.1,https主要区别">
+<meta name="twitter:description" content="[toc] http2.0 http1.1 https主要区别一、HTTP1.0和HTTP2.0的区别总的区别就是：  HTTP/2采用二进制格式而非文本格式   HTTP/2是完全多路复用的，而非有序并阻塞的——只需一个连接即可实现并行 使用报头压缩，HTTP/2降低了开销 HTTP/2让服务器可以将响应主动“推送”到客户端缓存中  二、HTTP和HTTPS的区别HTTPS：是以安全为目标的HT">
 
 
 <link rel="icon" href="/img/1.jpg">
@@ -115,7 +108,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(22)</small></div></li>
+    <li><div class="all active">全部文章<small>(23)</small></div></li>
     
         
             
@@ -183,7 +176,7 @@
     
         
             
-            <li><div data-rel="计算机网络">计算机网络<small>(2)</small></div>
+            <li><div data-rel="计算机网络">计算机网络<small>(3)</small></div>
                 
             </li>
             
@@ -203,7 +196,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="22">
+<input type="hidden" id="yelog_site_posts_number" value="23">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -278,19 +271,15 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">数据绑定</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color1">计算机网络</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">http</a>
+        <a href="javascript:" class="color5">HTTP</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">http状态码</a>
+        <a href="javascript:" class="color5">数据绑定</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -299,6 +288,14 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">事件</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">http</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">http状态码</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -315,10 +312,6 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">数组</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">HTTP</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -400,19 +393,27 @@
         </a>
         
         <a  class="Vue "
-           href="/2019/08/25/Vue数据绑定与虚拟DOM/"
-           data-tag="Vue,数据绑定"
-           data-author="" >
-            <span class="post-title" title="Vue数据绑定与虚拟DOM">Vue数据绑定与虚拟DOM</span>
-            <span class="post-date" title="2019-08-25 11:11:23">2019/08/25</span>
-        </a>
-        
-        <a  class="Vue "
            href="/2019/08/25/Vue生命周期/"
            data-tag="Vue"
            data-author="" >
             <span class="post-title" title="Vue生命周期">Vue生命周期</span>
             <span class="post-date" title="2019-08-25 13:55:35">2019/08/25</span>
+        </a>
+        
+        <a  class="计算机网络 "
+           href="/2019/09/02/http2-0-http1-1-https主要区别/"
+           data-tag="计算机网络,HTTP"
+           data-author="" >
+            <span class="post-title" title="http2.0,http1.1,https主要区别">http2.0,http1.1,https主要区别</span>
+            <span class="post-date" title="2019-09-02 20:45:39">2019/09/02</span>
+        </a>
+        
+        <a  class="Vue "
+           href="/2019/08/25/Vue数据绑定与虚拟DOM/"
+           data-tag="Vue,数据绑定"
+           data-author="" >
+            <span class="post-title" title="Vue数据绑定与虚拟DOM">Vue数据绑定与虚拟DOM</span>
+            <span class="post-date" title="2019-08-25 11:11:23">2019/08/25</span>
         </a>
         
         <a  class="Vue 遇到的问题 "
@@ -423,20 +424,28 @@
             <span class="post-date" title="2019-08-27 15:36:01">2019/08/27</span>
         </a>
         
-        <a  class="计算机网络 "
-           href="/2019/09/02/《图解HTTP》笔记/"
-           data-tag="计算机网络,http,http状态码"
-           data-author="" >
-            <span class="post-title" title="《图解HTTP》笔记">《图解HTTP》笔记</span>
-            <span class="post-date" title="2019-09-02 19:44:12">2019/09/02</span>
-        </a>
-        
         <a  class="JavaScript "
            href="/2019/08/25/函数防抖与节流/"
            data-tag="JavaScript,事件"
            data-author="" >
             <span class="post-title" title="事件防抖与节流">事件防抖与节流</span>
             <span class="post-date" title="2019-08-25 10:50:59">2019/08/25</span>
+        </a>
+        
+        <a  class="遇到的问题 "
+           href="/2019/08/27/利用velocity解决poi-tl数据缺失不渲染的问题/"
+           data-tag="项目中遇到的问题"
+           data-author="" >
+            <span class="post-title" title="利用velocity解决poi-tl数据缺失不渲染的问题">利用velocity解决poi-tl数据缺失不渲染的问题</span>
+            <span class="post-date" title="2019-08-27 21:23:25">2019/08/27</span>
+        </a>
+        
+        <a  class="计算机网络 "
+           href="/2019/09/02/《图解HTTP》笔记/"
+           data-tag="计算机网络,http,http状态码"
+           data-author="" >
+            <span class="post-title" title="《图解HTTP》笔记">《图解HTTP》笔记</span>
+            <span class="post-date" title="2019-09-02 19:44:12">2019/09/02</span>
         </a>
         
         <a  class="算法 "
@@ -463,12 +472,20 @@
             <span class="post-date" title="2019-09-02 13:18:04">2019/09/02</span>
         </a>
         
-        <a  class="遇到的问题 "
-           href="/2019/08/27/利用velocity解决poi-tl数据缺失不渲染的问题/"
-           data-tag="项目中遇到的问题"
+        <a  class="Vue "
+           href="/2019/09/02/Vue-diff算法/"
+           data-tag="Vue"
            data-author="" >
-            <span class="post-title" title="利用velocity解决poi-tl数据缺失不渲染的问题">利用velocity解决poi-tl数据缺失不渲染的问题</span>
-            <span class="post-date" title="2019-08-27 21:23:25">2019/08/27</span>
+            <span class="post-title" title="Vue_diff算法">Vue_diff算法</span>
+            <span class="post-date" title="2019-09-02 14:25:23">2019/09/02</span>
+        </a>
+        
+        <a  class="JavaScript "
+           href="/2019/08/24/js拷贝与继承/"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="js拷贝与继承">js拷贝与继承</span>
+            <span class="post-date" title="2019-08-24 10:57:50">2019/08/24</span>
         </a>
         
         <a  class="JavaScript "
@@ -485,22 +502,6 @@
            data-author="" >
             <span class="post-title" title="虚拟DOM">虚拟DOM</span>
             <span class="post-date" title="2019-09-02 14:25:52">2019/09/02</span>
-        </a>
-        
-        <a  class="Vue "
-           href="/2019/09/02/Vue-diff算法/"
-           data-tag="Vue"
-           data-author="" >
-            <span class="post-title" title="Vue_diff算法">Vue_diff算法</span>
-            <span class="post-date" title="2019-09-02 14:25:23">2019/09/02</span>
-        </a>
-        
-        <a  class="JavaScript "
-           href="/2019/08/24/js拷贝与继承/"
-           data-tag="JavaScript"
-           data-author="" >
-            <span class="post-title" title="js拷贝与继承">js拷贝与继承</span>
-            <span class="post-date" title="2019-08-24 10:57:50">2019/08/24</span>
         </a>
         
         <a  class="计算机网络 "
@@ -653,7 +654,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#面经','#Ajax','#跨域','#css','#布局','#Hexo','#算法','#字符串匹配','#项目中遇到的问题','#Vue','#数据绑定','#计算机网络','#http','#http状态码','#JavaScript','#事件','#动态规划','#回调炼狱','#promise','#数组','#HTTP','#TCP',],
+            'data': ['#面经','#Ajax','#跨域','#css','#布局','#Hexo','#算法','#字符串匹配','#项目中遇到的问题','#Vue','#计算机网络','#HTTP','#数据绑定','#JavaScript','#事件','#http','#http状态码','#动态规划','#回调炼狱','#promise','#数组','#TCP',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
