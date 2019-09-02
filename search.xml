@@ -4,31 +4,6 @@
   
     
     <entry>
-      <title>GIGO一面面经</title>
-      <link href="/2019/09/02/GIGO%E4%B8%80%E9%9D%A2%E9%9D%A2%E7%BB%8F/"/>
-      <url>/2019/09/02/GIGO%E4%B8%80%E9%9D%A2%E9%9D%A2%E7%BB%8F/</url>
-      
-        <content type="html"><![CDATA[<h1 id="BIGO一面面经"><a href="#BIGO一面面经" class="headerlink" title="BIGO一面面经"></a>BIGO一面面经</h1><h2 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h2><h2 id="vue的特点"><a href="#vue的特点" class="headerlink" title="vue的特点"></a>vue的特点</h2><h2 id="vue双向绑定怎么实现的"><a href="#vue双向绑定怎么实现的" class="headerlink" title="vue双向绑定怎么实现的"></a>vue双向绑定怎么实现的</h2><h2 id="v-show和v-if的区别"><a href="#v-show和v-if的区别" class="headerlink" title="v-show和v-if的区别"></a>v-show和v-if的区别</h2><h2 id="浏览器加载页面的全过程"><a href="#浏览器加载页面的全过程" class="headerlink" title="浏览器加载页面的全过程"></a>浏览器加载页面的全过程</h2><p>DNS解析：把域名解析成IP地址<br>TCP 建立连接：TCP三次握手<br>发送HTTP请求<br>服务器处理并响应报文<br>浏览器解析并渲染页面<br>断开连接：TCP 结束连接  </p><h2 id="做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）"><a href="#做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）" class="headerlink" title="做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）"></a>做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）</h2><pre><code>var name = &apos;weihui&apos;;(function () {    if (typeof name === &apos;undefined&apos;) {        var name = &apos;bigo&apos;;        console.log(&apos;good &apos; + name);    } else {        console.log(&apos;Hello &apos; + name);    }})();//good bigo</code></pre><h2 id="平时怎么学习的"><a href="#平时怎么学习的" class="headerlink" title="平时怎么学习的"></a>平时怎么学习的</h2><h2 id="看过哪些书"><a href="#看过哪些书" class="headerlink" title="看过哪些书"></a>看过哪些书</h2><h2 id="了解我们公司吗"><a href="#了解我们公司吗" class="headerlink" title="了解我们公司吗"></a>了解我们公司吗</h2><h2 id="我们公司是做直播的，了解关于直播的开发吗？"><a href="#我们公司是做直播的，了解关于直播的开发吗？" class="headerlink" title="我们公司是做直播的，了解关于直播的开发吗？"></a>我们公司是做直播的，了解关于直播的开发吗？</h2><h2 id="对未来有什么打算"><a href="#对未来有什么打算" class="headerlink" title="对未来有什么打算"></a>对未来有什么打算</h2><h2 id="觉得自己学前端的优势是什么"><a href="#觉得自己学前端的优势是什么" class="headerlink" title="觉得自己学前端的优势是什么"></a>觉得自己学前端的优势是什么</h2><h2 id="有什么要问的吗"><a href="#有什么要问的吗" class="headerlink" title="有什么要问的吗"></a>有什么要问的吗</h2>]]></content>
-      
-      
-      <categories>
-          
-          <category> 面经 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 面经 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>图解HTTP笔记</title>
       <link href="/2019/09/02/%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/"/>
       <url>/2019/09/02/%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/</url>
@@ -50,6 +25,31 @@
             <tag> http </tag>
             
             <tag> http状态码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>GIGO一面面经</title>
+      <link href="/2019/09/02/GIGO%E4%B8%80%E9%9D%A2%E9%9D%A2%E7%BB%8F/"/>
+      <url>/2019/09/02/GIGO%E4%B8%80%E9%9D%A2%E9%9D%A2%E7%BB%8F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="BIGO一面面经"><a href="#BIGO一面面经" class="headerlink" title="BIGO一面面经"></a>BIGO一面面经</h1><h2 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h2><h2 id="vue的特点"><a href="#vue的特点" class="headerlink" title="vue的特点"></a>vue的特点</h2><h2 id="vue双向绑定怎么实现的"><a href="#vue双向绑定怎么实现的" class="headerlink" title="vue双向绑定怎么实现的"></a>vue双向绑定怎么实现的</h2><h2 id="v-show和v-if的区别"><a href="#v-show和v-if的区别" class="headerlink" title="v-show和v-if的区别"></a>v-show和v-if的区别</h2><h2 id="浏览器加载页面的全过程"><a href="#浏览器加载页面的全过程" class="headerlink" title="浏览器加载页面的全过程"></a>浏览器加载页面的全过程</h2><p>DNS解析：把域名解析成IP地址<br>TCP 建立连接：TCP三次握手<br>发送HTTP请求<br>服务器处理并响应报文<br>浏览器解析并渲染页面<br>断开连接：TCP 结束连接  </p><h2 id="做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）"><a href="#做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）" class="headerlink" title="做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）"></a>做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）</h2><pre><code>var name = &apos;weihui&apos;;(function () {    if (typeof name === &apos;undefined&apos;) {        var name = &apos;bigo&apos;;        console.log(&apos;good &apos; + name);    } else {        console.log(&apos;Hello &apos; + name);    }})();//good bigo</code></pre><h2 id="平时怎么学习的"><a href="#平时怎么学习的" class="headerlink" title="平时怎么学习的"></a>平时怎么学习的</h2><h2 id="看过哪些书"><a href="#看过哪些书" class="headerlink" title="看过哪些书"></a>看过哪些书</h2><h2 id="了解我们公司吗"><a href="#了解我们公司吗" class="headerlink" title="了解我们公司吗"></a>了解我们公司吗</h2><h2 id="我们公司是做直播的，了解关于直播的开发吗？"><a href="#我们公司是做直播的，了解关于直播的开发吗？" class="headerlink" title="我们公司是做直播的，了解关于直播的开发吗？"></a>我们公司是做直播的，了解关于直播的开发吗？</h2><h2 id="对未来有什么打算"><a href="#对未来有什么打算" class="headerlink" title="对未来有什么打算"></a>对未来有什么打算</h2><h2 id="觉得自己学前端的优势是什么"><a href="#觉得自己学前端的优势是什么" class="headerlink" title="觉得自己学前端的优势是什么"></a>觉得自己学前端的优势是什么</h2><h2 id="有什么要问的吗"><a href="#有什么要问的吗" class="headerlink" title="有什么要问的吗"></a>有什么要问的吗</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面经 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面经 </tag>
             
         </tags>
       
