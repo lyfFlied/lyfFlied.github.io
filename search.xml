@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>关于chrome控制台打印类容与期望值不一致的问题</title>
+      <link href="/2019/09/03/%E5%85%B3%E4%BA%8Echrome%E6%8E%A7%E5%88%B6%E5%8F%B0%E6%89%93%E5%8D%B0%E7%B1%BB%E5%AE%B9%E4%B8%8E%E6%9C%9F%E6%9C%9B%E5%80%BC%E4%B8%8D%E4%B8%80%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <url>/2019/09/03/%E5%85%B3%E4%BA%8Echrome%E6%8E%A7%E5%88%B6%E5%8F%B0%E6%89%93%E5%8D%B0%E7%B1%BB%E5%AE%B9%E4%B8%8E%E6%9C%9F%E6%9C%9B%E5%80%BC%E4%B8%8D%E4%B8%80%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h1 id="关于chrome控制台打印类容与期望值不一致的问题"><a href="#关于chrome控制台打印类容与期望值不一致的问题" class="headerlink" title="关于chrome控制台打印类容与期望值不一致的问题"></a>关于chrome控制台打印类容与期望值不一致的问题</h1><h2 id="问题引出"><a href="#问题引出" class="headerlink" title="问题引出"></a>问题引出</h2><p>一段代码在控制台输出，本以为打印的是{a: 1}，{a: 2}，{a: 3}，<br>结果是{a: 3}，{a: 3}，{a: 3}</p><pre><code>let arr = [];let obj = {a:1};arr.push(obj);console.log(arr);//{a: 3}obj.a=2;console.log(arr);//{a: 3}let obj1 = obj;obj1.a=3;console.log(arr);//{a: 3}</code></pre><h2 id="console-log-是同步还是异步？"><a href="#console-log-是同步还是异步？" class="headerlink" title="console.log()是同步还是异步？"></a>console.log()是同步还是异步？</h2><p>在调试的时候也会遇到，有时候console.log并不会给我预期的结果，<br>后来查查资料（参考《你不知道的javascript中卷》第二部分异步和性能 1.1 异步控制台部分）。<br>并没有什么规范或一组需求指定console.* 方法族如何工作——它们并不是JavaScript正式的一部分，而是由宿主环境（请参考本书的“类型和语法”部分）添加到JavaScript 中的。<br>因此，不同的浏览器和JavaScript环境可以按照自己的意愿来实现，有时候这会引起混淆。<br>尤其要提出的是，在某些条件下，某些浏览器的console.log(..) 并不会把传入的内容立即输出。<br>出现这种情况的主要原因是，在许多程序（不只是JavaScript）中，I/O是非常低速的阻塞部分。所以，（从页面/UI的角度来说）浏览器在后台异步处理控制台I/O能够提高性能，这时用户甚至可能根本意识不到其发生。</p><p><strong>举个栗子</strong>：</p><pre><code>var  a={name:&quot;小Q&quot;};console.log(a);a.name=&quot;snail&quot;;</code></pre><p> 我们通常认为恰好在执行到console.log(..) 语句的时候会看到a<br> 对象的快照,<br> 大多数情况下我们看到的是”小Q”，<br> 但是，有时候浏览器可能会吧控制台I/O延迟到后台，这时候我们看到的可能是”snail”，<br> 到底什么时候控制台I/O会延迟，甚至是否能够被观察到，这都是游移不定的。<br> 如果在调试的过程中遇到对象在console.log(..)，语句之后被修改，可你却看到了意料之外的结果，要意识到这可能是这种I/O 的异步化造成的。  </p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在这里为什么打印出来a都是3。<br>其实在 console.log执行的时候，chrome会对log的对象求一次值，<br>打印出来是 Object ，可以继续展开的。但当你展开控制台中的 Object 的时候，<br>chrome 又会对它求一次值，这一次是显示它的属性。<br>所以才会有前后打印的东西不一样的情况发生，因为对象引用的实体的值改变了。<br>如果把 console.log(arr) 改为 console.log(JSON.stringify(arr))， 这时就会输出<br>[{“a”:1}]，[{“a”:2}]，[{“a”:3}]<br>是刚开始期望的结果。</p><pre><code>let arr = [];let obj = {a:1};arr.push(obj);console.log(JSON.stringify(arr));obj.a=2;console.log(JSON.stringify(arr));let obj1 = obj;obj1.a=3;console.log(JSON.stringify(arr));//[{&quot;a&quot;:1}]//[{&quot;a&quot;:2}]//[{&quot;a&quot;:3}]</code></pre><p><strong>如果在项目调试中遇到了这种情况，最好的选择是在JavaScript调试器中使用断点，而不要依赖控制台输出。<br> 次优的方案是把对象序列化到一个字符串中，以强制执行一次“快照”，比如通过JSON.stringify(..)。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 遇到的问题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 遇到的问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>http2.0,http1.1,https主要区别</title>
       <link href="/2019/09/02/http2-0-http1-1-https%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB/"/>
       <url>/2019/09/02/http2-0-http1-1-https%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB/</url>
@@ -64,7 +89,7 @@
       <link href="/2019/09/02/GIGO%E4%B8%80%E9%9D%A2%E9%9D%A2%E7%BB%8F/"/>
       <url>/2019/09/02/GIGO%E4%B8%80%E9%9D%A2%E9%9D%A2%E7%BB%8F/</url>
       
-        <content type="html"><![CDATA[<h1 id="BIGO一面面经"><a href="#BIGO一面面经" class="headerlink" title="BIGO一面面经"></a>BIGO一面面经</h1><h2 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h2><h2 id="vue的特点"><a href="#vue的特点" class="headerlink" title="vue的特点"></a>vue的特点</h2><h2 id="vue双向绑定怎么实现的"><a href="#vue双向绑定怎么实现的" class="headerlink" title="vue双向绑定怎么实现的"></a>vue双向绑定怎么实现的</h2><h2 id="v-show和v-if的区别"><a href="#v-show和v-if的区别" class="headerlink" title="v-show和v-if的区别"></a>v-show和v-if的区别</h2><h2 id="浏览器加载页面的全过程"><a href="#浏览器加载页面的全过程" class="headerlink" title="浏览器加载页面的全过程"></a>浏览器加载页面的全过程</h2><ol><li>DNS解析：把域名解析成IP地址  </li><li>TCP 建立连接：TCP三次握手  </li><li>发送HTTP请求  </li><li>服务器处理并响应报文  </li><li>浏览器解析并渲染页面  <ul><li>根据HTML结构生成DOM Tree</li><li>根据CSS生成CSSOM</li><li>将DOM和CSSOM整合成RenderTree（渲染树）</li><li>根据RenderTree开始渲染和展示</li><li>遇到<script>时，会执行并阻塞渲染 (因为js有权利改变DOM树)</li></ul></li><li>断开连接：TCP 结束连接  </li></ol><h2 id="做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）"><a href="#做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）" class="headerlink" title="做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）"></a>做了两道题，输出是什么（关于变量声明提前和引用类型修改值的）</h2><pre><code>var name = &apos;weihui&apos;;(function () {    if (typeof name === &apos;undefined&apos;) {        var name = &apos;bigo&apos;;        console.log(&apos;good &apos; + name);    } else {        console.log(&apos;Hello &apos; + name);    }})();//good bigo</code></pre><h2 id="平时怎么学习的"><a href="#平时怎么学习的" class="headerlink" title="平时怎么学习的"></a>平时怎么学习的</h2><h2 id="看过哪些书"><a href="#看过哪些书" class="headerlink" title="看过哪些书"></a>看过哪些书</h2><h2 id="了解我们公司吗"><a href="#了解我们公司吗" class="headerlink" title="了解我们公司吗"></a>了解我们公司吗</h2><h2 id="我们公司是做直播的，了解关于直播的开发吗？"><a href="#我们公司是做直播的，了解关于直播的开发吗？" class="headerlink" title="我们公司是做直播的，了解关于直播的开发吗？"></a>我们公司是做直播的，了解关于直播的开发吗？</h2><h2 id="对未来有什么打算"><a href="#对未来有什么打算" class="headerlink" title="对未来有什么打算"></a>对未来有什么打算</h2><h2 id="觉得自己学前端的优势是什么"><a href="#觉得自己学前端的优势是什么" class="headerlink" title="觉得自己学前端的优势是什么"></a>觉得自己学前端的优势是什么</h2><h2 id="有什么要问的吗"><a href="#有什么要问的吗" class="headerlink" title="有什么要问的吗"></a>有什么要问的吗</h2></script></li></ul></li></ol>]]></content>
+        <content type="html"><![CDATA[<h1 id="BIGO一面面经"><a href="#BIGO一面面经" class="headerlink" title="BIGO一面面经"></a>BIGO一面面经</h1><h2 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h2><h2 id="vue的特点"><a href="#vue的特点" class="headerlink" title="vue的特点"></a>vue的特点</h2><h2 id="vue双向绑定怎么实现的"><a href="#vue双向绑定怎么实现的" class="headerlink" title="vue双向绑定怎么实现的"></a>vue双向绑定怎么实现的</h2><h2 id="v-show和v-if的区别"><a href="#v-show和v-if的区别" class="headerlink" title="v-show和v-if的区别"></a>v-show和v-if的区别</h2><h2 id="浏览器加载页面的全过程"><a href="#浏览器加载页面的全过程" class="headerlink" title="浏览器加载页面的全过程"></a>浏览器加载页面的全过程</h2><ol><li>DNS解析：把域名解析成IP地址  </li><li>TCP 建立连接：TCP三次握手  </li><li>发送HTTP请求  </li><li>服务器处理并响应报文  </li><li>浏览器解析并渲染页面  <ul><li>根据HTML结构生成DOM Tree</li><li>根据CSS生成CSSOM</li><li>将DOM和CSSOM整合成RenderTree（渲染树）</li><li>根据RenderTree开始渲染和展示</li><li>遇到<script>时，会执行并阻塞渲染 (因为js有权利改变DOM树)</li></ul></li><li>断开连接：TCP 结束连接  </li></ol><h2 id="做了两道题，输出是什么"><a href="#做了两道题，输出是什么" class="headerlink" title="做了两道题，输出是什么"></a>做了两道题，输出是什么</h2><pre><code>var name = &apos;weihui&apos;;(function () {    if (typeof name === &apos;undefined&apos;) {        var name = &apos;bigo&apos;;        console.log(&apos;good &apos; + name);    } else {        console.log(&apos;Hello &apos; + name);    }})();//good bigolet arr = [];let obj = {a:1};arr.push(obj);console.log(arr);//{a: 3}obj.a=2;console.log(arr);//{a: 3}let obj1 = obj;obj1.a=3;console.log(arr);//{a: 3}</code></pre><p><strong>总结</strong>：<br>关于第二题为什么打印出来a都是3，我去了解了一下，<br>放到node环境下跑你就会发现打印出的是{a: 1}，{a: 2}，{a: 3}。<br>同一个V8引擎，执行结果最后居然不一样！  </p><p>其实在 console.log执行的时候，chrome会对log的对象求一次值，<br>打印出来是 Object ，可以继续展开的。但当你展开控制台中的 Object 的时候，<br>chrome 又会对它求一次值，这一次是显示它的属性。<br>所以才会有前后打印的东西不一样的情况发生，因为对象引用的实体的值改变了。<br>如果把 console.log(arr) 改为 console.log(JSON.stringify(arr))， 这时就会输出<br>[{"a":1}]，[{"a":2}]，[{"a":3}]<br>是刚开始期望的结果。</p><pre><code>let arr = [];let obj = {a:1};arr.push(obj);console.log(JSON.stringify(arr));obj.a=2;console.log(JSON.stringify(arr));let obj1 = obj;obj1.a=3;console.log(JSON.stringify(arr));//[{&quot;a&quot;:1}]//[{&quot;a&quot;:2}]//[{&quot;a&quot;:3}]</code></pre><h2 id="平时怎么学习的"><a href="#平时怎么学习的" class="headerlink" title="平时怎么学习的"></a>平时怎么学习的</h2><h2 id="看过哪些书"><a href="#看过哪些书" class="headerlink" title="看过哪些书"></a>看过哪些书</h2><h2 id="了解我们公司吗"><a href="#了解我们公司吗" class="headerlink" title="了解我们公司吗"></a>了解我们公司吗</h2><h2 id="我们公司是做直播的，了解关于直播的开发吗？"><a href="#我们公司是做直播的，了解关于直播的开发吗？" class="headerlink" title="我们公司是做直播的，了解关于直播的开发吗？"></a>我们公司是做直播的，了解关于直播的开发吗？</h2><h2 id="对未来有什么打算"><a href="#对未来有什么打算" class="headerlink" title="对未来有什么打算"></a>对未来有什么打算</h2><h2 id="觉得自己学前端的优势是什么"><a href="#觉得自己学前端的优势是什么" class="headerlink" title="觉得自己学前端的优势是什么"></a>觉得自己学前端的优势是什么</h2><h2 id="有什么要问的吗"><a href="#有什么要问的吗" class="headerlink" title="有什么要问的吗"></a>有什么要问的吗</h2></script></li></ul></li></ol>]]></content>
       
       
       <categories>
@@ -309,9 +334,9 @@
       
         <tags>
             
-            <tag> 项目中遇到的问题 </tag>
-            
             <tag> Vue </tag>
+            
+            <tag> 项目中遇到的问题 </tag>
             
         </tags>
       

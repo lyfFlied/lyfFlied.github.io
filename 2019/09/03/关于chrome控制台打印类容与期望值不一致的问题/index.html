@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>动态规划算法——台阶问题 | LYF&#39;s blog</title>
-  <meta name="keywords" content=" 算法 , 动态规划 ">
-  <meta name="description" content="动态规划算法——台阶问题 | LYF&#39;s blog">
+  <title>关于chrome控制台打印类容与期望值不一致的问题 | LYF&#39;s blog</title>
+  <meta name="keywords" content=" 遇到的问题 ">
+  <meta name="description" content="关于chrome控制台打印类容与期望值不一致的问题 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="关于chrome控制台打印类容与期望值不一致的问题问题引出一段代码在控制台输出，本以为打印的是{a: 1}，{a: 2}，{a: 3}，结果是{a: 3}，{a: 3}，{a: 3} let arr = []; let obj = {a:1}; arr.push(obj); console.log(arr);//{a: 3} obj.a=2; console.log(arr);//{a: 3} l">
 <meta name="keywords" content="遇到的问题">
@@ -536,9 +536,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-动态规划算法——台阶问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-关于chrome控制台打印类容与期望值不一致的问题" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">动态规划算法——台阶问题</h1>
+        <h1 class="article-title">关于chrome控制台打印类容与期望值不一致的问题</h1>
     
     <div class="article-meta">
         
@@ -546,23 +546,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="算法">算法</a>
+                <a href="javascript:" data-rel="遇到的问题">遇到的问题</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color3">算法</a>
-            
-            <a href="javascript:" class="color5">动态规划</a>
+            <a href="javascript:" class="color1">遇到的问题</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-27 15:07:35'>2019-08-27 15:06</time>
+        创建时间:<time class="date" title='更新时间: 2019-09-03 14:27:05'>2019-09-03 10:57</time>
         
     </div>
     <div class="article-meta">
@@ -584,7 +582,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动态规划算法——台阶问题"><span class="toc-text">动态规划算法——台阶问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题"><span class="toc-text">解题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一：递归求解"><span class="toc-text">方法一：递归求解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二：备忘录算法"><span class="toc-text">方法二：备忘录算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法三：-动态规划解法"><span class="toc-text">方法三： 动态规划解法</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于chrome控制台打印类容与期望值不一致的问题"><span class="toc-text">关于chrome控制台打印类容与期望值不一致的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题引出"><span class="toc-text">问题引出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#console-log-是同步还是异步？"><span class="toc-text">console.log()是同步还是异步？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -599,48 +597,35 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="动态规划算法——台阶问题"><a href="#动态规划算法——台阶问题" class="headerlink" title="动态规划算法——台阶问题"></a>动态规划算法——台阶问题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有一座高度是10级台阶的楼梯，从下往上走，每跨一步只能向上1级或者2级台阶。要求用程序来求出一共有多少种走法。</p>
-<p>比如，每次走1级台阶，一共走10步，这是其中一种走法。我们可以简写成 1,1,1,1,1,1,1,1,1,1。<br>再比如，每次走2级台阶，一共走5步，这是另一种走法。我们可以简写成 2,2,2,2,2。</p>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>动态规划中三个重要的概念：最优子结构、边界、状态转移公式</p>
-<p> F(1) = 1;     边界</p>
-<p> F(2) = 2;     边界</p>
-<p>F(n) = F(n-1)+F(n-2)（n&gt;=3）    状态转移方程（核心）</p>
-<p>F(8)、F(9)是F(10)的最优子结构</p>
-<h3 id="方法一：递归求解"><a href="#方法一：递归求解" class="headerlink" title="方法一：递归求解"></a>方法一：递归求解</h3><p>时间复杂度：o(2^n)</p>
-<pre><code>function getClimbingWaysByRecursion(n){
-            if(n&lt;1) return 0;
-            if(n==1) return 1;
-            if(n==2) return 2;
-            return getClimbingWaysByRecursion(n-1)+getClimbingWaysByRecursion(n-2);
-}</code></pre><h3 id="方法二：备忘录算法"><a href="#方法二：备忘录算法" class="headerlink" title="方法二：备忘录算法"></a>方法二：备忘录算法</h3><p>对方法一的优化，将重复计算的结果用map存起来。<br>时间复杂度和空间复杂度都是O(N)</p>
-<pre><code>let arr =new Map();
-function getClimbingWaysByMemorandum(n){
-    if(n&lt;1) return 0;
-    if(n==1) return 1;
-    if(n==2) return 2;
-    if(arr.has(n)){
-        return arr.get(n);
-    }else{
-        let value = getClimbingWaysByMemorandum(n-1)+getClimbingWaysByMemorandum(n-2);
-        arr.set(n,value);
-        return value;
-    }
+        <h1 id="关于chrome控制台打印类容与期望值不一致的问题"><a href="#关于chrome控制台打印类容与期望值不一致的问题" class="headerlink" title="关于chrome控制台打印类容与期望值不一致的问题"></a>关于chrome控制台打印类容与期望值不一致的问题</h1><h2 id="问题引出"><a href="#问题引出" class="headerlink" title="问题引出"></a>问题引出</h2><p>一段代码在控制台输出，本以为打印的是{a: 1}，{a: 2}，{a: 3}，<br>结果是{a: 3}，{a: 3}，{a: 3}</p>
+<pre><code>let arr = [];
+let obj = {a:1};
+arr.push(obj);
+console.log(arr);//{a: 3}
+obj.a=2;
+console.log(arr);//{a: 3}
+let obj1 = obj;
+obj1.a=3;
+console.log(arr);//{a: 3}</code></pre><h2 id="console-log-是同步还是异步？"><a href="#console-log-是同步还是异步？" class="headerlink" title="console.log()是同步还是异步？"></a>console.log()是同步还是异步？</h2><p>在调试的时候也会遇到，有时候console.log并不会给我预期的结果，<br>后来查查资料（参考《你不知道的javascript中卷》第二部分异步和性能 1.1 异步控制台部分）。<br>并没有什么规范或一组需求指定console.* 方法族如何工作——它们并不是JavaScript正式的一部分，而是由宿主环境（请参考本书的“类型和语法”部分）添加到JavaScript 中的。<br>因此，不同的浏览器和JavaScript环境可以按照自己的意愿来实现，有时候这会引起混淆。<br>尤其要提出的是，在某些条件下，某些浏览器的console.log(..) 并不会把传入的内容立即输出。<br>出现这种情况的主要原因是，在许多程序（不只是JavaScript）中，I/O是非常低速的阻塞部分。所以，（从页面/UI的角度来说）浏览器在后台异步处理控制台I/O能够提高性能，这时用户甚至可能根本意识不到其发生。</p>
+<p><strong>举个栗子</strong>：</p>
+<pre><code>var  a={name:&quot;小Q&quot;};
+console.log(a);
+a.name=&quot;snail&quot;;</code></pre><p> 我们通常认为恰好在执行到console.log(..) 语句的时候会看到a<br> 对象的快照,<br> 大多数情况下我们看到的是”小Q”，<br> 但是，有时候浏览器可能会吧控制台I/O延迟到后台，这时候我们看到的可能是”snail”，<br> 到底什么时候控制台I/O会延迟，甚至是否能够被观察到，这都是游移不定的。<br> 如果在调试的过程中遇到对象在console.log(..)，语句之后被修改，可你却看到了意料之外的结果，要意识到这可能是这种I/O 的异步化造成的。  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在这里为什么打印出来a都是3。<br>其实在 console.log执行的时候，chrome会对log的对象求一次值，<br>打印出来是 Object ，可以继续展开的。但当你展开控制台中的 Object 的时候，<br>chrome 又会对它求一次值，这一次是显示它的属性。<br>所以才会有前后打印的东西不一样的情况发生，因为对象引用的实体的值改变了。<br>如果把 console.log(arr) 改为 console.log(JSON.stringify(arr))， 这时就会输出<br>[{“a”:1}]，[{“a”:2}]，[{“a”:3}]<br>是刚开始期望的结果。</p>
+<pre><code>let arr = [];
+let obj = {a:1};
+arr.push(obj);
+console.log(JSON.stringify(arr));
+obj.a=2;
+console.log(JSON.stringify(arr));
+let obj1 = obj;
+obj1.a=3;
+console.log(JSON.stringify(arr));
 
-}</code></pre><h3 id="方法三：-动态规划解法"><a href="#方法三：-动态规划解法" class="headerlink" title="方法三： 动态规划解法"></a>方法三： 动态规划解法</h3><p>每次的结果都依赖于前两次的结果，所以，自底向上求解，F(n)只依赖于F(n-1)和F(n-2)<br>时间复杂度：O(N)<br>空间复杂度：O(1)  </p>
-<pre><code>function getClimbingWaysByDynamicProgramming(n){
-    if(n&lt;1) return 0;
-    if(n==1) return 1;
-    if(n==2) return 2; 
-    let a = 1;
-    let b = 2;
-    let temp = 0;
-    for(let i = 3;i&lt;=n;i++){
-            temp = a+b;
-            a = b;
-            b = temp;
-        }
-    return temp;
-}</code></pre>
+//[{&quot;a&quot;:1}]
+//[{&quot;a&quot;:2}]
+//[{&quot;a&quot;:3}]</code></pre><p><strong>如果在项目调试中遇到了这种情况，最好的选择是在JavaScript调试器中使用断点，而不要依赖控制台输出。<br> 次优的方案是把对象序列化到一个字符串中，以强制执行一次“快照”，比如通过JSON.stringify(..)。</strong></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 f798735475@163.com </span>
     </div>

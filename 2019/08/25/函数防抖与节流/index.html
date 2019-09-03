@@ -6,18 +6,18 @@
   <meta name="keywords" content=" JavaScript , 事件 ">
   <meta name="description" content="事件防抖与节流 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="[toc] http2.0 http1.1 https主要区别一、HTTP1.0和HTTP2.0的区别总的区别就是：  HTTP/2采用二进制格式而非文本格式   HTTP/2是完全多路复用的，而非有序并阻塞的——只需一个连接即可实现并行 使用报头压缩，HTTP/2降低了开销 HTTP/2让服务器可以将响应主动“推送”到客户端缓存中  二、HTTP和HTTPS的区别HTTPS：是以安全为目标的HT">
-<meta name="keywords" content="计算机网络,HTTP">
+<meta name="description" content="关于chrome控制台打印类容与期望值不一致的问题问题引出一段代码在控制台输出，本以为打印的是{a: 1}，{a: 2}，{a: 3}，结果是{a: 3}，{a: 3}，{a: 3} let arr = []; let obj = {a:1}; arr.push(obj); console.log(arr);//{a: 3} obj.a=2; console.log(arr);//{a: 3} l">
+<meta name="keywords" content="遇到的问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="http2.0,http1.1,https主要区别">
-<meta property="og:url" content="https://lyfflied.github.io/2019/09/02/http2-0-http1-1-https主要区别/index.html">
+<meta property="og:title" content="关于chrome控制台打印类容与期望值不一致的问题">
+<meta property="og:url" content="https://lyfflied.github.io/2019/09/03/关于chrome控制台打印类容与期望值不一致的问题/index.html">
 <meta property="og:site_name" content="LYF&#39;s blog">
-<meta property="og:description" content="[toc] http2.0 http1.1 https主要区别一、HTTP1.0和HTTP2.0的区别总的区别就是：  HTTP/2采用二进制格式而非文本格式   HTTP/2是完全多路复用的，而非有序并阻塞的——只需一个连接即可实现并行 使用报头压缩，HTTP/2降低了开销 HTTP/2让服务器可以将响应主动“推送”到客户端缓存中  二、HTTP和HTTPS的区别HTTPS：是以安全为目标的HT">
+<meta property="og:description" content="关于chrome控制台打印类容与期望值不一致的问题问题引出一段代码在控制台输出，本以为打印的是{a: 1}，{a: 2}，{a: 3}，结果是{a: 3}，{a: 3}，{a: 3} let arr = []; let obj = {a:1}; arr.push(obj); console.log(arr);//{a: 3} obj.a=2; console.log(arr);//{a: 3} l">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-02T12:46:36.119Z">
+<meta property="og:updated_time" content="2019-09-03T06:27:05.570Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="http2.0,http1.1,https主要区别">
-<meta name="twitter:description" content="[toc] http2.0 http1.1 https主要区别一、HTTP1.0和HTTP2.0的区别总的区别就是：  HTTP/2采用二进制格式而非文本格式   HTTP/2是完全多路复用的，而非有序并阻塞的——只需一个连接即可实现并行 使用报头压缩，HTTP/2降低了开销 HTTP/2让服务器可以将响应主动“推送”到客户端缓存中  二、HTTP和HTTPS的区别HTTPS：是以安全为目标的HT">
+<meta name="twitter:title" content="关于chrome控制台打印类容与期望值不一致的问题">
+<meta name="twitter:description" content="关于chrome控制台打印类容与期望值不一致的问题问题引出一段代码在控制台输出，本以为打印的是{a: 1}，{a: 2}，{a: 3}，结果是{a: 3}，{a: 3}，{a: 3} let arr = []; let obj = {a:1}; arr.push(obj); console.log(arr);//{a: 3} obj.a=2; console.log(arr);//{a: 3} l">
 
 
 <link rel="icon" href="/img/1.jpg">
@@ -108,15 +108,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(23)</small></div></li>
-    
-        
-            
-            <li><div data-rel="面经">面经<small>(1)</small></div>
-                
-            </li>
-            
-        
+    <li><div class="all active">全部文章<small>(24)</small></div></li>
     
         
             
@@ -128,7 +120,7 @@
     
         
             
-            <li><div data-rel="css">css<small>(2)</small></div>
+            <li><div data-rel="面经">面经<small>(1)</small></div>
                 
             </li>
             
@@ -144,15 +136,7 @@
     
         
             
-            <li><div data-rel="算法">算法<small>(2)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="遇到的问题">遇到的问题<small>(3)</small></div>
+            <li><div data-rel="css">css<small>(2)</small></div>
                 
             </li>
             
@@ -169,6 +153,22 @@
                         </li>
                             
                     </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="遇到的问题">遇到的问题<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="算法">算法<small>(2)</small></div>
                 
             </li>
             
@@ -196,7 +196,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="23">
+<input type="hidden" id="yelog_site_posts_number" value="24">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -231,15 +231,19 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">面经</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color5">Ajax</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">跨域</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">面经</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">Hexo</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -251,7 +255,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">Hexo</a>
+        <a href="javascript:" class="color4">Vue</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">项目中遇到的问题</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -260,14 +268,6 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color1">字符串匹配</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">项目中遇到的问题</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">Vue</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -283,14 +283,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">JavaScript</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">事件</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color5">http</a>
     </li>
     
@@ -299,7 +291,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">动态规划</a>
+        <a href="javascript:" class="color1">遇到的问题</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -312,6 +304,18 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">数组</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">JavaScript</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">事件</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">动态规划</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -328,14 +332,6 @@
     
     <nav id="title-list-nav">
         
-        <a  class="面经 "
-           href="/2019/09/02/GIGO一面面经/"
-           data-tag="面经"
-           data-author="" >
-            <span class="post-title" title="GIGO一面面经">GIGO一面面经</span>
-            <span class="post-date" title="2019-09-02 18:52:19">2019/09/02</span>
-        </a>
-        
         <a  class="JavaScript "
            href="/2019/08/25/Ajax以及跨域/"
            data-tag="Ajax,跨域"
@@ -344,20 +340,12 @@
             <span class="post-date" title="2019-08-25 13:59:06">2019/08/25</span>
         </a>
         
-        <a  class="css "
-           href="/2019/08/27/Flex实现五种常用布局/"
-           data-tag="css,布局"
+        <a  class="面经 "
+           href="/2019/09/02/GIGO一面面经/"
+           data-tag="面经"
            data-author="" >
-            <span class="post-title" title="Flex实现五种常用布局">Flex实现五种常用布局</span>
-            <span class="post-date" title="2019-08-27 14:41:43">2019/08/27</span>
-        </a>
-        
-        <a  class="css "
-           href="/2019/08/27/CSS布局/"
-           data-tag="css,布局"
-           data-author="" >
-            <span class="post-title" title="CSS布局">CSS布局</span>
-            <span class="post-date" title="2019-08-27 14:43:05">2019/08/27</span>
+            <span class="post-title" title="GIGO一面面经">GIGO一面面经</span>
+            <span class="post-date" title="2019-09-02 18:52:19">2019/09/02</span>
         </a>
         
         <a  class="Hexo "
@@ -368,20 +356,12 @@
             <span class="post-date" title="2019-08-24 11:11:30">2019/08/24</span>
         </a>
         
-        <a  class="算法 "
-           href="/2019/08/28/KMP字符匹配算法/"
-           data-tag="算法,字符串匹配"
+        <a  class="css "
+           href="/2019/08/27/Flex实现五种常用布局/"
+           data-tag="css,布局"
            data-author="" >
-            <span class="post-title" title="KMP字符匹配算法">KMP字符匹配算法</span>
-            <span class="post-date" title="2019-08-28 20:54:29">2019/08/28</span>
-        </a>
-        
-        <a  class="遇到的问题 "
-           href="/2019/08/30/Safari无痕模式下，storage被禁用问题/"
-           data-tag="项目中遇到的问题"
-           data-author="" >
-            <span class="post-title" title="Safari无痕模式下，storage被禁用问题">Safari无痕模式下，storage被禁用问题</span>
-            <span class="post-date" title="2019-08-30 10:44:00">2019/08/30</span>
+            <span class="post-title" title="Flex实现五种常用布局">Flex实现五种常用布局</span>
+            <span class="post-date" title="2019-08-27 14:41:43">2019/08/27</span>
         </a>
         
         <a  class="Vue "
@@ -392,12 +372,28 @@
             <span class="post-date" title="2019-08-25 13:57:03">2019/08/25</span>
         </a>
         
-        <a  class="Vue "
-           href="/2019/08/25/Vue生命周期/"
-           data-tag="Vue"
+        <a  class="css "
+           href="/2019/08/27/CSS布局/"
+           data-tag="css,布局"
            data-author="" >
-            <span class="post-title" title="Vue生命周期">Vue生命周期</span>
-            <span class="post-date" title="2019-08-25 13:55:35">2019/08/25</span>
+            <span class="post-title" title="CSS布局">CSS布局</span>
+            <span class="post-date" title="2019-08-27 14:43:05">2019/08/27</span>
+        </a>
+        
+        <a  class="遇到的问题 "
+           href="/2019/08/30/Safari无痕模式下，storage被禁用问题/"
+           data-tag="项目中遇到的问题"
+           data-author="" >
+            <span class="post-title" title="Safari无痕模式下，storage被禁用问题">Safari无痕模式下，storage被禁用问题</span>
+            <span class="post-date" title="2019-08-30 10:44:00">2019/08/30</span>
+        </a>
+        
+        <a  class="算法 "
+           href="/2019/08/28/KMP字符匹配算法/"
+           data-tag="算法,字符串匹配"
+           data-author="" >
+            <span class="post-title" title="KMP字符匹配算法">KMP字符匹配算法</span>
+            <span class="post-date" title="2019-08-28 20:54:29">2019/08/28</span>
         </a>
         
         <a  class="计算机网络 "
@@ -408,36 +404,28 @@
             <span class="post-date" title="2019-09-02 20:45:39">2019/09/02</span>
         </a>
         
+        <a  class="Vue 遇到的问题 "
+           href="/2019/08/27/v-show和v-if/"
+           data-tag="Vue,项目中遇到的问题"
+           data-author="" >
+            <span class="post-title" title="v-show和v-if">v-show和v-if</span>
+            <span class="post-date" title="2019-08-27 15:36:01">2019/08/27</span>
+        </a>
+        
+        <a  class="Vue "
+           href="/2019/08/25/Vue生命周期/"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="Vue生命周期">Vue生命周期</span>
+            <span class="post-date" title="2019-08-25 13:55:35">2019/08/25</span>
+        </a>
+        
         <a  class="Vue "
            href="/2019/08/25/Vue数据绑定与虚拟DOM/"
            data-tag="Vue,数据绑定"
            data-author="" >
             <span class="post-title" title="Vue数据绑定与虚拟DOM">Vue数据绑定与虚拟DOM</span>
             <span class="post-date" title="2019-08-25 11:11:23">2019/08/25</span>
-        </a>
-        
-        <a  class="Vue 遇到的问题 "
-           href="/2019/08/27/v-show和v-if/"
-           data-tag="项目中遇到的问题,Vue"
-           data-author="" >
-            <span class="post-title" title="v-show和v-if">v-show和v-if</span>
-            <span class="post-date" title="2019-08-27 15:36:01">2019/08/27</span>
-        </a>
-        
-        <a  class="JavaScript "
-           href="/2019/08/25/函数防抖与节流/"
-           data-tag="JavaScript,事件"
-           data-author="" >
-            <span class="post-title" title="事件防抖与节流">事件防抖与节流</span>
-            <span class="post-date" title="2019-08-25 10:50:59">2019/08/25</span>
-        </a>
-        
-        <a  class="遇到的问题 "
-           href="/2019/08/27/利用velocity解决poi-tl数据缺失不渲染的问题/"
-           data-tag="项目中遇到的问题"
-           data-author="" >
-            <span class="post-title" title="利用velocity解决poi-tl数据缺失不渲染的问题">利用velocity解决poi-tl数据缺失不渲染的问题</span>
-            <span class="post-date" title="2019-08-27 21:23:25">2019/08/27</span>
         </a>
         
         <a  class="计算机网络 "
@@ -448,12 +436,12 @@
             <span class="post-date" title="2019-09-02 19:44:12">2019/09/02</span>
         </a>
         
-        <a  class="算法 "
-           href="/2019/08/27/动态规划算法——台阶问题/"
-           data-tag="算法,动态规划"
+        <a  class="遇到的问题 "
+           href="/2019/09/03/关于chrome控制台打印类容与期望值不一致的问题/"
+           data-tag="遇到的问题"
            data-author="" >
-            <span class="post-title" title="动态规划算法——台阶问题">动态规划算法——台阶问题</span>
-            <span class="post-date" title="2019-08-27 15:06:44">2019/08/27</span>
+            <span class="post-title" title="关于chrome控制台打印类容与期望值不一致的问题">关于chrome控制台打印类容与期望值不一致的问题</span>
+            <span class="post-date" title="2019-09-03 10:57:58">2019/09/03</span>
         </a>
         
         <a  class="遇到的问题 "
@@ -472,6 +460,46 @@
             <span class="post-date" title="2019-09-02 13:18:04">2019/09/02</span>
         </a>
         
+        <a  class="遇到的问题 "
+           href="/2019/08/27/利用velocity解决poi-tl数据缺失不渲染的问题/"
+           data-tag="项目中遇到的问题"
+           data-author="" >
+            <span class="post-title" title="利用velocity解决poi-tl数据缺失不渲染的问题">利用velocity解决poi-tl数据缺失不渲染的问题</span>
+            <span class="post-date" title="2019-08-27 21:23:25">2019/08/27</span>
+        </a>
+        
+        <a  class="JavaScript "
+           href="/2019/09/02/数组扁平化/"
+           data-tag="数组"
+           data-author="" >
+            <span class="post-title" title="数组扁平化">数组扁平化</span>
+            <span class="post-date" title="2019-09-02 13:17:59">2019/09/02</span>
+        </a>
+        
+        <a  class="JavaScript "
+           href="/2019/08/25/函数防抖与节流/"
+           data-tag="JavaScript,事件"
+           data-author="" >
+            <span class="post-title" title="事件防抖与节流">事件防抖与节流</span>
+            <span class="post-date" title="2019-08-25 10:50:59">2019/08/25</span>
+        </a>
+        
+        <a  class="Vue "
+           href="/2019/09/02/虚拟DOM/"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="虚拟DOM">虚拟DOM</span>
+            <span class="post-date" title="2019-09-02 14:25:52">2019/09/02</span>
+        </a>
+        
+        <a  class="算法 "
+           href="/2019/08/27/动态规划算法——台阶问题/"
+           data-tag="算法,动态规划"
+           data-author="" >
+            <span class="post-title" title="动态规划算法——台阶问题">动态规划算法——台阶问题</span>
+            <span class="post-date" title="2019-08-27 15:06:44">2019/08/27</span>
+        </a>
+        
         <a  class="Vue "
            href="/2019/09/02/Vue-diff算法/"
            data-tag="Vue"
@@ -486,22 +514,6 @@
            data-author="" >
             <span class="post-title" title="js拷贝与继承">js拷贝与继承</span>
             <span class="post-date" title="2019-08-24 10:57:50">2019/08/24</span>
-        </a>
-        
-        <a  class="JavaScript "
-           href="/2019/09/02/数组扁平化/"
-           data-tag="数组"
-           data-author="" >
-            <span class="post-title" title="数组扁平化">数组扁平化</span>
-            <span class="post-date" title="2019-09-02 13:17:59">2019/09/02</span>
-        </a>
-        
-        <a  class="Vue "
-           href="/2019/09/02/虚拟DOM/"
-           data-tag="Vue"
-           data-author="" >
-            <span class="post-title" title="虚拟DOM">虚拟DOM</span>
-            <span class="post-date" title="2019-09-02 14:25:52">2019/09/02</span>
         </a>
         
         <a  class="计算机网络 "
@@ -727,7 +739,7 @@ document.addEventListener(&apos;scroll&apos;, better_scroll)</code></pre><h3 id=
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#面经','#Ajax','#跨域','#css','#布局','#Hexo','#算法','#字符串匹配','#项目中遇到的问题','#Vue','#计算机网络','#HTTP','#数据绑定','#JavaScript','#事件','#http','#http状态码','#动态规划','#回调炼狱','#promise','#数组','#TCP',],
+            'data': ['#Ajax','#跨域','#面经','#Hexo','#css','#布局','#Vue','#项目中遇到的问题','#算法','#字符串匹配','#计算机网络','#HTTP','#数据绑定','#http','#http状态码','#遇到的问题','#回调炼狱','#promise','#数组','#JavaScript','#事件','#动态规划','#TCP',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
