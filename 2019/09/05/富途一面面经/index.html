@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>利用velocity解决poi-tl数据缺失不渲染的问题 | LYF&#39;s blog</title>
-  <meta name="keywords" content=" 项目中遇到的问题 ">
-  <meta name="description" content="利用velocity解决poi-tl数据缺失不渲染的问题 | LYF&#39;s blog">
+  <title>富途一面面经 | LYF&#39;s blog</title>
+  <meta name="keywords" content=" 面经 ">
+  <meta name="description" content="富途一面面经 | LYF&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="1. Vue， v-for中 key的作用2. v-for 动态插入应该注意什么。3. http缓存4. cookie，session，localstorage，sessionStorage的区别session当服务器收到请求需要创建session对象时，首先会检查客户端请求中是否包含sessionid。如果有sessionid，服务器将根据该id返回对应session对象。如果客户端请求中没有s">
 <meta name="keywords" content="面经">
@@ -544,9 +544,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-利用velocity解决poi-tl数据缺失不渲染的问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-富途一面面经" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">利用velocity解决poi-tl数据缺失不渲染的问题</h1>
+        <h1 class="article-title">富途一面面经</h1>
     
     <div class="article-meta">
         
@@ -554,21 +554,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="遇到的问题">遇到的问题</a>
+                <a href="javascript:" data-rel="面经">面经</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color4">项目中遇到的问题</a>
+            <a href="javascript:" class="color3">面经</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-09-03 16:40:54'>2019-08-27 21:23</time>
+        创建时间:<time class="date" title='更新时间: 2019-09-05 14:44:04'>2019-09-05 14:43</time>
         
     </div>
     <div class="article-meta">
@@ -590,7 +590,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决"><span class="toc-text">解决</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Vue，-v-for中-key的作用"><span class="toc-text">1. Vue， v-for中 key的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-v-for-动态插入应该注意什么。"><span class="toc-text">2. v-for 动态插入应该注意什么。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-http缓存"><span class="toc-text">3. http缓存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-cookie，session，localstorage，sessionStorage的区别"><span class="toc-text">4. cookie，session，localstorage，sessionStorage的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#session"><span class="toc-text">session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie"><span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie和session的区别"><span class="toc-text">cookie和session的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#locationStorage（会一直在）和sessionStorage（关闭窗口就没了）"><span class="toc-text">locationStorage（会一直在）和sessionStorage（关闭窗口就没了）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-跨域。"><span class="toc-text">5. 跨域。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-对JavaScript中this的理解。"><span class="toc-text">6. 对JavaScript中this的理解。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-对原型链的理解。"><span class="toc-text">7. 对原型链的理解。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-继承。"><span class="toc-text">8. 继承。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-使数组乱序的方法。"><span class="toc-text">9. 使数组乱序的方法。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-两个升序数组，判断一个数组是不是另一个的子集。"><span class="toc-text">10. 两个升序数组，判断一个数组是不是另一个的子集。</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -605,28 +605,21 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>做项目时遇到需要动态生成word文档的需求，当时选择了采用poi-tl通过Word模板生成word文档。<br>在模板中列出了所有的可选板块，填充数据时根据板块的占位符去动态地填充数据。可当中间有一个板块不需要填充时，也就是当填充的板块不连续时，后面的需要填充的板块会出现数据缺失。  </p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>利用velocity，动态操作模板文件xml中的模块。使得需填充数据的模块连续，从而解决问题。</p>
-<pre><code>#if($wm.contains(&quot;ydzx&quot;))
-&lt;w:p w:rsidR=&quot;006F1316&quot; w:rsidRDefault=&quot;006F1316&quot; w:rsidP=&quot;006F1316&quot;&gt;
-  &lt;w:pPr&gt;
-    &lt;w:pStyle w:val=&quot;20&quot;/&gt;
-    &lt;w:ind w:firstLine=&quot;560&quot;/&gt;
-  &lt;/w:pPr&gt;
-  &lt;w:r&gt;
-    &lt;w:lastRenderedPageBreak/&gt;
-    &lt;w:t&gt;{{+
-            
-            <w:prooferr w:type="spellStart">
-            <w:r>
-              <w:t>ydzx</w:t>
-            </w:r>
-            <w:prooferr w:type="spellEnd">
-            <w:r>
-              <w:t>}}&lt;/w:t&gt;
-  &lt;/w:r&gt;
-&lt;/w:p&gt;
-#end</w:t></w:r></w:prooferr></w:prooferr></code></pre>
+        <h1 id="1-Vue，-v-for中-key的作用"><a href="#1-Vue，-v-for中-key的作用" class="headerlink" title="1. Vue， v-for中 key的作用"></a>1. Vue， v-for中 key的作用</h1><h1 id="2-v-for-动态插入应该注意什么。"><a href="#2-v-for-动态插入应该注意什么。" class="headerlink" title="2. v-for 动态插入应该注意什么。"></a>2. v-for 动态插入应该注意什么。</h1><h1 id="3-http缓存"><a href="#3-http缓存" class="headerlink" title="3. http缓存"></a>3. http缓存</h1><h1 id="4-cookie，session，localstorage，sessionStorage的区别"><a href="#4-cookie，session，localstorage，sessionStorage的区别" class="headerlink" title="4. cookie，session，localstorage，sessionStorage的区别"></a>4. cookie，session，localstorage，sessionStorage的区别</h1><h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>当服务器收到请求需要创建session对象时，首先会检查客户端请求中是否包含sessionid。如果有sessionid，服务器将根据该id返回对应session对象。如果客户端请求中没有sessionid，服务器会创建新的session对象，并把sessionid在本次响应中返回给客户端。通常使用cookie方式存储sessionid到客户端，在交互中浏览器按照规则将sessionid发送给服务器。如果用户禁用cookie，则要使用URL重写，可以通过response.encodeURL(url) </p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>本身用于客户端和服务器端通信<br>但是它有本地存储的功能，于是就被“借用”<br>使用 document.cookie = … 获取和修改即可<br>缺点：</p>
+<p>存储量太小，4kb<br>所有http请求都会带着，会影响获取资源的效率<br>API简单，需要封装才能用 本身是这样的 document.cookei = … 不能满足于复杂需求</p>
+<h2 id="cookie和session的区别"><a href="#cookie和session的区别" class="headerlink" title="cookie和session的区别"></a>cookie和session的区别</h2><ul>
+<li>cookie数据存放在客户的浏览器上，session数据放在服务器上</li>
+<li>cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑*到安全应当使用session</li>
+<li>session会在一定时间内保存在服务器上，当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie</li>
+<li>单个cookie保存的数*据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie</li>
+<li>建议将登录信息等重要信息存放为session，其他信息如果需要保留，可以放在cookie中</li>
+<li>session保存在服务器，客户端不知道其中的信心；cookie保存在客户端，服务器能够知道其中的信息</li>
+<li>session中保存的是对象，cookie中保存的是字符串</li>
+<li>session不能区分路径，同一个用户在访问一个网站期间，所有的session在任何一个地方都可以访问到，而cookie中如果设置了路径参数，那么同一个网站中不同路径下的cookie互相是访问不到的</li>
+</ul>
+<h2 id="locationStorage（会一直在）和sessionStorage（关闭窗口就没了）"><a href="#locationStorage（会一直在）和sessionStorage（关闭窗口就没了）" class="headerlink" title="locationStorage（会一直在）和sessionStorage（关闭窗口就没了）"></a>locationStorage（会一直在）和sessionStorage（关闭窗口就没了）</h2><p>HTML5 专门为存储而设计的，最大容量5M （不用在请求中带着）<br>API简单易用<br>localStorage.setItem(key,value); localStorage.getItem(key); 可用于复杂需求。<br>建议用try catch 包起来使用。</p>
+<h1 id="5-跨域。"><a href="#5-跨域。" class="headerlink" title="5. 跨域。"></a>5. 跨域。</h1><h1 id="6-对JavaScript中this的理解。"><a href="#6-对JavaScript中this的理解。" class="headerlink" title="6. 对JavaScript中this的理解。"></a>6. 对JavaScript中this的理解。</h1><h1 id="7-对原型链的理解。"><a href="#7-对原型链的理解。" class="headerlink" title="7. 对原型链的理解。"></a>7. 对原型链的理解。</h1><h1 id="8-继承。"><a href="#8-继承。" class="headerlink" title="8. 继承。"></a>8. 继承。</h1><h1 id="9-使数组乱序的方法。"><a href="#9-使数组乱序的方法。" class="headerlink" title="9. 使数组乱序的方法。"></a>9. 使数组乱序的方法。</h1><h1 id="10-两个升序数组，判断一个数组是不是另一个的子集。"><a href="#10-两个升序数组，判断一个数组是不是另一个的子集。" class="headerlink" title="10. 两个升序数组，判断一个数组是不是另一个的子集。"></a>10. 两个升序数组，判断一个数组是不是另一个的子集。</h1>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 f798735475@163.com </span>
     </div>
