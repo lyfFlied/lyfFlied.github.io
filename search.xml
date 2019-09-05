@@ -295,7 +295,7 @@
       <link href="/2019/08/27/%E5%88%A9%E7%94%A8velocity%E8%A7%A3%E5%86%B3poi-tl%E6%95%B0%E6%8D%AE%E7%BC%BA%E5%A4%B1%E4%B8%8D%E6%B8%B2%E6%9F%93%E7%9A%84%E9%97%AE%E9%A2%98/"/>
       <url>/2019/08/27/%E5%88%A9%E7%94%A8velocity%E8%A7%A3%E5%86%B3poi-tl%E6%95%B0%E6%8D%AE%E7%BC%BA%E5%A4%B1%E4%B8%8D%E6%B8%B2%E6%9F%93%E7%9A%84%E9%97%AE%E9%A2%98/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>做项目时遇到需要动态生成word文档的需求，当时选择了采用poi-tl通过Word模板生成word文档。<br>在模板中列出了所有的可选板块，填充数据时根据板块的占位符去动态地填充数据。可当中间有一个板块不需要填充时，也就是当填充的板块不连续时，后面的需要填充的板块会出现数据缺失。  </p><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>利用velocity，动态操作模板文件xml中的模块。使得需填充数据的模块连续，从而解决问题。</p><pre><code>#if($wm.contains(&quot;ydzx&quot;))&lt;w:p w:rsidR=&quot;006F1316&quot; w:rsidRDefault=&quot;006F1316&quot; w:rsidP=&quot;006F1316&quot;&gt;  &lt;w:pPr&gt;    &lt;w:pStyle w:val=&quot;20&quot;/&gt;    &lt;w:ind w:firstLine=&quot;560&quot;/&gt;  &lt;/w:pPr&gt;  &lt;w:r&gt;    &lt;w:lastRenderedPageBreak/&gt;    &lt;w:t&gt;{{+                        <w:prooferr w:type="spellStart">            <w:r>              <w:t>ydzx</w:t>            </w:r>            <w:prooferr w:type="spellEnd">            <w:r>              <w:t>}}&lt;/w:t&gt;  &lt;/w:r&gt;&lt;/w:p&gt;#end</w:t></w:r></w:prooferr></w:prooferr></code></pre>]]></content>
       
       
       <categories>
